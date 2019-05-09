@@ -14,6 +14,7 @@
 		F5970EF5225D53BB0063D9FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5970EF4225D53BB0063D9FA /* Assets.xcassets */; };
 		F5970EF8225D53BB0063D9FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */; };
 		F5970F03225D53BB0063D9FA /* CliquesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970F02225D53BB0063D9FA /* CliquesTests.swift */; };
+		F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B980D3228245960076BA1B /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		F5970EFE225D53BB0063D9FA /* CliquesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CliquesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5970F02225D53BB0063D9FA /* CliquesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliquesTests.swift; sourceTree = "<group>"; };
 		F5970F04225D53BC0063D9FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5B980D3228245960076BA1B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				F5970EEB225D53B90063D9FA /* AppDelegate.swift */,
 				F5970EED225D53B90063D9FA /* FirstViewController.swift */,
 				F5970EEF225D53B90063D9FA /* SecondViewController.swift */,
+				F5B980D3228245960076BA1B /* LoginViewController.swift */,
 				F5970EF1225D53B90063D9FA /* Main.storyboard */,
 				F5970EF4225D53BB0063D9FA /* Assets.xcassets */,
 				F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */,
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */,
 				F5970EF0225D53B90063D9FA /* SecondViewController.swift in Sources */,
 				F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */,
 				F5970EEE225D53B90063D9FA /* FirstViewController.swift in Sources */,
