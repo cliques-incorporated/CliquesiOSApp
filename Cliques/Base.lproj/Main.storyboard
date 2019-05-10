@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6il-RT-V1U">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,58 +18,115 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" highlighted="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UVF-xE-rWc">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UVF-xE-rWc">
                                 <rect key="frame" x="121" y="232" width="172" height="32"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad" enablesReturnKeyAutomatically="YES" smartDashesType="yes" textContentType="tel"/>
+                                <connections>
+                                    <action selector="textFieldEditDidBegin:" destination="6il-RT-V1U" eventType="editingDidBegin" id="erB-FB-c8E"/>
+                                    <action selector="textFieldEditDidEnd:" destination="6il-RT-V1U" eventType="editingDidEnd" id="Axb-Od-E5o"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wg6-fE-pTF">
-                                <rect key="frame" x="107.5" y="284" width="199" height="39"/>
+                                <rect key="frame" x="107.5" y="274" width="199" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Send My Login Code"/>
                                 <connections>
                                     <action selector="SendMyLoginCodePressed:" destination="6il-RT-V1U" eventType="touchUpInside" id="tGL-I8-2tP"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please try again." textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJU-pX-Izo">
+                                <rect key="frame" x="20" y="318" width="374" height="20.5"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0093617555430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wg6-fE-pTF" firstAttribute="centerX" secondItem="K4k-df-hSE" secondAttribute="centerX" id="5GO-Eg-cJH"/>
                             <constraint firstItem="UVF-xE-rWc" firstAttribute="centerY" secondItem="K4k-df-hSE" secondAttribute="centerY" constant="-200" id="NTc-5D-Juf"/>
+                            <constraint firstItem="JJU-pX-Izo" firstAttribute="centerX" secondItem="K4k-df-hSE" secondAttribute="centerX" id="Wy6-rb-NSy"/>
+                            <constraint firstItem="JJU-pX-Izo" firstAttribute="leading" secondItem="Ngh-2v-3aT" secondAttribute="leading" constant="20" id="hRl-N0-jNJ"/>
                             <constraint firstItem="UVF-xE-rWc" firstAttribute="centerX" secondItem="K4k-df-hSE" secondAttribute="centerX" id="tiM-nB-zyG"/>
-                            <constraint firstItem="wg6-fE-pTF" firstAttribute="top" secondItem="UVF-xE-rWc" secondAttribute="bottom" constant="20" id="wMi-LK-nOf"/>
+                            <constraint firstItem="JJU-pX-Izo" firstAttribute="top" secondItem="wg6-fE-pTF" secondAttribute="bottom" constant="5" id="wFB-M3-ffb"/>
+                            <constraint firstItem="wg6-fE-pTF" firstAttribute="top" secondItem="UVF-xE-rWc" secondAttribute="bottom" constant="10" id="wMi-LK-nOf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ngh-2v-3aT"/>
                     </view>
                     <connections>
+                        <outlet property="ErrorLabel" destination="JJU-pX-Izo" id="Fm5-u8-UiP"/>
                         <outlet property="PhoneNumberField" destination="UVF-xE-rWc" id="xJy-jB-owr"/>
                         <outlet property="SendLoginCodeButton" destination="wg6-fE-pTF" id="MeJ-je-6ha"/>
+                        <segue destination="JdE-Ku-D15" kind="presentation" identifier="GoToVerification" id="Z0o-ev-42m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOl-3f-S3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="-1208.0357142857142"/>
+            <point key="canvasLocation" x="-1270" y="-1099"/>
         </scene>
-        <!--View Controller-->
+        <!--Verification-->
         <scene sceneID="TAk-v1-6sV">
             <objects>
-                <viewController id="JdE-Ku-D15" sceneMemberID="viewController">
+                <viewController title="Verification" modalPresentationStyle="pageSheet" id="JdE-Ku-D15" customClass="LoginViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7pS-mW-ltE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Verification Code" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w4L-Ce-1bP">
+                                <rect key="frame" x="109" y="232" width="196" height="32"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES" smartDashesType="yes" textContentType="one-time-code"/>
+                                <connections>
+                                    <action selector="textFieldEditDidBegin:" destination="JdE-Ku-D15" eventType="editingDidBegin" id="WGX-Oz-6vi"/>
+                                    <action selector="textFieldEditDidEnd:" destination="JdE-Ku-D15" eventType="editingDidEnd" id="SAK-kp-zEp"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SlQ-zl-qqr">
+                                <rect key="frame" x="89" y="284" width="236" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Submit Verification Code"/>
+                                <connections>
+                                    <action selector="SubmitVerificationCodePressed:" destination="JdE-Ku-D15" eventType="touchUpInside" id="DCf-rS-HyV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YvE-8M-ann">
+                                <rect key="frame" x="166.5" y="328" width="81" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Go Back">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0093617555427760735" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="GoBackPressed:" destination="JdE-Ku-D15" eventType="touchUpInside" id="Moj-9t-AiG"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="w4L-Ce-1bP" firstAttribute="centerY" secondItem="7pS-mW-ltE" secondAttribute="centerY" constant="-200" id="S3w-bF-AdY"/>
+                            <constraint firstItem="YvE-8M-ann" firstAttribute="centerX" secondItem="7pS-mW-ltE" secondAttribute="centerX" id="YTa-UY-Pnh"/>
+                            <constraint firstItem="w4L-Ce-1bP" firstAttribute="centerX" secondItem="7pS-mW-ltE" secondAttribute="centerX" id="e6U-Vl-Oa2"/>
+                            <constraint firstItem="SlQ-zl-qqr" firstAttribute="top" secondItem="w4L-Ce-1bP" secondAttribute="bottom" constant="20" id="qMs-AO-w1a"/>
+                            <constraint firstItem="SlQ-zl-qqr" firstAttribute="centerX" secondItem="7pS-mW-ltE" secondAttribute="centerX" id="rde-m8-85h"/>
+                            <constraint firstItem="YvE-8M-ann" firstAttribute="top" secondItem="SlQ-zl-qqr" secondAttribute="bottom" constant="5" id="vEm-Hd-BzX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gCh-GI-mcN"/>
                     </view>
+                    <connections>
+                        <outlet property="VerificationCodeTextField" destination="w4L-Ce-1bP" id="drj-bO-alA"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="GoToFeed" id="hvg-bE-Kl7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ac3-Nq-IEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1270" y="-1215"/>
+            <point key="canvasLocation" x="0.0" y="-1106"/>
         </scene>
-        <!--First-->
+        <!--Feed-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Feed" id="9pv-A4-QxB" customClass="FeedViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,14 +144,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="b0O-p5-SjD">
-                                <rect key="frame" x="69" y="61" width="121" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -105,46 +154,71 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <segue destination="6il-RT-V1U" kind="show" identifier="GoToLogin" id="MFw-Gf-RcS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
-        <!--Second-->
+        <!--Profile-->
+        <scene sceneID="Vho-XM-wOn">
+            <objects>
+                <viewController title="Profile" id="frS-XX-ROe" customClass="ProfileViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kXR-At-0kV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QtC-P2-vOS"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="second" id="pfw-ZI-1k5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWP-XY-2Ot" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="749" y="1134"/>
+        </scene>
+        <!--Search-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search" id="8rJ-Kc-sve" customClass="SearchViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="106.5" y="426.5" width="201.5" height="43"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="99.5" y="477.5" width="215" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="dkj-SF-Jl1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="ds8-xn-bIz"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="dkj-SF-Jl1" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="H0j-lH-RIo"/>
+                            <constraint firstItem="dkj-SF-Jl1" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="SJO-YF-PPZ"/>
+                            <constraint firstItem="dkj-SF-Jl1" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="WAs-lU-YEN"/>
+                            <constraint firstItem="dkj-SF-Jl1" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="XWS-IJ-hOP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="vL8-Sw-1GI" id="LhC-oG-O1I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="vL8-Sw-1GI">
+                    <connections>
+                        <outlet property="delegate" destination="8rJ-Kc-sve" id="7FC-Ou-fYt"/>
+                        <outlet property="searchBar" destination="dkj-SF-Jl1" id="OUt-bC-hXY"/>
+                        <outlet property="searchContentsController" destination="8rJ-Kc-sve" id="i3T-dd-poS"/>
+                        <outlet property="searchResultsDataSource" destination="8rJ-Kc-sve" id="fSU-V7-D2x"/>
+                        <outlet property="searchResultsDelegate" destination="8rJ-Kc-sve" id="c1b-4q-cjo"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
@@ -160,6 +234,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="frS-XX-ROe" kind="relationship" relationship="viewControllers" id="FmL-Go-p1C"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
