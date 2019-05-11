@@ -13,7 +13,6 @@
 		F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EED225D53B90063D9FA /* FeedViewController.swift */; };
 		F5970EF0225D53B90063D9FA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEF225D53B90063D9FA /* SearchViewController.swift */; };
 		F5970EF3225D53B90063D9FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5970EF1225D53B90063D9FA /* Main.storyboard */; };
-		F5970EF5225D53BB0063D9FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5970EF4225D53BB0063D9FA /* Assets.xcassets */; };
 		F5970EF8225D53BB0063D9FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */; };
 		F5970F03225D53BB0063D9FA /* CliquesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970F02225D53BB0063D9FA /* CliquesTests.swift */; };
 		F59952502284DEDF008CC05D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F599524F2284DEDF008CC05D /* GoogleService-Info.plist */; };
@@ -22,6 +21,7 @@
 		F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BE2286215100A02532 /* ProfileViewController.swift */; };
 		F5BEC2C12286639D00A02532 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C02286639D00A02532 /* NewUserViewController.swift */; };
 		F5BEC2C32287230A00A02532 /* ImageRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C22287230A00A02532 /* ImageRequestController.swift */; };
+		F5BEC2C72287416600A02532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5BEC2C62287416500A02532 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,6 @@
 		F5970EED225D53B90063D9FA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		F5970EEF225D53B90063D9FA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F5970EF2225D53B90063D9FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F5970EF4225D53BB0063D9FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5970EF7225D53BB0063D9FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5970EF9225D53BB0063D9FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5970EFE225D53BB0063D9FA /* CliquesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CliquesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +58,7 @@
 		F5BEC2BE2286215100A02532 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F5BEC2C02286639D00A02532 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		F5BEC2C22287230A00A02532 /* ImageRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequestController.swift; sourceTree = "<group>"; };
+		F5BEC2C62287416500A02532 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +124,7 @@
 		F5970EEA225D53B90063D9FA /* Cliques */ = {
 			isa = PBXGroup;
 			children = (
+				F5BEC2C62287416500A02532 /* Assets.xcassets */,
 				F5BEC2B92284E04000A02532 /* Cliques.entitlements */,
 				F5970EEB225D53B90063D9FA /* AppDelegate.swift */,
 				F5970EED225D53B90063D9FA /* FeedViewController.swift */,
@@ -132,7 +133,6 @@
 				F5B980D3228245960076BA1B /* LoginViewController.swift */,
 				F5BEC2BE2286215100A02532 /* ProfileViewController.swift */,
 				F5970EF1225D53B90063D9FA /* Main.storyboard */,
-				F5970EF4225D53BB0063D9FA /* Assets.xcassets */,
 				F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */,
 				F5970EF9225D53BB0063D9FA /* Info.plist */,
 				F599524F2284DEDF008CC05D /* GoogleService-Info.plist */,
@@ -242,7 +242,7 @@
 			files = (
 				F5970EF8225D53BB0063D9FA /* LaunchScreen.storyboard in Resources */,
 				F59952502284DEDF008CC05D /* GoogleService-Info.plist in Resources */,
-				F5970EF5225D53BB0063D9FA /* Assets.xcassets in Resources */,
+				F5BEC2C72287416600A02532 /* Assets.xcassets in Resources */,
 				F5970EF3225D53B90063D9FA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
