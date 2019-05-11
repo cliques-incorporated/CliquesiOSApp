@@ -20,6 +20,8 @@
 		F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B980D3228245960076BA1B /* LoginViewController.swift */; };
 		F5BEC2BB2284E2E600A02532 /* FirebaseLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */; };
 		F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BE2286215100A02532 /* ProfileViewController.swift */; };
+		F5BEC2C12286639D00A02532 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C02286639D00A02532 /* NewUserViewController.swift */; };
+		F5BEC2C32287230A00A02532 /* ImageRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C22287230A00A02532 /* ImageRequestController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		F5BEC2B92284E04000A02532 /* Cliques.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cliques.entitlements; sourceTree = "<group>"; };
 		F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginController.swift; sourceTree = "<group>"; };
 		F5BEC2BE2286215100A02532 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F5BEC2C02286639D00A02532 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
+		F5BEC2C22287230A00A02532 /* ImageRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequestController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,7 @@
 				F5BEC2B92284E04000A02532 /* Cliques.entitlements */,
 				F5970EEB225D53B90063D9FA /* AppDelegate.swift */,
 				F5970EED225D53B90063D9FA /* FeedViewController.swift */,
+				F5BEC2C02286639D00A02532 /* NewUserViewController.swift */,
 				F5970EEF225D53B90063D9FA /* SearchViewController.swift */,
 				F5B980D3228245960076BA1B /* LoginViewController.swift */,
 				F5BEC2BE2286215100A02532 /* ProfileViewController.swift */,
@@ -132,6 +137,7 @@
 				F5970EF9225D53BB0063D9FA /* Info.plist */,
 				F599524F2284DEDF008CC05D /* GoogleService-Info.plist */,
 				F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */,
+				F5BEC2C22287230A00A02532 /* ImageRequestController.swift */,
 			);
 			path = Cliques;
 			sourceTree = "<group>";
@@ -334,6 +340,8 @@
 				F5970EF0225D53B90063D9FA /* SearchViewController.swift in Sources */,
 				F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */,
 				F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */,
+				F5BEC2C12286639D00A02532 /* NewUserViewController.swift in Sources */,
+				F5BEC2C32287230A00A02532 /* ImageRequestController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

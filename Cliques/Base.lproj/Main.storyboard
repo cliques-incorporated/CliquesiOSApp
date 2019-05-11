@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pr2-i3-Raf">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -122,6 +122,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ac3-Nq-IEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="-1106"/>
+        </scene>
+        <!--New User-->
+        <scene sceneID="1gn-te-uxN">
+            <objects>
+                <viewController title="New User" id="pr2-i3-Raf" customClass="NewUserViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sSg-H9-Aef">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Cliques! We just need a few pieces of information to get you set." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wa3-Hi-i1R">
+                                <rect key="frame" x="5" y="94" width="404" height="53"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RYt-8o-Ueu">
+                                <rect key="frame" x="0.0" y="177" width="414" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next" textContentType="given-name"/>
+                                <connections>
+                                    <action selector="FirstNameReturnButtonPressed:" destination="pr2-i3-Raf" eventType="primaryActionTriggered" id="vOP-H0-Xfp"/>
+                                    <action selector="FirstNameTextFieldEditingDidEnd:" destination="pr2-i3-Raf" eventType="editingDidEnd" id="ehe-eR-2Ym"/>
+                                    <action selector="TextFieldEditingBegan:" destination="pr2-i3-Raf" eventType="editingDidBegin" id="tCR-TV-juV"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SaY-Am-XBU">
+                                <rect key="frame" x="0.0" y="237" width="414" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" textContentType="given-name"/>
+                                <connections>
+                                    <action selector="LastNameReturnButtonPressed:" destination="pr2-i3-Raf" eventType="editingDidEnd" id="8Th-so-y82"/>
+                                    <action selector="LastNameTextFieldEditingDidEnd:" destination="pr2-i3-Raf" eventType="editingDidEnd" id="nbq-ou-5FP"/>
+                                    <action selector="TextFieldEditingBegan:" destination="pr2-i3-Raf" eventType="editingDidBegin" id="jp3-fm-iDg"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1F-P1-HnW">
+                                <rect key="frame" x="100" y="297" width="214" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Select Profile Image">
+                                    <color key="titleColor" red="1" green="0.58346368720367114" blue="0.10173903503050197" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="SelectProfileImagePressed:" destination="pr2-i3-Raf" eventType="touchUpInside" id="mx2-KB-O4b"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gn6-tm-fBj">
+                                <rect key="frame" x="138.5" y="399" width="137" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="Let's Go!">
+                                    <color key="titleColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fzJ-lE-NR1" firstAttribute="trailing" secondItem="RYt-8o-Ueu" secondAttribute="trailing" id="64d-Sp-Kzn"/>
+                            <constraint firstItem="SaY-Am-XBU" firstAttribute="leading" secondItem="fzJ-lE-NR1" secondAttribute="leading" id="CPl-e1-NTG"/>
+                            <constraint firstItem="wa3-Hi-i1R" firstAttribute="top" secondItem="fzJ-lE-NR1" secondAttribute="top" constant="50" id="Ldr-Cw-NPM"/>
+                            <constraint firstItem="gn6-tm-fBj" firstAttribute="centerX" secondItem="sSg-H9-Aef" secondAttribute="centerX" id="M3n-Lu-N0G"/>
+                            <constraint firstItem="fzJ-lE-NR1" firstAttribute="trailing" secondItem="SaY-Am-XBU" secondAttribute="trailing" id="Spc-CM-drk"/>
+                            <constraint firstItem="gn6-tm-fBj" firstAttribute="top" secondItem="d1F-P1-HnW" secondAttribute="bottom" constant="60" id="UCy-1i-E5F"/>
+                            <constraint firstItem="wa3-Hi-i1R" firstAttribute="centerX" secondItem="sSg-H9-Aef" secondAttribute="centerX" id="ZJi-t7-OqV"/>
+                            <constraint firstItem="SaY-Am-XBU" firstAttribute="top" secondItem="RYt-8o-Ueu" secondAttribute="bottom" constant="30" id="dRc-EC-SiM"/>
+                            <constraint firstItem="RYt-8o-Ueu" firstAttribute="top" secondItem="wa3-Hi-i1R" secondAttribute="bottom" constant="30" id="eTs-SH-HGt"/>
+                            <constraint firstItem="wa3-Hi-i1R" firstAttribute="leading" secondItem="sSg-H9-Aef" secondAttribute="leading" constant="5" id="h4D-cM-I8B"/>
+                            <constraint firstItem="d1F-P1-HnW" firstAttribute="top" secondItem="SaY-Am-XBU" secondAttribute="bottom" constant="30" id="jnv-jX-U0I"/>
+                            <constraint firstItem="d1F-P1-HnW" firstAttribute="centerX" secondItem="sSg-H9-Aef" secondAttribute="centerX" id="uDT-sq-Cc5"/>
+                            <constraint firstItem="RYt-8o-Ueu" firstAttribute="leading" secondItem="fzJ-lE-NR1" secondAttribute="leading" id="vdM-J4-ihv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fzJ-lE-NR1"/>
+                    </view>
+                    <connections>
+                        <outlet property="FirstNameTextField" destination="RYt-8o-Ueu" id="CSf-y5-gO1"/>
+                        <outlet property="LastNameTextField" destination="SaY-Am-XBU" id="fGd-fu-25d"/>
+                        <outlet property="SelectProfileImageButton" destination="d1F-P1-HnW" id="OBE-eA-xNN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wit-Hf-VBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1450" y="-1108"/>
         </scene>
         <!--Feed-->
         <scene sceneID="hNz-n2-bh7">
@@ -246,4 +328,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="hvg-bE-Kl7"/>
+    </inferredMetricsTieBreakers>
 </document>
