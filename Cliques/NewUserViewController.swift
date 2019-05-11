@@ -16,13 +16,21 @@ class NewUserViewController: UIViewController {
     @IBOutlet weak var BioTextField: UITextField!
     @IBOutlet weak var SelectProfileImageButton: UIButton!
     @IBOutlet weak var ProfileImageView: UIImageView!
+    @IBOutlet weak var UploadingIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var LetsGoButton: UIButton!
     
     private var imageSelected = false
     private let imageRequestController = ImageRequestController()
     private let allFieldsRequiredAlert = UIAlertController(title: "We're missing something...", message: "All fields are required!", preferredStyle: .alert)
+    private let errorAlert = UIAlertController(title: "Uh oh!", message: "Something went wrong. Please try again.", preferredStyle: .alert)
     
     private var firestoreController: FirestoreController?
     private var firebaseStorageController: FirebaseStorageController?
+    
+    private var firstName = ""
+    private var lastName = ""
+    private var bio = ""
+    private var phoneNumber = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,40 +74,66 @@ class NewUserViewController: UIViewController {
     }
     
     @IBAction func LetsGoButtonPressed(_ sender: Any) {
-        guard let firstName = FirstNameTextField.text, let lastName = LastNameTextField.text, let bio = BioTextField.text, let image = ProfileImageView.image else {
+        firstName = FirstNameTextField.text ?? ""
+        lastName = LastNameTextField.text ?? ""
+        bio = BioTextField.text ?? ""
+        
+        guard !(firstName.isEmpty), !(lastName.isEmpty), !(bio.isEmpty), imageSelected, let image = ProfileImageView.image else {
             present(allFieldsRequiredAlert, animated: true, completion: nil)
             return
         }
         
-        guard !(firstName.isEmpty), !(lastName.isEmpty), !(bio.isEmpty), imageSelected else {
-            present(allFieldsRequiredAlert, animated: true, completion: nil)
+        phoneNumber = Auth.auth().currentUser?.phoneNumber ?? ""
+        guard !phoneNumber.isEmpty else {
             return
         }
         
-        guard let phoneNumber = Auth.auth().currentUser?.phoneNumber else {
+        displayUploadingIndicator()
+        firebaseStorageController?.uploadProfileImage(phoneNumber: phoneNumber, profileImage: image, uploadCompletionHandler: profileImageUploaded)
+    }
+    
+    private func profileImageUploaded(imageURL: URL?) {
+        guard let imageURL = imageURL else {
+            hideUploadingIndicator()
+            present(errorAlert, animated: true, completion: nil)
             return
         }
         
-        firestoreController?.AddUserData(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, bio: bio, photo: image)
-        firebaseStorageController?.uploadProfileImage(phoneNumber: phoneNumber, profileImage: image)
+        firestoreController?.AddUserData(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, bio: bio, photoURL: imageURL, completionHandler: userProfileDataUploaded)
+    }
+    
+    private func userProfileDataUploaded(error: Error?) {
+        guard error == nil else {
+            hideUploadingIndicator()
+            present(errorAlert, animated: true, completion: nil)
+            return
+        }
         
+        performSegue(withIdentifier: "GoToFeed", sender: self)
     }
     
     @IBAction func TextFieldEditingBegan(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            textField.placeholder = nil
-        }
+        guard let textField = sender as? UITextField else { return }
+        textField.placeholder = nil
     }
     
     @IBAction func FirstNameTextFieldEditingDidEnd(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            textField.placeholder = "First Name"
-        }
+        guard let textField = sender as? UITextField else { return }
+        textField.placeholder = "First Name"
     }
     
     @IBAction func LastNameTextFieldEditingDidEnd(_ sender: Any) {
-        if let textField = sender as? UITextField {
-            textField.placeholder = "Last Name"
-        }
+        guard let textField = sender as? UITextField else { return }
+        textField.placeholder = "Last Name"
+    }
+    
+    private func displayUploadingIndicator() {
+        LetsGoButton.isHidden = true
+        UploadingIndicatorView.startAnimating()
+    }
+    
+    private func hideUploadingIndicator() {
+        LetsGoButton.isHidden = false
+        UploadingIndicatorView.stopAnimating()
     }
 }

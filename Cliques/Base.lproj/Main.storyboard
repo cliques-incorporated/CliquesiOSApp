@@ -126,7 +126,7 @@
         <!--New User-->
         <scene sceneID="1gn-te-uxN">
             <objects>
-                <viewController title="New User" id="pr2-i3-Raf" customClass="NewUserViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GoToFeed" title="New User" id="pr2-i3-Raf" customClass="NewUserViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sSg-H9-Aef">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,9 +195,14 @@
                                     <constraint firstAttribute="width" constant="220" id="qpy-vv-PPc"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gEK-el-sdj" userLabel="Uploading Indicator">
+                                <rect key="frame" x="197" y="682" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="gEK-el-sdj" firstAttribute="centerY" secondItem="gn6-tm-fBj" secondAttribute="centerY" id="0Lp-HE-g16"/>
+                            <constraint firstItem="gEK-el-sdj" firstAttribute="centerX" secondItem="sSg-H9-Aef" secondAttribute="centerX" id="2ue-nY-Ir4"/>
                             <constraint firstItem="fzJ-lE-NR1" firstAttribute="trailing" secondItem="RYt-8o-Ueu" secondAttribute="trailing" id="64d-Sp-Kzn"/>
                             <constraint firstItem="zQ7-rE-8R8" firstAttribute="leading" secondItem="fzJ-lE-NR1" secondAttribute="leading" constant="50" id="8oo-P5-VcL"/>
                             <constraint firstItem="SaY-Am-XBU" firstAttribute="leading" secondItem="fzJ-lE-NR1" secondAttribute="leading" id="CPl-e1-NTG"/>
@@ -223,8 +228,11 @@
                         <outlet property="BioTextField" destination="zQ7-rE-8R8" id="1e0-0l-SAp"/>
                         <outlet property="FirstNameTextField" destination="RYt-8o-Ueu" id="CSf-y5-gO1"/>
                         <outlet property="LastNameTextField" destination="SaY-Am-XBU" id="fGd-fu-25d"/>
+                        <outlet property="LetsGoButton" destination="gn6-tm-fBj" id="DF7-xt-ZJr"/>
                         <outlet property="ProfileImageView" destination="p9p-Td-uvn" id="rXd-1U-JAe"/>
                         <outlet property="SelectProfileImageButton" destination="d1F-P1-HnW" id="OBE-eA-xNN"/>
+                        <outlet property="UploadingIndicatorView" destination="gEK-el-sdj" id="QBJ-tf-8T8"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="GoToFeed" id="dVB-VV-s7T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wit-Hf-VBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -296,7 +304,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="dkj-SF-Jl1">
-                                <rect key="frame" x="0.0" y="44" width="453" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="ds8-xn-bIz"/>
@@ -356,6 +364,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="u7Y-xg-7CH"/>
+        <segue reference="dVB-VV-s7T"/>
     </inferredMetricsTieBreakers>
 </document>

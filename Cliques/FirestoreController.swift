@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestore
 
 class FirestoreController {
-    let firestoreDatabase: Firestore
+    private let firestoreDatabase: Firestore
     init() {
         firestoreDatabase = Firestore.firestore()
         let settings = firestoreDatabase.settings
@@ -18,12 +18,15 @@ class FirestoreController {
         firestoreDatabase.settings = settings
     }
     
-    func AddUserData(phoneNumber: String, firstName: String, lastName: String, bio: String, photo: UIImage) {
+    func AddUserData(phoneNumber: String, firstName: String, lastName: String, bio: String, photoURL: URL, completionHandler: @escaping (Error?)->()) {
         firestoreDatabase.collection("users").document(phoneNumber).setData([
             "id": phoneNumber,
             "first": firstName,
             "last": lastName,
-            "bio": bio
-        ])
+            "bio": bio,
+            "profileImageURL": photoURL.absoluteString
+        ]) { err in
+            completionHandler(err)
+        }
     }
 }

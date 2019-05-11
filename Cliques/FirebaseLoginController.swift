@@ -9,7 +9,7 @@
 import FirebaseAuth
 import Firebase
 
-class FirebaseUserProfileController {
+class FirebaseLoginController {
     func verifyPhoneNumber(phoneNumber: String, verificationRequestSuccess:@escaping (Error?)->()) {
         let number = "+1" + phoneNumber
         
@@ -39,23 +39,5 @@ class FirebaseUserProfileController {
             
             signInSuccess(error, authResult)
         }
-    }
-    
-    func updateUserProfile(firstName: String? = nil, lastName: String? = nil, photoURL: URL? = nil) {
-        guard let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() else {
-            return
-        }
-        if let firstName = firstName, let lastName = lastName {
-            changeRequest.displayName = firstName + " " + lastName
-        }
-        
-        if let photoURL = photoURL {
-            changeRequest.photoURL = photoURL
-        }
-        
-        changeRequest.commitChanges { (error) in
-            // ...
-        }
-            
     }
 }

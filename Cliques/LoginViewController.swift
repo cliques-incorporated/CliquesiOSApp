@@ -11,11 +11,12 @@ import FirebaseAuth
 
 
 class LoginViewController: UIViewController {
-    private var LoginController = FirebaseUserProfileController()
     @IBOutlet weak var SendLoginCodeButton: UIButton!
     @IBOutlet weak var PhoneNumberField: UITextField!
     @IBOutlet weak var ErrorLabel: UILabel!
     @IBOutlet weak var VerificationCodeTextField: UITextField!
+    
+    private var LoginController = FirebaseLoginController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class LoginViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func VerificationRequestComplete(error: Error?) {
+    private func VerificationRequestComplete(error: Error?) {
         guard error == nil else {
             return
         }
@@ -43,7 +44,7 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: "GoToVerification", sender: self)
     }
     
-    func SignInComplete(error: Error?, authDataResult: AuthDataResult?) {
+    private func SignInComplete(error: Error?, authDataResult: AuthDataResult?) {
         if error != nil || authDataResult == nil {
             VerificationCodeTextField.text = nil
             if let presentingViewController = presentingViewController as? LoginViewController {
