@@ -21,8 +21,14 @@ class NewUserViewController: UIViewController {
     private let imageRequestController = ImageRequestController()
     private let allFieldsRequiredAlert = UIAlertController(title: "We're missing something...", message: "All fields are required!", preferredStyle: .alert)
     
+    private var firestoreController: FirestoreController?
+    private var firebaseStorageController: FirebaseStorageController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        firestoreController = FirestoreController()
+        firebaseStorageController = FirebaseStorageController()
+        
         // Do any additional setup after loading the view.
         allFieldsRequiredAlert.addAction((UIAlertAction(title: "Got It", style: .cancel, handler: nil)))
         
@@ -60,11 +66,22 @@ class NewUserViewController: UIViewController {
     }
     
     @IBAction func LetsGoButtonPressed(_ sender: Any) {
-        guard !(FirstNameTextField.text?.isEmpty ?? true), !(LastNameTextField.text?.isEmpty ?? true), !(BioTextField.text?.isEmpty ?? true), imageSelected else {
+        guard let firstName = FirstNameTextField.text, let lastName = LastNameTextField.text, let bio = BioTextField.text, let image = ProfileImageView.image else {
             present(allFieldsRequiredAlert, animated: true, completion: nil)
             return
         }
         
+        guard !(firstName.isEmpty), !(lastName.isEmpty), !(bio.isEmpty), imageSelected else {
+            present(allFieldsRequiredAlert, animated: true, completion: nil)
+            return
+        }
+        
+        guard let phoneNumber = Auth.auth().currentUser?.phoneNumber else {
+            return
+        }
+        
+        firestoreController?.AddUserData(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, bio: bio, photo: image)
+        firebaseStorageController?.uploadProfileImage(phoneNumber: phoneNumber, profileImage: image)
         
     }
     

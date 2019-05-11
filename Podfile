@@ -9,6 +9,7 @@ target 'Cliques' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
   
   target 'CliquesTests' do
     inherit! :search_paths
