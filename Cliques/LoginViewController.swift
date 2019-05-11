@@ -15,12 +15,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var PhoneNumberField: UITextField!
     @IBOutlet weak var ErrorLabel: UILabel!
     @IBOutlet weak var VerificationCodeTextField: UITextField!
+    @IBOutlet weak var SubmitProcessingIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var SubmitCodeButton: UIButton!
     
-    private var LoginController = FirebaseLoginController()
+    private let LoginController = FirebaseLoginController()
+    private let firestoreController = FirestoreController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        hideProcessingIndicator()
     }
     
     @IBAction func SendMyLoginCodePressed(_ sender: Any) {
@@ -29,6 +33,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func SubmitVerificationCodePressed(_ sender: Any) {
+        displayProcessingIndicator()
         LoginController.signInWithVerificationCode(verificationCode: VerificationCodeTextField.text ?? "", signInSuccess: SignInComplete)
     }
     
@@ -47,14 +52,25 @@ class LoginViewController: UIViewController {
     private func SignInComplete(error: Error?, authDataResult: AuthDataResult?) {
         if error != nil || authDataResult == nil {
             VerificationCodeTextField.text = nil
-            if let presentingViewController = presentingViewController as? LoginViewController {
-                presentingViewController.ErrorLabel?.isHidden = false
-            }
-            
-            dismiss(animated: true, completion: nil)
-        } else {
+            displayErrorMessageAndReturn()
+        } else if let phoneNumber = authDataResult?.user.phoneNumber {
             // User is logged in successfully
+            firestoreController.doesUserProfileExist(phoneNumber: phoneNumber, completionHandler: userProfileCheckComplete)
+        } else {
+            displayErrorMessageAndReturn()
+        }
+    }
+    
+    private func userProfileCheckComplete(exists: Bool?) {
+        guard let exists = exists else {
+            displayErrorMessageAndReturn()
+            return
+        }
+        
+        if(exists) {
             performSegue(withIdentifier: "GoToFeed", sender: self)
+        } else {
+            performSegue(withIdentifier: "GoToNewUser", sender: self)
         }
     }
     
@@ -74,4 +90,22 @@ class LoginViewController: UIViewController {
         }
     }
     
+    private func displayErrorMessageAndReturn() {
+        if let presentingViewController = presentingViewController as? LoginViewController {
+            presentingViewController.ErrorLabel?.isHidden = false
+        }
+        
+        hideProcessingIndicator()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func displayProcessingIndicator() {
+        SubmitCodeButton?.isHidden = true
+        SubmitProcessingIndicatorView?.startAnimating()
+    }
+    
+    private func hideProcessingIndicator() {
+        SubmitCodeButton?.isHidden = false
+        SubmitProcessingIndicatorView?.stopAnimating()
+    }
 }

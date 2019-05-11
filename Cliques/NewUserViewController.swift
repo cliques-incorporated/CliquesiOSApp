@@ -99,7 +99,7 @@ class NewUserViewController: UIViewController {
             return
         }
         
-        firestoreController?.AddUserData(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, bio: bio, photoURL: imageURL, completionHandler: userProfileDataUploaded)
+        firestoreController?.addUserData(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, bio: bio, photoURL: imageURL, completionHandler: userProfileDataUploaded)
     }
     
     private func userProfileDataUploaded(error: Error?) {

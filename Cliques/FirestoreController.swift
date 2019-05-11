@@ -11,6 +11,8 @@ import FirebaseFirestore
 
 class FirestoreController {
     private let firestoreDatabase: Firestore
+    private let FirestoreUsersCollection = "users"
+    
     init() {
         firestoreDatabase = Firestore.firestore()
         let settings = firestoreDatabase.settings
@@ -18,8 +20,8 @@ class FirestoreController {
         firestoreDatabase.settings = settings
     }
     
-    func AddUserData(phoneNumber: String, firstName: String, lastName: String, bio: String, photoURL: URL, completionHandler: @escaping (Error?)->()) {
-        firestoreDatabase.collection("users").document(phoneNumber).setData([
+    func addUserData(phoneNumber: String, firstName: String, lastName: String, bio: String, photoURL: URL, completionHandler: @escaping (Error?)->()) {
+        firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).setData([
             "id": phoneNumber,
             "first": firstName,
             "last": lastName,
@@ -27,6 +29,12 @@ class FirestoreController {
             "profileImageURL": photoURL.absoluteString
         ]) { err in
             completionHandler(err)
+        }
+    }
+    
+    func doesUserProfileExist(phoneNumber: String, completionHandler: @escaping (Bool?) -> ()){
+        firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).getDocument { (document, error) in
+            completionHandler(document?.exists)
         }
     }
 }
