@@ -17,11 +17,12 @@
 		F5970F03225D53BB0063D9FA /* CliquesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970F02225D53BB0063D9FA /* CliquesTests.swift */; };
 		F59952502284DEDF008CC05D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F599524F2284DEDF008CC05D /* GoogleService-Info.plist */; };
 		F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B980D3228245960076BA1B /* LoginViewController.swift */; };
-		F5BEC2BB2284E2E600A02532 /* FirebaseLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */; };
+		F5BEC2BB2284E2E600A02532 /* FirebaseUserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BA2284E2E600A02532 /* FirebaseUserProfileController.swift */; };
 		F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BE2286215100A02532 /* ProfileViewController.swift */; };
 		F5BEC2C12286639D00A02532 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C02286639D00A02532 /* NewUserViewController.swift */; };
 		F5BEC2C32287230A00A02532 /* ImageRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C22287230A00A02532 /* ImageRequestController.swift */; };
 		F5BEC2C72287416600A02532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5BEC2C62287416500A02532 /* Assets.xcassets */; };
+		F5BEC2C922874F4A00A02532 /* FirestoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C822874F4A00A02532 /* FirestoreController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,11 +55,12 @@
 		F599524F2284DEDF008CC05D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F5B980D3228245960076BA1B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F5BEC2B92284E04000A02532 /* Cliques.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cliques.entitlements; sourceTree = "<group>"; };
-		F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginController.swift; sourceTree = "<group>"; };
+		F5BEC2BA2284E2E600A02532 /* FirebaseUserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserProfileController.swift; sourceTree = "<group>"; };
 		F5BEC2BE2286215100A02532 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F5BEC2C02286639D00A02532 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		F5BEC2C22287230A00A02532 /* ImageRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequestController.swift; sourceTree = "<group>"; };
 		F5BEC2C62287416500A02532 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F5BEC2C822874F4A00A02532 /* FirestoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +138,9 @@
 				F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */,
 				F5970EF9225D53BB0063D9FA /* Info.plist */,
 				F599524F2284DEDF008CC05D /* GoogleService-Info.plist */,
-				F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */,
+				F5BEC2BA2284E2E600A02532 /* FirebaseUserProfileController.swift */,
 				F5BEC2C22287230A00A02532 /* ImageRequestController.swift */,
+				F5BEC2C822874F4A00A02532 /* FirestoreController.swift */,
 			);
 			path = Cliques;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				F5970EE5225D53B90063D9FA /* Frameworks */,
 				F5970EE6225D53B90063D9FA /* Resources */,
 				6FE16E36F47FF990B1CE0502 /* [CP] Embed Pods Frameworks */,
+				EA7BCC8B377FF7905700603E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -288,16 +292,26 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Cliques/Pods-Cliques-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +341,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EA7BCC8B377FF7905700603E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cliques/Pods-Cliques-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cliques/Pods-Cliques-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -334,8 +370,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5BEC2C922874F4A00A02532 /* FirestoreController.swift in Sources */,
 				F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */,
-				F5BEC2BB2284E2E600A02532 /* FirebaseLoginController.swift in Sources */,
+				F5BEC2BB2284E2E600A02532 /* FirebaseUserProfileController.swift in Sources */,
 				F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */,
 				F5970EF0225D53B90063D9FA /* SearchViewController.swift in Sources */,
 				F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */,

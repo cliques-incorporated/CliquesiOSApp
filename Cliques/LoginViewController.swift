@@ -11,7 +11,7 @@ import FirebaseAuth
 
 
 class LoginViewController: UIViewController {
-    private var LoginController = FirebaseLoginController()
+    private var LoginController = FirebaseUserProfileController()
     @IBOutlet weak var SendLoginCodeButton: UIButton!
     @IBOutlet weak var PhoneNumberField: UITextField!
     @IBOutlet weak var ErrorLabel: UILabel!
