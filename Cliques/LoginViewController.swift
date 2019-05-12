@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var SendLoginCodeButton: UIButton!
     @IBOutlet weak var PhoneNumberField: UITextField!
     @IBOutlet weak var ErrorLabel: UILabel!
@@ -25,6 +25,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         hideProcessingIndicator()
+        PhoneNumberField?.delegate = self
+        VerificationCodeTextField?.delegate = self
     }
     
     @IBAction func SendMyLoginCodePressed(_ sender: Any) {
@@ -96,6 +98,10 @@ class LoginViewController: UIViewController {
                 textField.placeholder = "Verification Code"
             }
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return string == string.filter("0123456789".contains)
     }
     
     private func displayErrorMessageAndReturn() {
