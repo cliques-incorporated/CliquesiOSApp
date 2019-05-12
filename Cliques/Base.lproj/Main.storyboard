@@ -278,7 +278,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feed" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="Gallery" selectedImage="Gallery" id="acW-dT-cKf"/>
                     <connections>
                         <segue destination="6il-RT-V1U" kind="show" identifier="GoToLogin" id="MFw-Gf-RcS"/>
                     </connections>
@@ -286,6 +286,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
+        </scene>
+        <!--New Post-->
+        <scene sceneID="NkC-vo-G6u">
+            <objects>
+                <viewController id="bZx-LC-jZd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nR1-ex-hEU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Z2h-oj-VPR"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="New Post" image="Camera" selectedImage="Camera" id="0Ut-AS-EFc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GMB-A8-TWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-764" y="731"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Vho-XM-wOn">
@@ -410,10 +426,11 @@
                     </tabBar>
                     <connections>
                         <outlet property="MenuBarLongPressedRecognizer" destination="q4r-Ee-PdT" id="gEF-CY-0fw"/>
+                        <segue destination="6il-RT-V1U" kind="show" identifier="GoToLogin" id="IBl-KK-g0C"/>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="bZx-LC-jZd" kind="relationship" relationship="viewControllers" id="Gdu-Wk-kSW"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="frS-XX-ROe" kind="relationship" relationship="viewControllers" id="FmL-Go-p1C"/>
-                        <segue destination="6il-RT-V1U" kind="show" identifier="GoToLogin" id="IBl-KK-g0C"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -427,12 +444,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Camera" width="30" height="30"/>
+        <image name="Gallery" width="30" height="30"/>
         <image name="ProfileGlyph" width="30" height="30"/>
         <image name="ProfileImage" width="360" height="360"/>
-        <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dVB-VV-s7T"/>
-        <segue reference="IBl-KK-g0C"/>
+        <segue reference="MFw-Gf-RcS"/>
     </inferredMetricsTieBreakers>
 </document>
