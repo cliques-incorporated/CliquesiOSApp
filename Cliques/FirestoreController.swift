@@ -37,4 +37,15 @@ class FirestoreController {
             completionHandler(document?.exists)
         }
     }
+    
+    func getUserProfileData(phoneNumber: String, completionHandler: @escaping (UserModel?) -> ()) {
+        firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).getDocument { (document, error) in
+            guard let document = document, document.exists, let data = document.data() else {
+                completionHandler(nil)
+                return
+            }
+            
+            completionHandler(UserModel(from: data))
+        }
+    }
 }

@@ -9,12 +9,12 @@
 import Firebase
 
 class FirebaseStorageController {
+    static let ProfileImageDir = "profile_images"
     private let storage = Storage.storage()
     
     func uploadProfileImage(phoneNumber: String, profileImage: UIImage, uploadCompletionHandler: @escaping (URL?)->()) {
         guard let profileImageData = profileImage.pngData() else { return }
-        let profileImagesBucketRef = storage.reference().child("profile_images")
-        let profileImageRef = profileImagesBucketRef.child(phoneNumber + ".png")
+        let profileImageRef = getProfileImageRef(phoneNumber: phoneNumber)
         
         profileImageRef.putData(profileImageData, metadata: nil) { metadata, error in
             if let error = error {
@@ -25,6 +25,11 @@ class FirebaseStorageController {
                 uploadCompletionHandler(url)
             }
         }
+    }
+    
+    func getProfileImageRef(phoneNumber: String) -> StorageReference {
+        let profileImagesBucketRef = storage.reference().child(FirebaseStorageController.ProfileImageDir)
+        return profileImagesBucketRef.child(phoneNumber + ".png")
     }
 
 }

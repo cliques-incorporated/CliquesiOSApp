@@ -40,4 +40,12 @@ class FirebaseLoginController {
             signInSuccess(error, authResult)
         }
     }
+    
+    static func signOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            debugPrint(error)
+        }
+    }
 }

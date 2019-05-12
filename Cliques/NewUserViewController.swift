@@ -39,6 +39,7 @@ class NewUserViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         allFieldsRequiredAlert.addAction((UIAlertAction(title: "Got It", style: .cancel, handler: nil)))
+        errorAlert.addAction((UIAlertAction(title: "Close", style: .cancel, handler: nil)))
         
         let profileImageBorder = CALayer()
         profileImageBorder.borderColor = UIColor.black.cgColor
@@ -79,7 +80,7 @@ class NewUserViewController: UIViewController {
         bio = BioTextField.text ?? ""
         
         guard !(firstName.isEmpty), !(lastName.isEmpty), !(bio.isEmpty), imageSelected, let image = ProfileImageView.image else {
-            present(allFieldsRequiredAlert, animated: true, completion: nil)
+            displayAllFieldsRequiredAlert()
             return
         }
         
@@ -95,7 +96,7 @@ class NewUserViewController: UIViewController {
     private func profileImageUploaded(imageURL: URL?) {
         guard let imageURL = imageURL else {
             hideUploadingIndicator()
-            present(errorAlert, animated: true, completion: nil)
+            displayErrorAlert()
             return
         }
         
@@ -105,7 +106,7 @@ class NewUserViewController: UIViewController {
     private func userProfileDataUploaded(error: Error?) {
         guard error == nil else {
             hideUploadingIndicator()
-            present(errorAlert, animated: true, completion: nil)
+            displayErrorAlert()
             return
         }
         
@@ -135,5 +136,17 @@ class NewUserViewController: UIViewController {
     private func hideUploadingIndicator() {
         LetsGoButton.isHidden = false
         UploadingIndicatorView.stopAnimating()
+    }
+    
+    private func displayErrorAlert() {
+        DispatchQueue.main.async {
+            self.present(self.errorAlert, animated: true, completion: nil)
+        }
+    }
+    
+    private func displayAllFieldsRequiredAlert() {
+        DispatchQueue.main.async {
+            self.present(self.allFieldsRequiredAlert, animated: true, completion: nil)
+        }
     }
 }

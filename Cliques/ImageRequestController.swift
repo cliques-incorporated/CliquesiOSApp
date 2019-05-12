@@ -28,17 +28,23 @@ class ImageRequestController: NSObject, UIImagePickerControllerDelegate, UINavig
     func requestImage(viewController: UIViewController, imageSelected: @escaping (UIImage?)->()) {
         presentingViewController = viewController
         self.imageSelected = imageSelected
-        presentingViewController?.present(imageRequestOptionMenu, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.presentingViewController?.present(self.imageRequestOptionMenu, animated: true, completion: nil)
+        }
     }
     
     private func takePhoto(action: UIAlertAction) {
         self.imagePicker.sourceType = .camera
-        self.presentingViewController?.present(self.imagePicker, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.presentingViewController?.present(self.imagePicker, animated: true, completion: nil)
+        }
     }
     
     private func choosePhoto(action: UIAlertAction) {
         self.imagePicker.sourceType = .photoLibrary
-        self.presentingViewController?.present(self.imagePicker, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.presentingViewController?.present(self.imagePicker, animated: true, completion: nil)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

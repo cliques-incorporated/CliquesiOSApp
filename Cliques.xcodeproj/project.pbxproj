@@ -10,6 +10,8 @@
 		3B7AA14D40A8E30D20F94D68 /* Pods_Cliques.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF610733C7DEF27E80AC8C0B /* Pods_Cliques.framework */; };
 		F07492FCBEAE2047AB3E3C75 /* Pods_CliquesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BDEBE940CEC60DD5259187 /* Pods_CliquesTests.framework */; };
 		F501E0E7228758B90078E3E9 /* FirebaseStorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E6228758B90078E3E9 /* FirebaseStorageController.swift */; };
+		F501E0E9228787B30078E3E9 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E8228787B30078E3E9 /* UserModel.swift */; };
+		F501E0EB22878F730078E3E9 /* OverviewTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */; };
 		F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEB225D53B90063D9FA /* AppDelegate.swift */; };
 		F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EED225D53B90063D9FA /* FeedViewController.swift */; };
 		F5970EF0225D53B90063D9FA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEF225D53B90063D9FA /* SearchViewController.swift */; };
@@ -44,6 +46,8 @@
 		D0BDEBE940CEC60DD5259187 /* Pods_CliquesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CliquesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF610733C7DEF27E80AC8C0B /* Pods_Cliques.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cliques.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F501E0E6228758B90078E3E9 /* FirebaseStorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageController.swift; sourceTree = "<group>"; };
+		F501E0E8228787B30078E3E9 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTabBarController.swift; sourceTree = "<group>"; };
 		F5970EE8225D53B90063D9FA /* Cliques.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cliques.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5970EEB225D53B90063D9FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5970EED225D53B90063D9FA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 				F5BEC2C22287230A00A02532 /* ImageRequestController.swift */,
 				F5BEC2C822874F4A00A02532 /* FirestoreController.swift */,
 				F501E0E6228758B90078E3E9 /* FirebaseStorageController.swift */,
+				F501E0E8228787B30078E3E9 /* UserModel.swift */,
+				F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */,
 			);
 			path = Cliques;
 			sourceTree = "<group>";
@@ -299,6 +305,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -312,6 +319,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -381,8 +389,10 @@
 				F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */,
 				F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */,
 				F5BEC2C12286639D00A02532 /* NewUserViewController.swift in Sources */,
+				F501E0EB22878F730078E3E9 /* OverviewTabBarController.swift in Sources */,
 				F501E0E7228758B90078E3E9 /* FirebaseStorageController.swift in Sources */,
 				F5BEC2C32287230A00A02532 /* ImageRequestController.swift in Sources */,
+				F501E0E9228787B30078E3E9 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

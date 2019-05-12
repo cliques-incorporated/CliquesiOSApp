@@ -38,7 +38,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func GoBackPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     private func VerificationRequestComplete(error: Error?) {
@@ -46,7 +48,9 @@ class LoginViewController: UIViewController {
             return
         }
         
-        performSegue(withIdentifier: "GoToVerification", sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "GoToVerification", sender: self)
+        }
     }
     
     private func SignInComplete(error: Error?, authDataResult: AuthDataResult?) {
@@ -68,9 +72,13 @@ class LoginViewController: UIViewController {
         }
         
         if(exists) {
-            performSegue(withIdentifier: "GoToFeed", sender: self)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "GoToFeed", sender: self)
+            }
         } else {
-            performSegue(withIdentifier: "GoToNewUser", sender: self)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "GoToNewUser", sender: self)
+            }
         }
     }
     
@@ -91,12 +99,14 @@ class LoginViewController: UIViewController {
     }
     
     private func displayErrorMessageAndReturn() {
-        if let presentingViewController = presentingViewController as? LoginViewController {
-            presentingViewController.ErrorLabel?.isHidden = false
+        DispatchQueue.main.async {
+            if let presentingViewController = self.presentingViewController as? LoginViewController {
+                presentingViewController.ErrorLabel?.isHidden = false
+            }
+            
+            self.hideProcessingIndicator()
+            self.dismiss(animated: true, completion: nil)
         }
-        
-        hideProcessingIndicator()
-        dismiss(animated: true, completion: nil)
     }
     
     private func displayProcessingIndicator() {

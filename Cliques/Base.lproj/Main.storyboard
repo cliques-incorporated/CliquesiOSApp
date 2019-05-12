@@ -294,10 +294,58 @@
                     <view key="view" contentMode="scaleToFill" id="kXR-At-0kV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="Jln-O9-NiH" userLabel="Profile Image">
+                                <rect key="frame" x="20" y="64" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="SKh-Hq-svs"/>
+                                    <constraint firstAttribute="width" constant="80" id="rmJ-Z1-R3U"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6UT-hN-xgm" userLabel="Name Label">
+                                <rect key="frame" x="110" y="64" width="294" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+15555555555" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aPb-f2-L61" userLabel="Phone Number Label">
+                                <rect key="frame" x="110" y="110" width="294" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example description of a very cool user who is just the best." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sbl-Sr-gVF" userLabel="Bio Label">
+                                <rect key="frame" x="20" y="159" width="374" height="49"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="sbl-Sr-gVF" firstAttribute="top" secondItem="Jln-O9-NiH" secondAttribute="bottom" constant="15" id="6bk-an-ahd"/>
+                            <constraint firstItem="Jln-O9-NiH" firstAttribute="top" secondItem="QtC-P2-vOS" secondAttribute="top" constant="20" id="APX-JG-6xx"/>
+                            <constraint firstItem="sbl-Sr-gVF" firstAttribute="centerX" secondItem="kXR-At-0kV" secondAttribute="centerX" id="U8D-SD-NdG"/>
+                            <constraint firstItem="aPb-f2-L61" firstAttribute="top" secondItem="6UT-hN-xgm" secondAttribute="bottom" constant="10" id="Vwb-F6-wSB"/>
+                            <constraint firstItem="Jln-O9-NiH" firstAttribute="leading" secondItem="QtC-P2-vOS" secondAttribute="leading" constant="20" id="cAs-wu-jLB"/>
+                            <constraint firstItem="6UT-hN-xgm" firstAttribute="top" secondItem="Jln-O9-NiH" secondAttribute="top" id="fTc-KS-25d"/>
+                            <constraint firstItem="QtC-P2-vOS" firstAttribute="trailing" secondItem="aPb-f2-L61" secondAttribute="trailing" constant="10" id="fvi-KS-Jfd"/>
+                            <constraint firstItem="6UT-hN-xgm" firstAttribute="leading" secondItem="Jln-O9-NiH" secondAttribute="trailing" constant="10" id="hMf-wN-Adz"/>
+                            <constraint firstItem="aPb-f2-L61" firstAttribute="leading" secondItem="6UT-hN-xgm" secondAttribute="leading" id="kG5-DF-xZY"/>
+                            <constraint firstItem="QtC-P2-vOS" firstAttribute="trailing" secondItem="6UT-hN-xgm" secondAttribute="trailing" constant="10" id="nCa-Ze-OaT"/>
+                            <constraint firstItem="sbl-Sr-gVF" firstAttribute="leading" secondItem="Jln-O9-NiH" secondAttribute="leading" id="yKP-gs-3qV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QtC-P2-vOS"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="second" id="pfw-ZI-1k5"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="ProfileGlyph" selectedImage="ProfileGlyph" id="pfw-ZI-1k5"/>
+                    <connections>
+                        <outlet property="BioLabel" destination="sbl-Sr-gVF" id="8ab-OB-meC"/>
+                        <outlet property="NameLabel" destination="6UT-hN-xgm" id="ybz-p0-cha"/>
+                        <outlet property="PhoneNumberLabel" destination="aPb-f2-L61" id="i4Q-vf-sUq"/>
+                        <outlet property="ProfileImageView" destination="Jln-O9-NiH" id="ee9-qj-sXA"/>
+                        <segue destination="6il-RT-V1U" kind="show" identifier="GoToLogin" id="gpZ-DG-V9H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWP-XY-2Ot" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -331,6 +379,7 @@
                     <tabBarItem key="tabBarItem" systemItem="search" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="vL8-Sw-1GI" id="LhC-oG-O1I"/>
+                        <segue destination="6il-RT-V1U" kind="show" identifier="GoToLogin" id="uKB-0Q-0p3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -344,34 +393,45 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="919" y="403"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Overview Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="OverviewTabBarController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="q4r-Ee-PdT" appends="YES" id="PBD-Zz-FFA"/>
+                        </connections>
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="frS-XX-ROe" kind="relationship" relationship="viewControllers" id="FmL-Go-p1C"/>
+                        <segue destination="6il-RT-V1U" kind="show" identifier="GoToLogin" id="IBl-KK-g0C"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="q4r-Ee-PdT">
+                    <connections>
+                        <action selector="TabBarLongPressed:" destination="49e-Tb-3d3" id="3sh-3E-Ni7"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ProfileGlyph" width="30" height="30"/>
         <image name="ProfileImage" width="360" height="360"/>
         <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hvg-bE-Kl7"/>
+        <segue reference="uKB-0Q-0p3"/>
     </inferredMetricsTieBreakers>
 </document>
