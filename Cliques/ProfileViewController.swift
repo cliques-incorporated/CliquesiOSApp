@@ -63,12 +63,17 @@ class ProfileViewController: UIViewController {
         goToLogin()
     }
     
-    func displayEditProfileMenu() {
+    func displayEditProfileMenu(gestureRecognizer: UILongPressGestureRecognizer) {
         DispatchQueue.main.async {
-            guard !self.editProfileOptionMenu.isBeingPresented else { return }
-            self.present(self.editProfileOptionMenu, animated: true, completion: nil)
+            if !self.editProfileOptionMenu.isBeingPresented, !self.editProfileOptionMenu.isBeingDismissed {
+                gestureRecognizer.isEnabled = false
+                self.present(self.editProfileOptionMenu, animated: true) {
+                    gestureRecognizer.isEnabled = true
+                }
+            }
         }
     }
+    
     
     private func goToLogin() {
         DispatchQueue.main.async {

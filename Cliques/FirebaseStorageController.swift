@@ -15,7 +15,6 @@ class FirebaseStorageController {
     func uploadProfileImage(phoneNumber: String, profileImage: UIImage, uploadCompletionHandler: @escaping (URL?)->()) {
         guard let profileImageData = profileImage.pngData() else { return }
         let profileImageRef = getProfileImageRef(phoneNumber: phoneNumber)
-        
         profileImageRef.putData(profileImageData, metadata: nil) { metadata, error in
             if let error = error {
                 debugPrint(error)

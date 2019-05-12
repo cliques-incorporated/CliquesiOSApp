@@ -409,6 +409,7 @@
                         </connections>
                     </tabBar>
                     <connections>
+                        <outlet property="MenuBarLongPressedRecognizer" destination="q4r-Ee-PdT" id="gEF-CY-0fw"/>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="frS-XX-ROe" kind="relationship" relationship="viewControllers" id="FmL-Go-p1C"/>
@@ -432,6 +433,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hvg-bE-Kl7"/>
-        <segue reference="uKB-0Q-0p3"/>
+        <segue reference="IBl-KK-g0C"/>
     </inferredMetricsTieBreakers>
 </document>

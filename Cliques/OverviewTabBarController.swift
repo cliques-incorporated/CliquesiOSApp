@@ -9,6 +9,8 @@
 import UIKit
 
 class OverviewTabBarController: UITabBarController {
+    @IBOutlet var MenuBarLongPressedRecognizer: UILongPressGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,7 +20,7 @@ class OverviewTabBarController: UITabBarController {
     
     @IBAction func TabBarLongPressed(_ sender: Any) {
         guard let profileViewController = self.selectedViewController as? ProfileViewController else { return }
-        profileViewController.displayEditProfileMenu()
+        profileViewController.displayEditProfileMenu(gestureRecognizer: MenuBarLongPressedRecognizer)
     }
     
     /*
