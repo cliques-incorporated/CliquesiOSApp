@@ -290,18 +290,88 @@
         <!--New Post-->
         <scene sceneID="NkC-vo-G6u">
             <objects>
-                <viewController id="bZx-LC-jZd" sceneMemberID="viewController">
+                <viewController id="bZx-LC-jZd" customClass="NewPostViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nR1-ex-hEU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="ADc-nj-jEs" userLabel="Photo">
+                                <rect key="frame" x="5" y="54" width="404" height="404"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ADc-nj-jEs" secondAttribute="height" multiplier="1:1" id="b7n-Mu-gur"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pOP-9V-B0e" appends="YES" id="a9h-nP-0QL"/>
+                                </connections>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" text="Caption" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CrK-VL-Os8">
+                                <rect key="frame" x="5" y="466" width="404" height="128"/>
+                                <color key="backgroundColor" red="0.89502681902985071" green="0.89502681902985071" blue="0.89502681902985071" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zs-VH-lKa">
+                                <rect key="frame" x="110" y="671" width="57" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Family"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6G-n0-i6M">
+                                <rect key="frame" x="197" y="671" width="119" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Close Friends"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lR-gd-9Dp">
+                                <rect key="frame" x="340" y="671" width="54" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Public"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bG-N6-bAa">
+                                <rect key="frame" x="162.5" y="750" width="89" height="48"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <state key="normal" title="Post It!">
+                                    <color key="titleColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i09-W0-hEb">
+                                <rect key="frame" x="20" y="699" width="65" height="36"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Friends"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="1bG-N6-bAa" firstAttribute="centerX" secondItem="nR1-ex-hEU" secondAttribute="centerX" id="Jqg-xD-Fwe"/>
+                            <constraint firstItem="ADc-nj-jEs" firstAttribute="trailing" secondItem="Z2h-oj-VPR" secondAttribute="trailing" constant="-5" id="P1Q-IT-Rwz"/>
+                            <constraint firstItem="Z2h-oj-VPR" firstAttribute="bottom" secondItem="1bG-N6-bAa" secondAttribute="bottom" constant="15" id="Vim-xP-XaV"/>
+                            <constraint firstItem="i09-W0-hEb" firstAttribute="leading" secondItem="Z2h-oj-VPR" secondAttribute="leading" constant="20" id="dZ8-8s-gzW"/>
+                            <constraint firstItem="CrK-VL-Os8" firstAttribute="leading" secondItem="Z2h-oj-VPR" secondAttribute="leading" constant="5" id="eBF-MT-Z4X"/>
+                            <constraint firstItem="i09-W0-hEb" firstAttribute="bottom" secondItem="1bG-N6-bAa" secondAttribute="top" constant="-15" id="gUr-cC-FOq"/>
+                            <constraint firstItem="CrK-VL-Os8" firstAttribute="centerX" secondItem="nR1-ex-hEU" secondAttribute="centerX" id="gVT-ad-mhO"/>
+                            <constraint firstItem="ADc-nj-jEs" firstAttribute="leading" secondItem="Z2h-oj-VPR" secondAttribute="leading" constant="5" id="pTP-N6-cww"/>
+                            <constraint firstItem="ADc-nj-jEs" firstAttribute="top" secondItem="Z2h-oj-VPR" secondAttribute="top" constant="10" id="raQ-0T-cay"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Z2h-oj-VPR"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="New Post" image="Camera" selectedImage="Camera" id="0Ut-AS-EFc"/>
+                    <connections>
+                        <outlet property="PhotoView" destination="ADc-nj-jEs" id="oIz-Bo-1hI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMB-A8-TWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="pOP-9V-B0e">
+                    <connections>
+                        <action selector="PhotoTapped:" destination="bZx-LC-jZd" id="yHX-Y6-sgB"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-764" y="731"/>
+            <point key="canvasLocation" x="-693" y="682"/>
         </scene>
         <!--Profile-->
         <scene sceneID="Vho-XM-wOn">
@@ -446,6 +516,7 @@
     <resources>
         <image name="Camera" width="30" height="30"/>
         <image name="Gallery" width="30" height="30"/>
+        <image name="ImagePlaceholder" width="300" height="300"/>
         <image name="ProfileGlyph" width="30" height="30"/>
         <image name="ProfileImage" width="360" height="360"/>
     </resources>
