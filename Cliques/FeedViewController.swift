@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class FeedViewController: UIViewController {
+class FeedViewController: UICollectionViewController {
     private var firestoreController: FirestoreController?
 
     override func viewDidLoad() {
@@ -26,6 +26,10 @@ class FeedViewController: UIViewController {
         }
         
         firestoreController?.doesUserProfileExist(phoneNumber: phoneNumber, completionHandler: userProfileCheckComplete)
+    }
+    
+    @IBAction func NewPostButtonPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "GoToNewPost", sender: self)
     }
     
     func userProfileCheckComplete(exists: Bool?) {

@@ -9,18 +9,16 @@
 import UIKit
 
 class OverviewTabBarController: UITabBarController {
-    @IBOutlet var MenuBarLongPressedRecognizer: UILongPressGestureRecognizer!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        self.viewControllers?.forEach { let _ = $0.view }
-    }
-    
-    @IBAction func TabBarLongPressed(_ sender: Any) {
-        guard let profileViewController = self.selectedViewController as? ProfileViewController else { return }
-        profileViewController.displayEditProfileMenu(gestureRecognizer: MenuBarLongPressedRecognizer)
+        // Force all tabs to preload
+        self.viewControllers?.forEach {
+            let _ = $0.view
+            let _ = $0.children.forEach {
+                let _ = $0.view
+            }
+        }
     }
     
     /*
