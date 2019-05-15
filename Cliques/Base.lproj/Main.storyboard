@@ -277,7 +277,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Feed" id="4RX-n6-vJ6">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="OC5-5M-Jss">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OC5-5M-Jss">
                             <connections>
                                 <action selector="NewPostButtonPressed:" destination="Gab-YO-Npi" id="9TH-o2-JE5"/>
                             </connections>
@@ -317,7 +317,6 @@
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="ISv-9f-1tH" appends="YES" id="ley-ds-pJ2"/>
                                 </connections>
@@ -454,7 +453,7 @@
                         <viewLayoutGuide key="safeArea" id="QtC-P2-vOS"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="IQi-h9-eGg">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="ktw-IM-vYZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="ktw-IM-vYZ">
                             <connections>
                                 <action selector="EditProfileButtonPressed:" destination="frS-XX-ROe" id="6fs-a7-kdQ"/>
                             </connections>
@@ -597,6 +596,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dVB-VV-s7T"/>
-        <segue reference="gpZ-DG-V9H"/>
+        <segue reference="sIf-eP-CAE"/>
     </inferredMetricsTieBreakers>
 </document>
