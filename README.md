@@ -1,4 +1,4 @@
-<h1> <img src="/Cliques/Assets.xcassets/AppIcon.appiconset/AppIcon%403x-3.png" alt="drawing" width="50"/> Cliques iOS App <a href="https://travis-ci.com/cliques-incorporated/CliquesiOSApp"><img target="_blank" src="https://travis-ci.com/cliques-incorporated/CliquesiOSApp.svg?branch=master"/></a></h1>
+<h1> <img src="/Cliques/Assets.xcassets/AppIcon.appiconset/AppIcon%403x-3.png" alt="drawing" width="50"/> Cliques iOS App <a target="_blank" href="https://travis-ci.com/cliques-incorporated/CliquesiOSApp"><img src="https://travis-ci.com/cliques-incorporated/CliquesiOSApp.svg?branch=master"/></a></h1>
 
 
 
