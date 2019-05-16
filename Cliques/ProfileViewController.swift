@@ -20,26 +20,17 @@ class ProfileViewController: UIViewController {
     var storageController: FirebaseStorageController?
     
     private let editProfileOptionMenu = UIAlertController(title: nil, message: "Edit Profile", preferredStyle: .actionSheet)
+    private var user: UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        editProfileOptionMenu.addAction((UIAlertAction(title: "Edit Profile", style: .default, handler: nil)))
+        editProfileOptionMenu.addAction((UIAlertAction(title: "Edit Profile", style: .default, handler: editProfile)))
         editProfileOptionMenu.addAction((UIAlertAction(title: "Sign Out", style: .destructive, handler: signOut)))
         editProfileOptionMenu.addAction((UIAlertAction(title: "Close", style: .cancel, handler: nil)))
         
         firestoreController = FirestoreController()
         storageController = FirebaseStorageController()
-        
-        let profileImageBorder = CALayer()
-        profileImageBorder.borderColor = UIColor.black.cgColor
-        let profileImageBorderWidth:CGFloat = 4.0
-        profileImageBorder.borderWidth = profileImageBorderWidth
-        profileImageBorder.cornerRadius = 2.0
-        profileImageBorder.frame = CGRect.init(x: -profileImageBorderWidth + 2, y: -profileImageBorderWidth + 2, width: ProfileImageView.frame.size.width + 2 * profileImageBorderWidth - 4, height: ProfileImageView.frame.size.height + 2 * profileImageBorderWidth - 4)
-        
-        ProfileImageView.layer.addSublayer(profileImageBorder)
-        ProfileImageView.layer.masksToBounds = false
         
         guard let currentUser = Auth.auth().currentUser else {
             goToLogin()
@@ -53,6 +44,7 @@ class ProfileViewController: UIViewController {
     
     private func userProfileDataReceived(user: UserModel?) {
         guard let user = user else { return }
+        self.user = user
         NameLabel.text = user.first + " " + user.last
         PhoneNumberLabel.text = user.phoneNumber
         BioLabel.text = user.bio
@@ -61,6 +53,12 @@ class ProfileViewController: UIViewController {
     private func signOut(alert: UIAlertAction) {
         FirebaseLoginController.signOut()
         goToLogin()
+    }
+    
+    private func editProfile(alert: UIAlertAction) {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "GoToEditProfile", sender: self)
+        }
     }
     
     @IBAction func EditProfileButtonPressed(_ sender: Any) {
@@ -73,6 +71,19 @@ class ProfileViewController: UIViewController {
     private func goToLogin() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "GoToLogin", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if let editProfileVC = segue.destination.children.first as? NewUserViewController {
+            editProfileVC.newProfile = false
+            editProfileVC.firstName = user?.first ?? ""
+            editProfileVC.lastName = user?.last ?? ""
+            editProfileVC.bio = user?.bio ?? ""
+            editProfileVC.phoneNumber = user?.phoneNumber ?? ""
+            editProfileVC.profileImage = ProfileImageView.image
         }
     }
 }

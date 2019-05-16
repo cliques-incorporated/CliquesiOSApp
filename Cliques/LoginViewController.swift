@@ -124,4 +124,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         SubmitCodeButton?.isHidden = false
         SubmitProcessingIndicatorView?.stopAnimating()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if let editProfileVC = segue.destination as? NewUserViewController {
+            editProfileVC.newProfile = true
+        }
+    }
 }

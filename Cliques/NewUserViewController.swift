@@ -18,6 +18,9 @@ class NewUserViewController: UIViewController {
     @IBOutlet weak var ProfileImageView: UIImageView!
     @IBOutlet weak var UploadingIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var LetsGoButton: UIButton!
+    @IBOutlet weak var WelcomeLabel: UILabel!
+    
+    public var newProfile = false
     
     private var imageSelected = false
     private let imageRequestController = ImageRequestController()
@@ -27,13 +30,24 @@ class NewUserViewController: UIViewController {
     private var firestoreController: FirestoreController?
     private var firebaseStorageController: FirebaseStorageController?
     
-    private var firstName = ""
-    private var lastName = ""
-    private var bio = ""
-    private var phoneNumber = ""
+    public var firstName = ""
+    public var lastName = ""
+    public var bio = ""
+    public var phoneNumber = ""
+    public var profileImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !newProfile {
+            WelcomeLabel.text = nil
+            WelcomeLabel.isHidden = true
+            LetsGoButton.isHidden = true
+            FirstNameTextField.text = firstName
+            LastNameTextField.text = lastName
+            BioTextField.text = bio
+            imageSelected = true
+            ProfileImageView.image = profileImage
+        }
         firestoreController = FirestoreController()
         firebaseStorageController = FirebaseStorageController()
         
@@ -68,6 +82,14 @@ class NewUserViewController: UIViewController {
         imageRequestController.requestImage(viewController: self, imageSelected: imageSelected)
     }
     
+    @IBAction func CancelButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func SaveButtonPressed(_ sender: Any) {
+        ProcessProfileUpdates()
+    }
+    
     private func imageSelected(image: UIImage?) {
         guard let image = image else { return }
         ProfileImageView.image = image
@@ -75,6 +97,10 @@ class NewUserViewController: UIViewController {
     }
     
     @IBAction func LetsGoButtonPressed(_ sender: Any) {
+        ProcessProfileUpdates()
+    }
+    
+    private func ProcessProfileUpdates() {
         firstName = FirstNameTextField.text ?? ""
         lastName = LastNameTextField.text ?? ""
         bio = BioTextField.text ?? ""
@@ -110,7 +136,11 @@ class NewUserViewController: UIViewController {
             return
         }
         
-        performSegue(withIdentifier: "GoToFeed", sender: self)
+        if newProfile {
+            performSegue(withIdentifier: "GoToFeed", sender: self)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func TextFieldEditingBegan(_ sender: Any) {
