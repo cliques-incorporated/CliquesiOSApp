@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>728577263318-rqbojj434sa0v3p3qkqpegl0a3op1n7h.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.728577263318-rqbojj434sa0v3p3qkqpegl0a3op1n7h</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCYRkJmkpNN0c42HLN8G_77SDcIM8pJtg0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>728577263318</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>CliquesIncorporated.Cliques</string>
+	<key>PROJECT_ID</key>
+	<string>cliques-197be</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cliques-197be.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:728577263318:ios:394a8b9343e1c906</string>
+	<key>DATABASE_URL</key>
+	<string>https://cliques-197be.firebaseio.com</string>
+</dict>
+</plist>

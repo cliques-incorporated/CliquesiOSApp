@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B7AA14D40A8E30D20F94D68 /* Pods_Cliques.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF610733C7DEF27E80AC8C0B /* Pods_Cliques.framework */; };
+		F07492FCBEAE2047AB3E3C75 /* Pods_CliquesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BDEBE940CEC60DD5259187 /* Pods_CliquesTests.framework */; };
 		F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEB225D53B90063D9FA /* AppDelegate.swift */; };
-		F5970EEE225D53B90063D9FA /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EED225D53B90063D9FA /* FirstViewController.swift */; };
-		F5970EF0225D53B90063D9FA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEF225D53B90063D9FA /* SecondViewController.swift */; };
+		F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EED225D53B90063D9FA /* FeedViewController.swift */; };
+		F5970EF0225D53B90063D9FA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEF225D53B90063D9FA /* SearchViewController.swift */; };
 		F5970EF3225D53B90063D9FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5970EF1225D53B90063D9FA /* Main.storyboard */; };
 		F5970EF5225D53BB0063D9FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5970EF4225D53BB0063D9FA /* Assets.xcassets */; };
 		F5970EF8225D53BB0063D9FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */; };
 		F5970F03225D53BB0063D9FA /* CliquesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970F02225D53BB0063D9FA /* CliquesTests.swift */; };
+		F59952502284DEDF008CC05D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F599524F2284DEDF008CC05D /* GoogleService-Info.plist */; };
+		F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B980D3228245960076BA1B /* LoginViewController.swift */; };
+		F5BEC2BB2284E2E600A02532 /* FirebaseLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */; };
+		F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BE2286215100A02532 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,10 +33,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C78BBEA7CB8DC54EA88CC7A /* Pods-CliquesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CliquesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CliquesTests/Pods-CliquesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3D0201FED6B79770A2303911 /* Pods-Cliques.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cliques.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cliques/Pods-Cliques.release.xcconfig"; sourceTree = "<group>"; };
+		A08E64D628FE950F702AFDE1 /* Pods-Cliques.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cliques.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cliques/Pods-Cliques.debug.xcconfig"; sourceTree = "<group>"; };
+		B75CA1BC463FD5D245C6F611 /* Pods-CliquesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CliquesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CliquesTests/Pods-CliquesTests.release.xcconfig"; sourceTree = "<group>"; };
+		D0BDEBE940CEC60DD5259187 /* Pods_CliquesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CliquesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF610733C7DEF27E80AC8C0B /* Pods_Cliques.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cliques.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5970EE8225D53B90063D9FA /* Cliques.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cliques.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5970EEB225D53B90063D9FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F5970EED225D53B90063D9FA /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		F5970EEF225D53B90063D9FA /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		F5970EED225D53B90063D9FA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		F5970EEF225D53B90063D9FA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F5970EF2225D53B90063D9FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F5970EF4225D53BB0063D9FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5970EF7225D53BB0063D9FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +50,11 @@
 		F5970EFE225D53BB0063D9FA /* CliquesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CliquesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5970F02225D53BB0063D9FA /* CliquesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliquesTests.swift; sourceTree = "<group>"; };
 		F5970F04225D53BC0063D9FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F599524F2284DEDF008CC05D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F5B980D3228245960076BA1B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F5BEC2B92284E04000A02532 /* Cliques.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cliques.entitlements; sourceTree = "<group>"; };
+		F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginController.swift; sourceTree = "<group>"; };
+		F5BEC2BE2286215100A02532 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B7AA14D40A8E30D20F94D68 /* Pods_Cliques.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +70,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F07492FCBEAE2047AB3E3C75 /* Pods_CliquesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55FFB1E0C81D872B984E9AD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF610733C7DEF27E80AC8C0B /* Pods_Cliques.framework */,
+				D0BDEBE940CEC60DD5259187 /* Pods_CliquesTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		74752F4EB3BCF5168032B303 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A08E64D628FE950F702AFDE1 /* Pods-Cliques.debug.xcconfig */,
+				3D0201FED6B79770A2303911 /* Pods-Cliques.release.xcconfig */,
+				3C78BBEA7CB8DC54EA88CC7A /* Pods-CliquesTests.debug.xcconfig */,
+				B75CA1BC463FD5D245C6F611 /* Pods-CliquesTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F5970EDF225D53B80063D9FA = {
 			isa = PBXGroup;
 			children = (
 				F5970EEA225D53B90063D9FA /* Cliques */,
 				F5970F01225D53BB0063D9FA /* CliquesTests */,
 				F5970EE9225D53B90063D9FA /* Products */,
+				74752F4EB3BCF5168032B303 /* Pods */,
+				55FFB1E0C81D872B984E9AD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,13 +120,18 @@
 		F5970EEA225D53B90063D9FA /* Cliques */ = {
 			isa = PBXGroup;
 			children = (
+				F5BEC2B92284E04000A02532 /* Cliques.entitlements */,
 				F5970EEB225D53B90063D9FA /* AppDelegate.swift */,
-				F5970EED225D53B90063D9FA /* FirstViewController.swift */,
-				F5970EEF225D53B90063D9FA /* SecondViewController.swift */,
+				F5970EED225D53B90063D9FA /* FeedViewController.swift */,
+				F5970EEF225D53B90063D9FA /* SearchViewController.swift */,
+				F5B980D3228245960076BA1B /* LoginViewController.swift */,
+				F5BEC2BE2286215100A02532 /* ProfileViewController.swift */,
 				F5970EF1225D53B90063D9FA /* Main.storyboard */,
 				F5970EF4225D53BB0063D9FA /* Assets.xcassets */,
 				F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */,
 				F5970EF9225D53BB0063D9FA /* Info.plist */,
+				F599524F2284DEDF008CC05D /* GoogleService-Info.plist */,
+				F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */,
 			);
 			path = Cliques;
 			sourceTree = "<group>";
@@ -106,9 +152,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5970F07225D53BC0063D9FA /* Build configuration list for PBXNativeTarget "Cliques" */;
 			buildPhases = (
+				8473C4400E140E760CB5F621 /* [CP] Check Pods Manifest.lock */,
 				F5970EE4225D53B90063D9FA /* Sources */,
 				F5970EE5225D53B90063D9FA /* Frameworks */,
 				F5970EE6225D53B90063D9FA /* Resources */,
+				6FE16E36F47FF990B1CE0502 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +171,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5970F0A225D53BC0063D9FA /* Build configuration list for PBXNativeTarget "CliquesTests" */;
 			buildPhases = (
+				3F7BC4CA596935DBE1C5CBA1 /* [CP] Check Pods Manifest.lock */,
 				F5970EFA225D53BB0063D9FA /* Sources */,
 				F5970EFB225D53BB0063D9FA /* Frameworks */,
 				F5970EFC225D53BB0063D9FA /* Resources */,
@@ -149,6 +198,11 @@
 				TargetAttributes = {
 					F5970EE7225D53B90063D9FA = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					F5970EFD225D53BB0063D9FA = {
 						CreatedOnToolsVersion = 10.2;
@@ -181,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5970EF8225D53BB0063D9FA /* LaunchScreen.storyboard in Resources */,
+				F59952502284DEDF008CC05D /* GoogleService-Info.plist in Resources */,
 				F5970EF5225D53BB0063D9FA /* Assets.xcassets in Resources */,
 				F5970EF3225D53B90063D9FA /* Main.storyboard in Resources */,
 			);
@@ -195,14 +250,90 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3F7BC4CA596935DBE1C5CBA1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CliquesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FE16E36F47FF990B1CE0502 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cliques/Pods-Cliques-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cliques/Pods-Cliques-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8473C4400E140E760CB5F621 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cliques-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F5970EE4225D53B90063D9FA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5970EF0225D53B90063D9FA /* SecondViewController.swift in Sources */,
+				F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */,
+				F5BEC2BB2284E2E600A02532 /* FirebaseLoginController.swift in Sources */,
+				F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */,
+				F5970EF0225D53B90063D9FA /* SearchViewController.swift in Sources */,
 				F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */,
-				F5970EEE225D53B90063D9FA /* FirstViewController.swift in Sources */,
+				F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,9 +493,11 @@
 		};
 		F5970F08225D53BC0063D9FA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A08E64D628FE950F702AFDE1 /* Pods-Cliques.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L7VPWUZ6Y2;
 				INFOPLIST_FILE = Cliques/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -379,9 +512,11 @@
 		};
 		F5970F09225D53BC0063D9FA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D0201FED6B79770A2303911 /* Pods-Cliques.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L7VPWUZ6Y2;
 				INFOPLIST_FILE = Cliques/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -396,6 +531,7 @@
 		};
 		F5970F0B225D53BC0063D9FA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C78BBEA7CB8DC54EA88CC7A /* Pods-CliquesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -416,6 +552,7 @@
 		};
 		F5970F0C225D53BC0063D9FA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B75CA1BC463FD5D245C6F611 /* Pods-CliquesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
