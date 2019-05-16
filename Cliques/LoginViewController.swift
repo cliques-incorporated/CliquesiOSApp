@@ -10,16 +10,23 @@ import UIKit
 import FirebaseAuth
 
 
-class LoginViewController: UIViewController {
-    private var LoginController = FirebaseLoginController()
+class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var SendLoginCodeButton: UIButton!
     @IBOutlet weak var PhoneNumberField: UITextField!
     @IBOutlet weak var ErrorLabel: UILabel!
     @IBOutlet weak var VerificationCodeTextField: UITextField!
+    @IBOutlet weak var SubmitProcessingIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var SubmitCodeButton: UIButton!
+    
+    private let LoginController = FirebaseLoginController()
+    private let firestoreController = FirestoreController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        hideProcessingIndicator()
+        PhoneNumberField?.delegate = self
+        VerificationCodeTextField?.delegate = self
     }
     
     @IBAction func SendMyLoginCodePressed(_ sender: Any) {
@@ -28,32 +35,52 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func SubmitVerificationCodePressed(_ sender: Any) {
+        displayProcessingIndicator()
         LoginController.signInWithVerificationCode(verificationCode: VerificationCodeTextField.text ?? "", signInSuccess: SignInComplete)
     }
     
     @IBAction func GoBackPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
-    func VerificationRequestComplete(error: Error?) {
+    private func VerificationRequestComplete(error: Error?) {
         guard error == nil else {
             return
         }
         
-        performSegue(withIdentifier: "GoToVerification", sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "GoToVerification", sender: self)
+        }
     }
     
-    func SignInComplete(error: Error?, authDataResult: AuthDataResult?) {
+    private func SignInComplete(error: Error?, authDataResult: AuthDataResult?) {
         if error != nil || authDataResult == nil {
             VerificationCodeTextField.text = nil
-            if let presentingViewController = presentingViewController as? LoginViewController {
-                presentingViewController.ErrorLabel?.isHidden = false
-            }
-            
-            dismiss(animated: true, completion: nil)
-        } else {
+            displayErrorMessageAndReturn()
+        } else if let phoneNumber = authDataResult?.user.phoneNumber {
             // User is logged in successfully
-            performSegue(withIdentifier: "GoToFeed", sender: self)
+            firestoreController.doesUserProfileExist(phoneNumber: phoneNumber, completionHandler: userProfileCheckComplete)
+        } else {
+            displayErrorMessageAndReturn()
+        }
+    }
+    
+    private func userProfileCheckComplete(exists: Bool?) {
+        guard let exists = exists else {
+            displayErrorMessageAndReturn()
+            return
+        }
+        
+        if(exists) {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "GoToFeed", sender: self)
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "GoToNewUser", sender: self)
+            }
         }
     }
     
@@ -73,4 +100,28 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return string == string.filter("0123456789".contains)
+    }
+    
+    private func displayErrorMessageAndReturn() {
+        DispatchQueue.main.async {
+            if let presentingViewController = self.presentingViewController as? LoginViewController {
+                presentingViewController.ErrorLabel?.isHidden = false
+            }
+            
+            self.hideProcessingIndicator()
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    private func displayProcessingIndicator() {
+        SubmitCodeButton?.isHidden = true
+        SubmitProcessingIndicatorView?.startAnimating()
+    }
+    
+    private func hideProcessingIndicator() {
+        SubmitCodeButton?.isHidden = false
+        SubmitProcessingIndicatorView?.stopAnimating()
+    }
 }
