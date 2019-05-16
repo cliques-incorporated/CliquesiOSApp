@@ -1,0 +1,7 @@
+language: objective-c
+osx_image: xcode10.2
+xcode_workspace: Cliques.xcworkspace
+xcode_scheme: Cliques
+xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone X
+before_install:
+- pod install
