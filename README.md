@@ -1,4 +1,6 @@
 # Cliques iOS App
+[Cliques Logo](https://raw.githubusercontent.com/cliques-incorporated/CliquesiOSApp/develop/Cliques/Assets.xcassets/AppIcon.appiconset/Appstore.png)
+[![Build Status](https://travis-ci.com/cliques-incorporated/CliquesiOSApp.svg?branch=master)](https://travis-ci.com/cliques-incorporated/CliquesiOSApp)
 ## Abstract
 
 
