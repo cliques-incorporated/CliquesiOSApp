@@ -64,3 +64,7 @@
 *   Set up the project environment
 *   Create the login functionality
 *   Create the picture storing and sharing
+
+## Cool Logo:
+   
+   Designed by Ethan
