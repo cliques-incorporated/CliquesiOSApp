@@ -1,6 +1,7 @@
-# Cliques iOS App
-![Cliques Logo](https://raw.githubusercontent.com/cliques-incorporated/CliquesiOSApp/feature-travis/Cliques/Assets.xcassets/AppIcon.appiconset/AppIcon%403x-3.png)
-[![Build Status](https://travis-ci.com/cliques-incorporated/CliquesiOSApp.svg?branch=master)](https://travis-ci.com/cliques-incorporated/CliquesiOSApp)
+<h1> <img src="https://raw.githubusercontent.com/cliques-incorporated/CliquesiOSApp/feature-travis/Cliques/Assets.xcassets/AppIcon.appiconset/AppIcon%403x-3.png" alt="drawing" width="50"/> Cliques iOS App <img src="https://travis-ci.com/cliques-incorporated/CliquesiOSApp.svg?branch=master"/></h1>
+
+
+
 ## Abstract
 
 
