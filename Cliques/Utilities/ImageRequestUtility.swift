@@ -1,5 +1,5 @@
 //
-//  ImageRequestController.swift
+//  ImageRequestUtility.swift
 //  Cliques
 //
 //  Created by Ethan Kusters on 5/11/19.
@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class ImageRequestController: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ImageRequestUtility: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     private let imageRequestOptionMenu = UIAlertController(title: nil, message: "Select Photo", preferredStyle: .actionSheet)
     private var presentingViewController: UIViewController?
     private let imagePicker = UIImagePickerController()

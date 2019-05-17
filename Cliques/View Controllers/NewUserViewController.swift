@@ -23,7 +23,7 @@ class NewUserViewController: UIViewController {
     public var newProfile = false
     
     private var imageSelected = false
-    private let imageRequestController = ImageRequestController()
+    private let imageRequestController = ImageRequestUtility()
     private let allFieldsRequiredAlert = UIAlertController(title: "We're missing something...", message: "All fields are required!", preferredStyle: .alert)
     private let errorAlert = UIAlertController(title: "Uh oh!", message: "Something went wrong. Please try again.", preferredStyle: .alert)
     

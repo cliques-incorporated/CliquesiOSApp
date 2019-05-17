@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConnectionsViewController: UIViewController {
+class ConnectionsViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,8 +16,8 @@ class ConnectionsViewController: UIViewController {
     }
 
     @IBAction func SearchButtonPressed(_ sender: Any) {
+        debugPrint("test")
         self.performSegue(withIdentifier: "GoToSearch", sender: self)
     }
-    
 }
 

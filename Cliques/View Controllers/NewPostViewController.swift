@@ -11,7 +11,7 @@ import UIKit
 class NewPostViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var PhotoView: UIImageView!
     @IBOutlet weak var CaptionTextView: UITextView!
-    private let imageRequestController = ImageRequestController()
+    private let imageRequestController = ImageRequestUtility()
     private var captionTextViewDelegate: PlaceholderTextView?
     
     override func viewDidLoad() {

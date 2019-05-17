@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ToggleButton: UIButton {
+class ToggleButtonView: UIButton {
     private var onColor = UIColor.black
     private var offColor = UIColor.lightGray
     private var toggleState = false

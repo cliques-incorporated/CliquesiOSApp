@@ -339,28 +339,28 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="61y-eE-CRm">
                                 <rect key="frame" x="10" y="473" width="355" height="36"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lR-gd-9Dp" customClass="ToggleButton" customModule="Cliques" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lR-gd-9Dp" customClass="ToggleButtonView" customModule="Cliques" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="54" height="36"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <state key="normal" title="Public">
                                             <color key="titleColor" red="0.10980392156862745" green="0.72549019607843135" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i09-W0-hEb" customClass="ToggleButton" customModule="Cliques" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i09-W0-hEb" customClass="ToggleButtonView" customModule="Cliques" customModuleProvider="target">
                                         <rect key="frame" x="74" y="0.0" width="65" height="36"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <state key="normal" title="Friends">
                                             <color key="titleColor" red="0.82745098039215681" green="0.83529411764705885" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zs-VH-lKa" customClass="ToggleButton" customModule="Cliques" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1zs-VH-lKa" customClass="ToggleButtonView" customModule="Cliques" customModuleProvider="target">
                                         <rect key="frame" x="159" y="0.0" width="57" height="36"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <state key="normal" title="Family">
                                             <color key="titleColor" red="0.74901960784313726" green="0.3529411764705882" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6G-n0-i6M" customClass="ToggleButton" customModule="Cliques" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6G-n0-i6M" customClass="ToggleButtonView" customModule="Cliques" customModuleProvider="target">
                                         <rect key="frame" x="236" y="0.0" width="119" height="36"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <state key="normal" title="Close Friends">
@@ -446,16 +446,23 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Add Connection" id="UQq-Fq-76f">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="M3Y-QJ-Xyr">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0093617555430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                         <connections>
                             <outlet property="titleView" destination="veF-iW-qrC" id="cWm-4h-VBc"/>
                         </connections>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9t4-Vh-Yik" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchBar contentMode="redraw" id="veF-iW-qrC">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                <searchBar contentMode="redraw" placeholder="Search by Name or Number" id="veF-iW-qrC">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                    <scopeButtonTitles>
+                        <string>Title</string>
+                        <string>Title</string>
+                    </scopeButtonTitles>
                 </searchBar>
             </objects>
             <point key="canvasLocation" x="4962" y="1156"/>
@@ -534,7 +541,7 @@
         <!--Connections-->
         <scene sceneID="IWb-Du-RNb">
             <objects>
-                <collectionViewController id="yUB-pr-96Q" customClass="ConnectionsViewController" sceneMemberID="viewController">
+                <collectionViewController id="yUB-pr-96Q" customClass="ConnectionsViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="dQ4-Mk-UsV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -563,7 +570,7 @@
                     <navigationItem key="navigationItem" title="Connections" id="ScC-bu-FST">
                         <barButtonItem key="rightBarButtonItem" title="Search" image="Search" id="Znd-pZ-9fZ">
                             <connections>
-                                <action selector="SearchButtonPressed:" destination="yUB-pr-96Q" id="pgu-eu-zLO"/>
+                                <action selector="SearchButtonPressed:" destination="yUB-pr-96Q" id="YBp-z4-gHg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

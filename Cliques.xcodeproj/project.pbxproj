@@ -13,6 +13,7 @@
 		F501E0E9228787B30078E3E9 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E8228787B30078E3E9 /* UserModel.swift */; };
 		F501E0EB22878F730078E3E9 /* OverviewTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */; };
 		F5588342228C7AE9006B99B3 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */; };
+		F5730FCB228E4FE100F74FCF /* AddConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5730FCA228E4FE100F74FCF /* AddConnectionViewController.swift */; };
 		F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEB225D53B90063D9FA /* AppDelegate.swift */; };
 		F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EED225D53B90063D9FA /* FeedViewController.swift */; };
 		F5970EF0225D53B90063D9FA /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEF225D53B90063D9FA /* ConnectionsViewController.swift */; };
@@ -25,10 +26,10 @@
 		F5BEC2BB2284E2E600A02532 /* FirebaseLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */; };
 		F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BE2286215100A02532 /* ProfileViewController.swift */; };
 		F5BEC2C12286639D00A02532 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C02286639D00A02532 /* NewUserViewController.swift */; };
-		F5BEC2C32287230A00A02532 /* ImageRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C22287230A00A02532 /* ImageRequestController.swift */; };
+		F5BEC2C32287230A00A02532 /* ImageRequestUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C22287230A00A02532 /* ImageRequestUtility.swift */; };
 		F5BEC2C72287416600A02532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5BEC2C62287416500A02532 /* Assets.xcassets */; };
 		F5BEC2C922874F4A00A02532 /* FirestoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C822874F4A00A02532 /* FirestoreController.swift */; };
-		F5E3B8C6228A0E9700CD2883 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3B8C5228A0E9700CD2883 /* ToggleButton.swift */; };
+		F5E3B8C6228A0E9700CD2883 /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3B8C5228A0E9700CD2883 /* ToggleButtonView.swift */; };
 		F5FD1BDA2288E18B00419653 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD1BD92288E18B00419653 /* NewPostViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		F501E0E8228787B30078E3E9 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTabBarController.swift; sourceTree = "<group>"; };
 		F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
+		F5730FCA228E4FE100F74FCF /* AddConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConnectionViewController.swift; sourceTree = "<group>"; };
 		F5970EE8225D53B90063D9FA /* Cliques.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cliques.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5970EEB225D53B90063D9FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5970EED225D53B90063D9FA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -70,10 +72,10 @@
 		F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginController.swift; sourceTree = "<group>"; };
 		F5BEC2BE2286215100A02532 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F5BEC2C02286639D00A02532 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
-		F5BEC2C22287230A00A02532 /* ImageRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequestController.swift; sourceTree = "<group>"; };
+		F5BEC2C22287230A00A02532 /* ImageRequestUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequestUtility.swift; sourceTree = "<group>"; };
 		F5BEC2C62287416500A02532 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5BEC2C822874F4A00A02532 /* FirestoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreController.swift; sourceTree = "<group>"; };
-		F5E3B8C5228A0E9700CD2883 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		F5E3B8C5228A0E9700CD2883 /* ToggleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonView.swift; sourceTree = "<group>"; };
 		F5FD1BD92288E18B00419653 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,59 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F5730FCC228E4FE800F74FCF /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F5730FCA228E4FE100F74FCF /* AddConnectionViewController.swift */,
+				F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */,
+				F5BEC2BE2286215100A02532 /* ProfileViewController.swift */,
+				F5970EEF225D53B90063D9FA /* ConnectionsViewController.swift */,
+				F5970EED225D53B90063D9FA /* FeedViewController.swift */,
+				F5FD1BD92288E18B00419653 /* NewPostViewController.swift */,
+				F5B980D3228245960076BA1B /* LoginViewController.swift */,
+				F5BEC2C02286639D00A02532 /* NewUserViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		F5730FCE228E510800F74FCF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F5970EF1225D53B90063D9FA /* Main.storyboard */,
+				F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */,
+				F5B861E7228A6039006C6FD5 /* PlaceholderTextView.swift */,
+				F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */,
+				F5E3B8C5228A0E9700CD2883 /* ToggleButtonView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F5730FCF228E513100F74FCF /* Firebase Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */,
+				F5BEC2C822874F4A00A02532 /* FirestoreController.swift */,
+				F501E0E6228758B90078E3E9 /* FirebaseStorageController.swift */,
+			);
+			path = "Firebase Controllers";
+			sourceTree = "<group>";
+		};
+		F5730FD0228E514A00F74FCF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F501E0E8228787B30078E3E9 /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F5730FD1228E519C00F74FCF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F5BEC2C22287230A00A02532 /* ImageRequestUtility.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		F5970EDF225D53B80063D9FA = {
 			isa = PBXGroup;
 			children = (
@@ -143,25 +198,13 @@
 				F5BEC2C62287416500A02532 /* Assets.xcassets */,
 				F5BEC2B92284E04000A02532 /* Cliques.entitlements */,
 				F5970EEB225D53B90063D9FA /* AppDelegate.swift */,
-				F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */,
-				F5BEC2BE2286215100A02532 /* ProfileViewController.swift */,
-				F5970EEF225D53B90063D9FA /* ConnectionsViewController.swift */,
-				F5970EED225D53B90063D9FA /* FeedViewController.swift */,
-				F5FD1BD92288E18B00419653 /* NewPostViewController.swift */,
-				F5B980D3228245960076BA1B /* LoginViewController.swift */,
-				F5BEC2C02286639D00A02532 /* NewUserViewController.swift */,
-				F5970EF1225D53B90063D9FA /* Main.storyboard */,
-				F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */,
+				F5730FD0228E514A00F74FCF /* Models */,
+				F5730FCE228E510800F74FCF /* Views */,
+				F5730FCC228E4FE800F74FCF /* View Controllers */,
+				F5730FCF228E513100F74FCF /* Firebase Controllers */,
+				F5730FD1228E519C00F74FCF /* Utilities */,
 				F5970EF9225D53BB0063D9FA /* Info.plist */,
 				F599524F2284DEDF008CC05D /* GoogleService-Info.plist */,
-				F5BEC2C22287230A00A02532 /* ImageRequestController.swift */,
-				F5BEC2BA2284E2E600A02532 /* FirebaseLoginController.swift */,
-				F5BEC2C822874F4A00A02532 /* FirestoreController.swift */,
-				F501E0E6228758B90078E3E9 /* FirebaseStorageController.swift */,
-				F501E0E8228787B30078E3E9 /* UserModel.swift */,
-				F5E3B8C5228A0E9700CD2883 /* ToggleButton.swift */,
-				F5B861E7228A6039006C6FD5 /* PlaceholderTextView.swift */,
-				F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */,
 			);
 			path = Cliques;
 			sourceTree = "<group>";
@@ -395,19 +438,20 @@
 			files = (
 				F5BEC2C922874F4A00A02532 /* FirestoreController.swift in Sources */,
 				F5FD1BDA2288E18B00419653 /* NewPostViewController.swift in Sources */,
+				F5730FCB228E4FE100F74FCF /* AddConnectionViewController.swift in Sources */,
 				F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */,
 				F5BEC2BB2284E2E600A02532 /* FirebaseLoginController.swift in Sources */,
 				F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */,
 				F5970EF0225D53B90063D9FA /* ConnectionsViewController.swift in Sources */,
 				F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */,
-				F5E3B8C6228A0E9700CD2883 /* ToggleButton.swift in Sources */,
+				F5E3B8C6228A0E9700CD2883 /* ToggleButtonView.swift in Sources */,
 				F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */,
 				F5B861E8228A6039006C6FD5 /* PlaceholderTextView.swift in Sources */,
 				F5BEC2C12286639D00A02532 /* NewUserViewController.swift in Sources */,
 				F501E0EB22878F730078E3E9 /* OverviewTabBarController.swift in Sources */,
 				F501E0E7228758B90078E3E9 /* FirebaseStorageController.swift in Sources */,
 				F5588342228C7AE9006B99B3 /* CircularProfileImageView.swift in Sources */,
-				F5BEC2C32287230A00A02532 /* ImageRequestController.swift in Sources */,
+				F5BEC2C32287230A00A02532 /* ImageRequestUtility.swift in Sources */,
 				F501E0E9228787B30078E3E9 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
