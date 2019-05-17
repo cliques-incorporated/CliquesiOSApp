@@ -9,6 +9,7 @@
 import UIKit
 
 private let reuseIdentifier = "Cell"
+private var searchController: UISearchController!
 
 class AddConnectionViewController: UICollectionViewController {
 
@@ -17,11 +18,13 @@ class AddConnectionViewController: UICollectionViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        // Do any additional setup after loading the view.
+        searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     /*
@@ -54,7 +57,11 @@ class AddConnectionViewController: UICollectionViewController {
     
         return cell
     }
-
+    
+    @IBAction func CancelButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: UICollectionViewDelegate
 
     /*

@@ -419,7 +419,7 @@
         <!--Add Connection-->
         <scene sceneID="sOf-D7-9CM">
             <objects>
-                <collectionViewController id="Wds-hu-c6v" sceneMemberID="viewController">
+                <collectionViewController id="Wds-hu-c6v" customClass="AddConnectionViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="4M7-tC-cWx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -448,10 +448,10 @@
                     <navigationItem key="navigationItem" title="Add Connection" id="UQq-Fq-76f">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="M3Y-QJ-Xyr">
                             <color key="tintColor" red="1" green="0.0" blue="0.0093617555430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="CancelButtonPressed:" destination="Wds-hu-c6v" id="m6x-ku-rHX"/>
+                            </connections>
                         </barButtonItem>
-                        <connections>
-                            <outlet property="titleView" destination="veF-iW-qrC" id="cWm-4h-VBc"/>
-                        </connections>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9t4-Vh-Yik" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -594,8 +594,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="DCt-Ho-wvH" kind="relationship" relationship="viewControllers" id="lNL-Ed-xhY"/>
-                        <segue destination="4bh-aW-rWd" kind="relationship" relationship="viewControllers" id="FmL-Go-p1C"/>
                         <segue destination="z3D-L5-o7W" kind="relationship" relationship="viewControllers" id="rZ6-Do-3pG"/>
+                        <segue destination="4bh-aW-rWd" kind="relationship" relationship="viewControllers" id="FmL-Go-p1C"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

@@ -122,14 +122,14 @@
 		F5730FCC228E4FE800F74FCF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F5730FCA228E4FE100F74FCF /* AddConnectionViewController.swift */,
 				F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */,
-				F5BEC2BE2286215100A02532 /* ProfileViewController.swift */,
-				F5970EEF225D53B90063D9FA /* ConnectionsViewController.swift */,
 				F5970EED225D53B90063D9FA /* FeedViewController.swift */,
 				F5FD1BD92288E18B00419653 /* NewPostViewController.swift */,
-				F5B980D3228245960076BA1B /* LoginViewController.swift */,
+				F5BEC2BE2286215100A02532 /* ProfileViewController.swift */,
 				F5BEC2C02286639D00A02532 /* NewUserViewController.swift */,
+				F5970EEF225D53B90063D9FA /* ConnectionsViewController.swift */,
+				F5730FCA228E4FE100F74FCF /* AddConnectionViewController.swift */,
+				F5B980D3228245960076BA1B /* LoginViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

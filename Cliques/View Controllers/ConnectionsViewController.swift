@@ -16,7 +16,6 @@ class ConnectionsViewController: UICollectionViewController {
     }
 
     @IBAction func SearchButtonPressed(_ sender: Any) {
-        debugPrint("test")
         self.performSegue(withIdentifier: "GoToSearch", sender: self)
     }
 }
