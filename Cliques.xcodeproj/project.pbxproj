@@ -13,7 +13,8 @@
 		F501E0E9228787B30078E3E9 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E8228787B30078E3E9 /* UserModel.swift */; };
 		F501E0EB22878F730078E3E9 /* OverviewTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */; };
 		F5588342228C7AE9006B99B3 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */; };
-		F5730FCB228E4FE100F74FCF /* AddConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5730FCA228E4FE100F74FCF /* AddConnectionViewController.swift */; };
+		F5730FD4228F104B00F74FCF /* AddConnectionSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5730FD2228F104B00F74FCF /* AddConnectionSearchViewController.swift */; };
+		F5730FD5228F104B00F74FCF /* AddConnectionSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5730FD3228F104B00F74FCF /* AddConnectionSearchViewController.xib */; };
 		F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEB225D53B90063D9FA /* AppDelegate.swift */; };
 		F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EED225D53B90063D9FA /* FeedViewController.swift */; };
 		F5970EF0225D53B90063D9FA /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEF225D53B90063D9FA /* ConnectionsViewController.swift */; };
@@ -54,7 +55,8 @@
 		F501E0E8228787B30078E3E9 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTabBarController.swift; sourceTree = "<group>"; };
 		F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
-		F5730FCA228E4FE100F74FCF /* AddConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConnectionViewController.swift; sourceTree = "<group>"; };
+		F5730FD2228F104B00F74FCF /* AddConnectionSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConnectionSearchViewController.swift; sourceTree = "<group>"; };
+		F5730FD3228F104B00F74FCF /* AddConnectionSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddConnectionSearchViewController.xib; sourceTree = "<group>"; };
 		F5970EE8225D53B90063D9FA /* Cliques.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cliques.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5970EEB225D53B90063D9FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5970EED225D53B90063D9FA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -128,8 +130,8 @@
 				F5BEC2BE2286215100A02532 /* ProfileViewController.swift */,
 				F5BEC2C02286639D00A02532 /* NewUserViewController.swift */,
 				F5970EEF225D53B90063D9FA /* ConnectionsViewController.swift */,
-				F5730FCA228E4FE100F74FCF /* AddConnectionViewController.swift */,
 				F5B980D3228245960076BA1B /* LoginViewController.swift */,
+				F5730FD2228F104B00F74FCF /* AddConnectionSearchViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -137,6 +139,7 @@
 		F5730FCE228E510800F74FCF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F5730FD3228F104B00F74FCF /* AddConnectionSearchViewController.xib */,
 				F5970EF1225D53B90063D9FA /* Main.storyboard */,
 				F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */,
 				F5B861E7228A6039006C6FD5 /* PlaceholderTextView.swift */,
@@ -310,6 +313,7 @@
 			files = (
 				F5970EF8225D53BB0063D9FA /* LaunchScreen.storyboard in Resources */,
 				F59952502284DEDF008CC05D /* GoogleService-Info.plist in Resources */,
+				F5730FD5228F104B00F74FCF /* AddConnectionSearchViewController.xib in Resources */,
 				F5BEC2C72287416600A02532 /* Assets.xcassets in Resources */,
 				F5970EF3225D53B90063D9FA /* Main.storyboard in Resources */,
 			);
@@ -438,7 +442,6 @@
 			files = (
 				F5BEC2C922874F4A00A02532 /* FirestoreController.swift in Sources */,
 				F5FD1BDA2288E18B00419653 /* NewPostViewController.swift in Sources */,
-				F5730FCB228E4FE100F74FCF /* AddConnectionViewController.swift in Sources */,
 				F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */,
 				F5BEC2BB2284E2E600A02532 /* FirebaseLoginController.swift in Sources */,
 				F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */,
@@ -447,6 +450,7 @@
 				F5E3B8C6228A0E9700CD2883 /* ToggleButtonView.swift in Sources */,
 				F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */,
 				F5B861E8228A6039006C6FD5 /* PlaceholderTextView.swift in Sources */,
+				F5730FD4228F104B00F74FCF /* AddConnectionSearchViewController.swift in Sources */,
 				F5BEC2C12286639D00A02532 /* NewUserViewController.swift in Sources */,
 				F501E0EB22878F730078E3E9 /* OverviewTabBarController.swift in Sources */,
 				F501E0E7228758B90078E3E9 /* FirebaseStorageController.swift in Sources */,
