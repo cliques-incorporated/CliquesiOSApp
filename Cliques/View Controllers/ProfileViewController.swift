@@ -31,11 +31,24 @@ class ProfileViewController: UIViewController {
         editProfileOptionMenu.addAction((UIAlertAction(title: "Sign Out", style: .destructive, handler: signOut)))
         editProfileOptionMenu.addAction((UIAlertAction(title: "Close", style: .cancel, handler: nil)))
         
-        guard userModel.loggedIn(), userModel.profileIsInitialized() else {
+        guard userModel.loggedIn() else {
             goToLogin()
             return
         }
         
+        userModel.notifyWhenInitialized(handler: userModelInitialized)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        userModel.notifyWhenInitialized(handler: userModelInitialized)
+        super.viewDidAppear(true)
+    }
+    
+    private func userModelInitialized(success: Bool) {
+        guard success else {
+            goToLogin()
+            return
+        }
         
         NameLabel.text = userModel.getName()
         PhoneNumberLabel.text = userModel.getPhoneNumber()

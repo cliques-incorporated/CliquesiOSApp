@@ -37,23 +37,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         userModel?.RequestLoginWithPhoneNumber(phoneNumber: PhoneNumberField.text ?? "", loginRequestComplete: LoginRequestComplete)
     }
     
-    @IBAction func SubmitVerificationCodePressed(_ sender: Any) {
-        displayProcessingIndicator()
-        userModel?.LoginWithVerificationCode(verificationCode: VerificationCodeTextField.text ?? "", loginComplete: LoginComplete)
-    }
-    
-    @IBAction func GoBackPressed(_ sender: Any) {
-        DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
     private func LoginRequestComplete(success: Bool) {
         guard success else { return }
         
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "GoToVerification", sender: self)
         }
+    }
+    
+    @IBAction func SubmitVerificationCodePressed(_ sender: Any) {
+        displayProcessingIndicator()
+        userModel?.LoginWithVerificationCode(verificationCode: VerificationCodeTextField.text ?? "", loginComplete: LoginComplete)
     }
     
     private func LoginComplete(success: Bool, profileExists: Bool) {
@@ -73,6 +67,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    @IBAction func GoBackPressed(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     
     @IBAction func textFieldEditDidBegin(_ sender: Any) {
         if let textField = sender as? UITextField {

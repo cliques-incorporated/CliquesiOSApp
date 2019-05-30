@@ -52,9 +52,11 @@ class UserModel {
     private var profileImageURL: URL?
     private var profileImageRef: StorageReference?
     private var profileInitialized = false
+    private var profileLoading = false
     private let loginController = FirebaseLoginController()
     private let firestoreController = FirestoreController()
     private let firebaseStorageController = FirebaseStorageController()
+    private var notifyList = [((Bool)->())]()
     
     public init() {
         if loggedIn() {
@@ -68,7 +70,8 @@ class UserModel {
         }
     }
     
-    public func LoginWithVerificationCode(verificationCode: String, loginComplete: @escaping (_ success: Bool, _ profileExists: Bool) -> ()) {
+    public func LoginWithVerificationCode(verificationCode: String,
+                                          loginComplete: @escaping (_ success: Bool, _ profileExists: Bool) -> ()) {
         loginController.signInWithVerificationCode(verificationCode: verificationCode) { (error, result) in
             guard error == nil, result != nil else {
                 // Sign in failed
@@ -129,6 +132,19 @@ class UserModel {
         return firebaseStorageController.getProfileImageRef(phoneNumber: phoneNumber ?? "")
     }
     
+    public func notifyWhenInitialized(handler: @escaping (_ success: Bool) -> ()) {
+        guard !profileInitialized else {
+            handler(true)
+            return
+        }
+        
+        notifyList.append(handler)
+        
+        if !profileLoading {
+            initializeProfile()
+        }
+    }
+    
     public func profileIsInitialized() -> Bool {
         return profileInitialized
     }
@@ -139,10 +155,16 @@ class UserModel {
     }
     
     public func initializeProfile() {
-        guard loggedIn() else { return }
+        guard loggedIn(), !profileLoading else { return }
+        profileLoading = true
+        
         self.firestoreController.getUserProfileData(phoneNumber: self.phoneNumber ?? "") { (userProfile) in
             guard let userProfile = userProfile else {
-                // User profile does not exist
+                while let handler = self.notifyList.popLast() {
+                    handler(false)
+                }
+                
+                self.profileLoading = false
                 return
             }
             
@@ -151,7 +173,15 @@ class UserModel {
             self.bio = userProfile.bio
             self.profileImageURL = userProfile.profileImageURL
             self.profileInitialized = true
+            
+            while let handler = self.notifyList.popLast() {
+                handler(true)
+            }
+            
+            self.profileLoading = false;
         }
+        
+        
     }
     
     

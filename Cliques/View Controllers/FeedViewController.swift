@@ -20,7 +20,7 @@ class FeedViewController: UICollectionViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        guard userModel.loggedIn(), userModel.profileIsInitialized() else {
+        guard userModel.loggedIn() else {
             performSegue(withIdentifier: "GoToLogin", sender: self)
             return
         }
