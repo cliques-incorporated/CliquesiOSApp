@@ -41,7 +41,7 @@ class FirebaseLoginController {
         }
     }
     
-    static func signOut() {
+    func signOut() {
         do {
             try Auth.auth().signOut()
         } catch let error {

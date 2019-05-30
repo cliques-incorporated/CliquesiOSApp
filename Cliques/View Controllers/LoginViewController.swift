@@ -18,8 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var SubmitProcessingIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var SubmitCodeButton: UIButton!
     
-    private let LoginController = FirebaseLoginController()
-    private let firestoreController = FirestoreController()
+    public var userModel: UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,53 +26,38 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         hideProcessingIndicator()
         PhoneNumberField?.delegate = self
         VerificationCodeTextField?.delegate = self
+        
+        if userModel == nil {
+            userModel = UserModel()
+        }
     }
     
     @IBAction func SendMyLoginCodePressed(_ sender: Any) {
         ErrorLabel.isHidden = true
-        LoginController.verifyPhoneNumber(phoneNumber: PhoneNumberField.text ?? "", verificationRequestSuccess: VerificationRequestComplete)
+        userModel?.RequestLoginWithPhoneNumber(phoneNumber: PhoneNumberField.text ?? "", loginRequestComplete: LoginRequestComplete)
     }
     
-    @IBAction func SubmitVerificationCodePressed(_ sender: Any) {
-        displayProcessingIndicator()
-        LoginController.signInWithVerificationCode(verificationCode: VerificationCodeTextField.text ?? "", signInSuccess: SignInComplete)
-    }
-    
-    @IBAction func GoBackPressed(_ sender: Any) {
-        DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    private func VerificationRequestComplete(error: Error?) {
-        guard error == nil else {
-            return
-        }
+    private func LoginRequestComplete(success: Bool) {
+        guard success else { return }
         
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "GoToVerification", sender: self)
         }
     }
     
-    private func SignInComplete(error: Error?, authDataResult: AuthDataResult?) {
-        if error != nil || authDataResult == nil {
-            VerificationCodeTextField.text = nil
-            displayErrorMessageAndReturn()
-        } else if let phoneNumber = authDataResult?.user.phoneNumber {
-            // User is logged in successfully
-            firestoreController.doesUserProfileExist(phoneNumber: phoneNumber, completionHandler: userProfileCheckComplete)
-        } else {
-            displayErrorMessageAndReturn()
-        }
+    @IBAction func SubmitVerificationCodePressed(_ sender: Any) {
+        displayProcessingIndicator()
+        userModel?.LoginWithVerificationCode(verificationCode: VerificationCodeTextField.text ?? "", loginComplete: LoginComplete)
     }
     
-    private func userProfileCheckComplete(exists: Bool?) {
-        guard let exists = exists else {
+    private func LoginComplete(success: Bool, profileExists: Bool) {
+        guard success else {
+            VerificationCodeTextField.text = nil
             displayErrorMessageAndReturn()
             return
         }
         
-        if(exists) {
+        if(profileExists) {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "GoToFeed", sender: self)
             }
@@ -83,6 +67,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    @IBAction func GoBackPressed(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     
     @IBAction func textFieldEditDidBegin(_ sender: Any) {
         if let textField = sender as? UITextField {
@@ -123,5 +114,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func hideProcessingIndicator() {
         SubmitCodeButton?.isHidden = false
         SubmitProcessingIndicatorView?.stopAnimating()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if let editProfileVC = segue.destination as? NewUserViewController {
+            editProfileVC.newProfile = true
+        } else if let loginViewController = segue.destination as? LoginViewController {
+            loginViewController.userModel = self.userModel
+        }
     }
 }
