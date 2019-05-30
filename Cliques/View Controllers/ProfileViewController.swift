@@ -46,6 +46,7 @@ class ProfileViewController: UIViewController {
     
     private func userModelInitialized(success: Bool) {
         guard success else {
+            userModel.LogOut()
             goToLogin()
             return
         }
