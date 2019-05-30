@@ -7,37 +7,27 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
 
 class FeedViewController: UICollectionViewController {
-    private var firestoreController: FirestoreController?
+    private var userModel: UserModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        firestoreController = FirestoreController()
+        
+        if let overviewController = tabBarController as? OverviewTabBarController {
+            self.userModel = overviewController.getUserModel()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        guard let phoneNumber = Auth.auth().currentUser?.phoneNumber else {
+        guard userModel.loggedIn(), userModel.profileIsInitialized() else {
             performSegue(withIdentifier: "GoToLogin", sender: self)
             return
         }
-        
-        firestoreController?.doesUserProfileExist(phoneNumber: phoneNumber, completionHandler: userProfileCheckComplete)
     }
     
     @IBAction func NewPostButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "GoToNewPost", sender: self)
-    }
-    
-    func userProfileCheckComplete(exists: Bool?) {
-        guard exists == true else {
-            FirebaseLoginController.signOut()
-            performSegue(withIdentifier: "GoToLogin", sender: self)
-            return
-        }
     }
 }
 

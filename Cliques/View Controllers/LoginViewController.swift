@@ -18,8 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var SubmitProcessingIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var SubmitCodeButton: UIButton!
     
-    private let LoginController = FirebaseLoginController()
-    private let firestoreController = FirestoreController()
+    public var userModel: UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +26,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         hideProcessingIndicator()
         PhoneNumberField?.delegate = self
         VerificationCodeTextField?.delegate = self
+        
+        if userModel == nil {
+            userModel = UserModel()
+        }
     }
     
     @IBAction func SendMyLoginCodePressed(_ sender: Any) {
         ErrorLabel.isHidden = true
-        LoginController.verifyPhoneNumber(phoneNumber: PhoneNumberField.text ?? "", verificationRequestSuccess: VerificationRequestComplete)
+        userModel?.RequestLoginWithPhoneNumber(phoneNumber: PhoneNumberField.text ?? "", loginRequestComplete: LoginRequestComplete)
     }
     
     @IBAction func SubmitVerificationCodePressed(_ sender: Any) {
         displayProcessingIndicator()
-        LoginController.signInWithVerificationCode(verificationCode: VerificationCodeTextField.text ?? "", signInSuccess: SignInComplete)
+        userModel?.LoginWithVerificationCode(verificationCode: VerificationCodeTextField.text ?? "", loginComplete: LoginComplete)
     }
     
     @IBAction func GoBackPressed(_ sender: Any) {
@@ -45,35 +48,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func VerificationRequestComplete(error: Error?) {
-        guard error == nil else {
-            return
-        }
+    private func LoginRequestComplete(success: Bool) {
+        guard success else { return }
         
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "GoToVerification", sender: self)
         }
     }
     
-    private func SignInComplete(error: Error?, authDataResult: AuthDataResult?) {
-        if error != nil || authDataResult == nil {
+    private func LoginComplete(success: Bool, profileExists: Bool) {
+        guard success else {
             VerificationCodeTextField.text = nil
-            displayErrorMessageAndReturn()
-        } else if let phoneNumber = authDataResult?.user.phoneNumber {
-            // User is logged in successfully
-            firestoreController.doesUserProfileExist(phoneNumber: phoneNumber, completionHandler: userProfileCheckComplete)
-        } else {
-            displayErrorMessageAndReturn()
-        }
-    }
-    
-    private func userProfileCheckComplete(exists: Bool?) {
-        guard let exists = exists else {
             displayErrorMessageAndReturn()
             return
         }
         
-        if(exists) {
+        if(profileExists) {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "GoToFeed", sender: self)
             }
@@ -130,6 +120,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
         if let editProfileVC = segue.destination as? NewUserViewController {
             editProfileVC.newProfile = true
+        } else if let loginViewController = segue.destination as? LoginViewController {
+            loginViewController.userModel = self.userModel
         }
     }
 }

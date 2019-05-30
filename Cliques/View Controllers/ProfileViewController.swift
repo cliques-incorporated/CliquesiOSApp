@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 import FirebaseUI
 
 class ProfileViewController: UIViewController {
@@ -16,42 +15,36 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var PhoneNumberLabel: UILabel!
     @IBOutlet weak var BioLabel: UILabel!
     
-    var firestoreController: FirestoreController?
-    var storageController: FirebaseStorageController?
+    private var userModel: UserModel!
     
     private let editProfileOptionMenu = UIAlertController(title: nil, message: "Edit Profile", preferredStyle: .actionSheet)
-    private var user: UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let overviewController = tabBarController as? OverviewTabBarController {
+            self.userModel = overviewController.getUserModel()
+        }
+        
         // Do any additional setup after loading the view.
         editProfileOptionMenu.addAction((UIAlertAction(title: "Edit Profile", style: .default, handler: editProfile)))
         editProfileOptionMenu.addAction((UIAlertAction(title: "Sign Out", style: .destructive, handler: signOut)))
         editProfileOptionMenu.addAction((UIAlertAction(title: "Close", style: .cancel, handler: nil)))
         
-        firestoreController = FirestoreController()
-        storageController = FirebaseStorageController()
-        
-        guard let currentUser = Auth.auth().currentUser else {
+        guard userModel.loggedIn(), userModel.profileIsInitialized() else {
             goToLogin()
             return
         }
         
-        guard let phoneNumber = currentUser.phoneNumber, !phoneNumber.isEmpty, let storageController = storageController else { return }
-        firestoreController?.getUserProfileData(phoneNumber: phoneNumber, completionHandler: userProfileDataReceived)
-        ProfileImageView.sd_setImage(with: storageController.getProfileImageRef(phoneNumber: phoneNumber))
-    }
-    
-    private func userProfileDataReceived(user: UserModel?) {
-        guard let user = user else { return }
-        self.user = user
-        NameLabel.text = user.first + " " + user.last
-        PhoneNumberLabel.text = user.phoneNumber
-        BioLabel.text = user.bio
+        
+        NameLabel.text = userModel.getName()
+        PhoneNumberLabel.text = userModel.getPhoneNumber()
+        BioLabel.text = userModel.getBio()
+        ProfileImageView.sd_setImage(with: userModel.getProfileImageRef())
     }
     
     private func signOut(alert: UIAlertAction) {
-        FirebaseLoginController.signOut()
+        userModel.LogOut()
         goToLogin()
     }
     
@@ -79,10 +72,10 @@ class ProfileViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if let editProfileVC = segue.destination.children.first as? NewUserViewController {
             editProfileVC.newProfile = false
-            editProfileVC.firstName = user?.first ?? ""
-            editProfileVC.lastName = user?.last ?? ""
-            editProfileVC.bio = user?.bio ?? ""
-            editProfileVC.phoneNumber = user?.phoneNumber ?? ""
+            editProfileVC.firstName = userModel.getFirstName()
+            editProfileVC.lastName = userModel.getLastName()
+            editProfileVC.bio = userModel.getBio()
+            editProfileVC.phoneNumber = userModel.getPhoneNumber()
             editProfileVC.profileImage = ProfileImageView.image
         }
     }

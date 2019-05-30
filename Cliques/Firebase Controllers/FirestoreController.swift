@@ -38,14 +38,14 @@ class FirestoreController {
         }
     }
     
-    func getUserProfileData(phoneNumber: String, completionHandler: @escaping (UserModel?) -> ()) {
+    func getUserProfileData(phoneNumber: String, completionHandler: @escaping (UserProfile?) -> ()) {
         firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).getDocument { (document, error) in
             guard let document = document, document.exists, let data = document.data() else {
                 completionHandler(nil)
                 return
             }
             
-            completionHandler(UserModel(from: data))
+            completionHandler(UserProfile(from: data))
         }
     }
 }

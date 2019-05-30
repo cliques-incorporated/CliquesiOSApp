@@ -9,6 +9,8 @@
 import UIKit
 
 class OverviewTabBarController: UITabBarController {
+    private var userModel: UserModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +21,15 @@ class OverviewTabBarController: UITabBarController {
                 let _ = $0.view
             }
         }
+    }
+    
+    public func getUserModel() -> UserModel {
+        guard let userModel = userModel else {
+            self.userModel = UserModel()
+            return self.userModel!
+        }
+        
+        return userModel
     }
     
     /*
