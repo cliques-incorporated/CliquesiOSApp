@@ -30,5 +30,10 @@ class FirebaseStorageController {
         let profileImagesBucketRef = storage.reference().child(FirebaseStorageController.ProfileImageDir)
         return profileImagesBucketRef.child(phoneNumber + ".png")
     }
+    
+    func getFeed() -> Void {
+        print("Displaying pictures in a feed format")
+        //this is my first swift funtion ever!
+    }
 
 }
