@@ -9,8 +9,6 @@
 import UIKit
 
 class OverviewTabBarController: UITabBarController {
-    private var userModel: UserModel?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,23 +21,14 @@ class OverviewTabBarController: UITabBarController {
         }
     }
     
-    public func getUserModel() -> UserModel {
-        guard let userModel = userModel else {
-            self.userModel = UserModel()
-            return self.userModel!
-        }
-        
-        return userModel
-    }
-    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

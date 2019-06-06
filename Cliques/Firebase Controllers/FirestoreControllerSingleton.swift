@@ -8,16 +8,28 @@
 
 import Firebase
 import FirebaseFirestore
+import CodableFirebase
 
-class FirestoreController {
+class FirestoreControllerSingleton {
+    private static var uniqueInstance: FirestoreControllerSingleton?
     private let firestoreDatabase: Firestore
     private let FirestoreUsersCollection = "users"
+    private let FirestorePostsCollection = "posts"
     
-    init() {
+    private init() {
         firestoreDatabase = Firestore.firestore()
         let settings = firestoreDatabase.settings
         settings.areTimestampsInSnapshotsEnabled = true
         firestoreDatabase.settings = settings
+    }
+    
+    public static func GetInstance() -> FirestoreControllerSingleton {
+        if let initializedUniqueInstance = uniqueInstance {
+            return initializedUniqueInstance
+        } else {
+            uniqueInstance = FirestoreControllerSingleton()
+            return uniqueInstance!
+        }
     }
     
     func addUserData(phoneNumber: String, firstName: String, lastName: String, bio: String, photoURL: URL, completionHandler: @escaping (Error?)->()) {
@@ -46,6 +58,23 @@ class FirestoreController {
             }
             
             completionHandler(UserProfile(from: data))
+        }
+    }
+    
+    func uploadPost(authorID: String, post: Post, completionHandler: @escaping (String?) -> ()) {
+        do {
+            let postData = try FirestoreEncoder().encode(post);
+            var ref: DocumentReference? = nil
+            ref = firestoreDatabase.collection(FirestorePostsCollection).document(authorID)
+                .collection(FirestorePostsCollection).addDocument(data: postData) { err in
+                    if(err == nil) {
+                        completionHandler(ref?.documentID)
+                    } else {
+                        completionHandler(nil)
+                    }
+            }
+        } catch {
+            completionHandler(nil)
         }
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class ToggleButtonView: UIButton {
     private var onColor = UIColor.black
     private var offColor = UIColor.lightGray
-    private var toggleState = false
+    public var toggleState = false
     
     private let borderWidth: CGFloat = 2.0
     private let cornerRadius: CGFloat = 5.0
@@ -46,11 +46,11 @@ class ToggleButtonView: UIButton {
     }
     
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }

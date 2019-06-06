@@ -1,3 +1,4 @@
+
 //
 //  LoginViewController.swift
 //  Cliques
@@ -5,7 +6,6 @@
 //  Created by Ethan Kusters on 5/7/19.
 //  Copyright © 2019 Ethan Kusters. All rights reserved.
 //
-
 import UIKit
 import FirebaseAuth
 
@@ -18,7 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var SubmitProcessingIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var SubmitCodeButton: UIButton!
     
-    public var userModel: UserModel?
+    public var userModel: UserModelSingleton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         VerificationCodeTextField?.delegate = self
         
         if userModel == nil {
-            userModel = UserModel()
+            userModel = UserModelSingleton.GetInstance()
         }
     }
     

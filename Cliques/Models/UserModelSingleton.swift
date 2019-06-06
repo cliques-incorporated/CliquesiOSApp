@@ -44,7 +44,8 @@ struct UserProfile : Codable {
     
 }
 
-class UserModel {
+class UserModelSingleton {
+    private static var uniqueInstance: UserModelSingleton?
     private var first: String?
     private var last: String?
     private var bio: String?
@@ -53,14 +54,27 @@ class UserModel {
     private var profileImageRef: StorageReference?
     private var profileInitialized = false
     private var profileLoading = false
-    private let loginController = FirebaseLoginController()
-    private let firestoreController = FirestoreController()
-    private let firebaseStorageController = FirebaseStorageController()
+    private let loginController: FirebaseLoginControllerSingleton
+    private let firestoreController: FirestoreControllerSingleton
+    private let firebaseStorageController: FirebaseStorageControllerSingleton
     private var notifyList = [((Bool)->())]()
     
-    public init() {
+    private init() {
+        loginController = FirebaseLoginControllerSingleton.GetInstance()
+        firestoreController = FirestoreControllerSingleton.GetInstance()
+        firebaseStorageController = FirebaseStorageControllerSingleton.GetInstance()
+        
         if loggedIn() {
             initializeProfile()
+        }
+    }
+    
+    public static func GetInstance() -> UserModelSingleton {
+        if let initializedUniqueInstance = uniqueInstance {
+            return initializedUniqueInstance
+        } else {
+            uniqueInstance = UserModelSingleton()
+            return uniqueInstance!
         }
     }
     
@@ -100,7 +114,7 @@ class UserModel {
     }
     
     public func LogOut() {
-        loginController.signOut()
+        FirebaseLoginControllerSingleton.signOut()
         profileInitialized = false
     }
     
