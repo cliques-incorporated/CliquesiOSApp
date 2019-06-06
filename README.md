@@ -1,4 +1,7 @@
-# Cliques iOS App
+<h1> <img src="/Cliques/Assets.xcassets/AppIcon.appiconset/AppIcon%403x-3.png" alt="drawing" width="50"/> Cliques iOS App <a target="_blank" href="https://travis-ci.com/cliques-incorporated/CliquesiOSApp"><img src="https://travis-ci.com/cliques-incorporated/CliquesiOSApp.svg?branch=master"/></a></h1>
+
+
+
 ## Abstract
 
 
@@ -17,6 +20,7 @@
 ** **
 
 ## Users of systems:
+
 
 
 
@@ -64,3 +68,7 @@
 *   Set up the project environment
 *   Create the login functionality
 *   Create the picture storing and sharing
+
+## Cool Logo:
+   
+   Designed by Ethan
