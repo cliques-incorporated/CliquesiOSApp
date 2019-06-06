@@ -18,8 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var SubmitProcessingIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var SubmitCodeButton: UIButton!
     
-    private let LoginController = FirebaseLoginController()
-    private let firestoreController = FirestoreController()
+    public var userModel: UserModelSingleton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +26,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         hideProcessingIndicator()
         PhoneNumberField?.delegate = self
         VerificationCodeTextField?.delegate = self
+        
+        userModel = UserModelSingleton.GetInstance()
     }
     
     @IBAction func SendMyLoginCodePressed(_ sender: Any) {

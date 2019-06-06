@@ -8,9 +8,21 @@
 
 import Firebase
 
-class FirebaseStorageController {
+class FirebaseStorageControllerSingleton {
+    private static var uniqueInstance: FirebaseStorageControllerSingleton?
     static let ProfileImageDir = "profile_images"
-    private let storage = Storage.storage()
+    static let PostImageDir = "post_images"
+    let storage = Storage.storage()
+    
+    private init() {}
+    public static func GetInstance() -> FirebaseStorageControllerSingleton {
+        if let initializedUniqueInstance = uniqueInstance {
+            return initializedUniqueInstance
+        } else {
+            uniqueInstance = FirebaseStorageControllerSingleton()
+            return uniqueInstance!
+        }
+    }
     
     func uploadProfileImage(phoneNumber: String, profileImage: UIImage, uploadCompletionHandler: @escaping (URL?)->()) {
         guard let profileImageData = profileImage.pngData() else { return }
@@ -27,8 +39,27 @@ class FirebaseStorageController {
     }
     
     func getProfileImageRef(phoneNumber: String) -> StorageReference {
-        let profileImagesBucketRef = storage.reference().child(FirebaseStorageController.ProfileImageDir)
+        let profileImagesBucketRef = storage.reference().child(FirebaseStorageControllerSingleton.ProfileImageDir)
         return profileImagesBucketRef.child(phoneNumber + ".png")
+    }
+    
+    func uploadPostImage(userID: String, postID: String, image: UIImage, uploadCompletionHandler: @escaping(Bool)->()) {
+        guard let imageData = image.pngData() else { return }
+        let postImageRef = getPostImageRef(userID: userID, postID: postID)
+        postImageRef.putData(imageData, metadata: nil) { metadata, error in
+            if let error = error {
+                debugPrint(error)
+                uploadCompletionHandler(false)
+            } else {
+                uploadCompletionHandler(true)
+            }
+        }
+    }
+    
+    func getPostImageRef(userID: String, postID: String) -> StorageReference {
+        let postImagesBucket = storage.reference().child(FirebaseStorageControllerSingleton.PostImageDir)
+        return postImagesBucket.child(userID).child(postID + ".png");
+        
     }
 
 }

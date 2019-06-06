@@ -9,6 +9,8 @@
 import UIKit
 
 class OverviewTabBarController: UITabBarController {
+    private var userModel: UserModelSingleton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

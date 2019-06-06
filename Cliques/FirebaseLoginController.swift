@@ -9,7 +9,19 @@
 import FirebaseAuth
 import Firebase
 
-class FirebaseLoginController {
+class FirebaseLoginControllerSingleton {
+    private static var uniqueInstance: FirebaseLoginControllerSingleton?
+    
+    private init() {}
+    public static func GetInstance() -> FirebaseLoginControllerSingleton {
+        if let initializedUniqueInstance = uniqueInstance {
+            return initializedUniqueInstance
+        } else {
+            uniqueInstance = FirebaseLoginControllerSingleton()
+            return uniqueInstance!
+        }
+    }
+    
     func verifyPhoneNumber(phoneNumber: String, verificationRequestSuccess:@escaping (Error?)->()) {
         let number = "+1" + phoneNumber
         

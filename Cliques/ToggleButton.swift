@@ -11,7 +11,7 @@ import UIKit
 class ToggleButton: UIButton {
     private var onColor = UIColor.black
     private var offColor = UIColor.lightGray
-    private var toggleState = false
+    public var toggleState = false
     
     private let borderWidth: CGFloat = 2.0
     private let cornerRadius: CGFloat = 5.0

@@ -24,8 +24,8 @@ class NewUserViewController: UIViewController {
     private let allFieldsRequiredAlert = UIAlertController(title: "We're missing something...", message: "All fields are required!", preferredStyle: .alert)
     private let errorAlert = UIAlertController(title: "Uh oh!", message: "Something went wrong. Please try again.", preferredStyle: .alert)
     
-    private var firestoreController: FirestoreController?
-    private var firebaseStorageController: FirebaseStorageController?
+    private var firestoreController: FirestoreControllerSingleton?
+    private var firebaseStorageController: FirebaseStorageControllerSingleton?
     
     private var firstName = ""
     private var lastName = ""
@@ -34,8 +34,19 @@ class NewUserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firestoreController = FirestoreController()
-        firebaseStorageController = FirebaseStorageController()
+        if !newProfile {
+            WelcomeLabel.text = nil
+            WelcomeLabel.isHidden = true
+            LetsGoButton.isHidden = true
+            FirstNameTextField.text = firstName
+            LastNameTextField.text = lastName
+            BioTextField.text = bio
+            imageSelected = true
+            ProfileImageView.image = profileImage
+        }
+        
+        firestoreController = FirestoreControllerSingleton.GetInstance()
+        firebaseStorageController = FirebaseStorageControllerSingleton.GetInstance()
         
         // Do any additional setup after loading the view.
         allFieldsRequiredAlert.addAction((UIAlertAction(title: "Got It", style: .cancel, handler: nil)))
