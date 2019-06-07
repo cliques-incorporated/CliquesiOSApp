@@ -395,11 +395,18 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Post" id="VcO-4R-Zwp">
                             <color key="tintColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="PostButtonPressed:" destination="bZx-LC-jZd" id="jz2-S6-t4T"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="CaptionTextView" destination="CrK-VL-Os8" id="8Fu-bh-Pd5"/>
+                        <outlet property="CloseFriendsCliqueToggle" destination="p6G-n0-i6M" id="GMZ-ne-jxU"/>
+                        <outlet property="FamilyCliqueToggle" destination="1zs-VH-lKa" id="xPg-YU-t5f"/>
+                        <outlet property="FriendsCliqueToggle" destination="i09-W0-hEb" id="HPc-RN-hNX"/>
                         <outlet property="PhotoView" destination="ADc-nj-jEs" id="oIz-Bo-1hI"/>
+                        <outlet property="PublicCliqueToggle" destination="2lR-gd-9Dp" id="vNW-6Q-8W4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMB-A8-TWY" userLabel="First Responder" sceneMemberID="firstResponder"/>

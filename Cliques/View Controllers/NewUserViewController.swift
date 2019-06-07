@@ -5,7 +5,6 @@
 //  Created by Ethan Kusters on 5/10/19.
 //  Copyright © 2019 Ethan Kusters. All rights reserved.
 //
-
 import UIKit
 import Firebase
 import Photos
@@ -27,8 +26,8 @@ class NewUserViewController: UIViewController {
     private let allFieldsRequiredAlert = UIAlertController(title: "We're missing something...", message: "All fields are required!", preferredStyle: .alert)
     private let errorAlert = UIAlertController(title: "Uh oh!", message: "Something went wrong. Please try again.", preferredStyle: .alert)
     
-    private var firestoreController: FirestoreController?
-    private var firebaseStorageController: FirebaseStorageController?
+    private var firestoreController: FirestoreControllerSingleton?
+    private var firebaseStorageController: FirebaseStorageControllerSingleton?
     
     public var firstName = ""
     public var lastName = ""
@@ -48,8 +47,8 @@ class NewUserViewController: UIViewController {
             imageSelected = true
             ProfileImageView.image = profileImage
         }
-        firestoreController = FirestoreController()
-        firebaseStorageController = FirebaseStorageController()
+        firestoreController = FirestoreControllerSingleton.GetInstance()
+        firebaseStorageController = FirebaseStorageControllerSingleton.GetInstance()
         
         // Do any additional setup after loading the view.
         allFieldsRequiredAlert.addAction((UIAlertAction(title: "Got It", style: .cancel, handler: nil)))

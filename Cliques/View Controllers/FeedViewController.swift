@@ -9,14 +9,12 @@
 import UIKit
 
 class FeedViewController: UICollectionViewController {
-    private var userModel: UserModel!
-
+    private var userModel: UserModelSingleton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let overviewController = tabBarController as? OverviewTabBarController {
-            self.userModel = overviewController.getUserModel()
-        }
+        userModel = UserModelSingleton.GetInstance()
     }
     
     override func viewDidAppear(_ animated: Bool) {
