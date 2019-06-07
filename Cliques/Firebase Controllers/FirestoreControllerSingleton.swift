@@ -32,15 +32,19 @@ class FirestoreControllerSingleton {
         }
     }
     
-    func addUserData(phoneNumber: String, firstName: String, lastName: String, bio: String, photoURL: URL, completionHandler: @escaping (Error?)->()) {
-        firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).setData([
-            "id": phoneNumber,
-            "first": firstName,
-            "last": lastName,
-            "bio": bio,
-            "profileImageURL": photoURL.absoluteString
-        ]) { err in
-            completionHandler(err)
+    func addUserData(profile: UserProfile, completionHandler: @escaping (_ success: Bool)->()) {
+        guard let phoneNumber = profile.phoneNumber else {
+            completionHandler(false)
+            return
+        }
+        
+        do {
+            let profileData = try FirestoreEncoder().encode(profile);
+            firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).setData(profileData) { err in
+                completionHandler(err == nil)
+            }
+        } catch {
+            completionHandler(false)
         }
     }
     
@@ -57,7 +61,12 @@ class FirestoreControllerSingleton {
                 return
             }
             
-            completionHandler(UserProfile(from: data))
+            do {
+                let profile = try FirestoreDecoder().decode(UserProfile.self, from: data)
+                completionHandler(profile)
+            } catch {
+                completionHandler(nil)
+            }
         }
     }
     
@@ -65,8 +74,7 @@ class FirestoreControllerSingleton {
         do {
             let postData = try FirestoreEncoder().encode(post);
             var ref: DocumentReference? = nil
-            ref = firestoreDatabase.collection(FirestorePostsCollection).document(authorID)
-                .collection(FirestorePostsCollection).addDocument(data: postData) { err in
+            ref = firestoreDatabase.collection(FirestorePostsCollection).addDocument(data: postData) { err in
                     if(err == nil) {
                         completionHandler(ref?.documentID)
                     } else {

@@ -58,7 +58,7 @@ class FirebaseStorageControllerSingleton {
     
     func getPostImageRef(userID: String, postID: String) -> StorageReference {
         let postImagesBucket = storage.reference().child(FirebaseStorageControllerSingleton.PostImageDir)
-        return postImagesBucket.child(userID).child(postID + ".png");
+        return postImagesBucket.child(postID + ".png");
         
     }
     

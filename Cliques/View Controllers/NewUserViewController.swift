@@ -125,11 +125,11 @@ class NewUserViewController: UIViewController {
             return
         }
         
-        firestoreController?.addUserData(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, bio: bio, photoURL: imageURL, completionHandler: userProfileDataUploaded)
+        firestoreController?.addUserData(profile: UserProfile(first: firstName, last: lastName, bio: bio, phoneNumber: phoneNumber, profileImageURL: imageURL, friendsClique: [""], familyClique: [""], closeFriendsClique: [""], publicClique: [""]), completionHandler: userProfileDataUploaded)
     }
     
-    private func userProfileDataUploaded(error: Error?) {
-        guard error == nil else {
+    private func userProfileDataUploaded(success: Bool) {
+        guard success else {
             hideUploadingIndicator()
             displayErrorAlert()
             return

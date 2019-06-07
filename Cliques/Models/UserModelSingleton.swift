@@ -11,46 +11,20 @@ import Firebase
 import FirebaseAuth
 
 struct UserProfile : Codable {
-    var first: String
-    var last: String
-    var bio: String
-    var phoneNumber: String
+    var first: String?
+    var last: String?
+    var bio: String?
+    var phoneNumber: String?
     var profileImageURL: URL?
-    
-    enum CodingKeys: String, CodingKey {
-        case first = "first"
-        case last = "last"
-        case bio = "bio"
-        case phoneNumber = "id"
-        case profileImageURL = "profileImageURL"
-    }
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        first = try values.decodeIfPresent(String.self, forKey: .first) ?? ""
-        last = try values.decodeIfPresent(String.self, forKey: .last) ?? ""
-        bio = try values.decodeIfPresent(String.self, forKey: .bio) ?? ""
-        phoneNumber = try values.decodeIfPresent(String.self, forKey: .phoneNumber) ?? ""
-        profileImageURL = URL.init(string: try values.decodeIfPresent(String.self, forKey: .profileImageURL) ?? "")
-    }
-    
-    init(from dictionary: [String:Any]) {
-        first = dictionary[CodingKeys.first.stringValue] as? String ?? ""
-        last = dictionary[CodingKeys.last.stringValue] as? String ?? ""
-        bio = dictionary[CodingKeys.bio.stringValue] as? String ?? ""
-        phoneNumber = dictionary[CodingKeys.phoneNumber.stringValue] as? String ?? ""
-        profileImageURL = URL.init(string: dictionary[CodingKeys.profileImageURL.stringValue] as? String ?? "")
-    }
-    
+    var friendsClique: [String]?
+    var familyClique: [String]?
+    var closeFriendsClique: [String]?
+    var publicClique: [String]?
 }
 
 class UserModelSingleton {
     private static var uniqueInstance: UserModelSingleton?
-    private var first: String?
-    private var last: String?
-    private var bio: String?
-    private var phoneNumber: String?
-    private var profileImageURL: URL?
+    private var userProfile = UserProfile()
     private var profileImageRef: StorageReference?
     private var profileInitialized = false
     private var profileLoading = false
@@ -93,18 +67,15 @@ class UserModelSingleton {
                 return
             }
             
-            self.phoneNumber = result?.user.phoneNumber
-            self.firestoreController.getUserProfileData(phoneNumber: self.phoneNumber ?? "") { (userProfile) in
-                guard let userProfile = userProfile else {
+            self.userProfile.phoneNumber = result?.user.phoneNumber
+            self.firestoreController.getUserProfileData(phoneNumber: self.userProfile.phoneNumber ?? "") { (downloadedUserProfile) in
+                guard let downloadedUserProfile = downloadedUserProfile else {
                     // Sign in successful, user profile has not been created
                     loginComplete(true, false)
                     return
                 }
                 
-                self.first = userProfile.first
-                self.last = userProfile.last
-                self.bio = userProfile.bio
-                self.profileImageURL = userProfile.profileImageURL
+                self.userProfile = downloadedUserProfile
                 self.profileInitialized = true
                 
                 // Sign in successful, user profile exists
@@ -119,31 +90,47 @@ class UserModelSingleton {
     }
     
     public func getFirstName() -> String {
-        return (first ?? "")
+        return (userProfile.first ?? "")
     }
     
     public func getLastName() -> String {
-        return (last ?? "")
+        return (userProfile.last ?? "")
     }
     
     public func getName() -> String {
-        return (first ?? "") + " " + (last ?? "")
+        return (userProfile.first ?? "") + " " + (userProfile.last ?? "")
     }
     
     public func getPhoneNumber() -> String {
-        return (phoneNumber ?? "")
+        return (userProfile.phoneNumber ?? "")
     }
     
     public func getBio() -> String {
-        return (bio ?? "")
+        return (userProfile.bio ?? "")
     }
     
     public func getProfileImageURL() -> URL? {
-        return profileImageURL
+        return userProfile.profileImageURL
     }
     
     public func getProfileImageRef() -> StorageReference {
-        return firebaseStorageController.getProfileImageRef(phoneNumber: phoneNumber ?? "")
+        return firebaseStorageController.getProfileImageRef(phoneNumber: userProfile.phoneNumber ?? "")
+    }
+    
+    public func getCloseFriendsClique() -> [String] {
+        return userProfile.closeFriendsClique ?? []
+    }
+    
+    public func getFriendsClique() -> [String] {
+        return userProfile.friendsClique ?? []
+    }
+    
+    public func getFamilyClique() -> [String] {
+        return userProfile.familyClique ?? []
+    }
+    
+    public func getPublicClique() -> [String] {
+        return userProfile.publicClique ?? []
     }
     
     public func notifyWhenInitialized(handler: @escaping (_ success: Bool) -> ()) {
@@ -164,16 +151,16 @@ class UserModelSingleton {
     }
     
     public func loggedIn() -> Bool {
-        phoneNumber = Auth.auth().currentUser?.phoneNumber
-        return !(phoneNumber?.isEmpty ?? true)
+        userProfile.phoneNumber = Auth.auth().currentUser?.phoneNumber
+        return !(userProfile.phoneNumber?.isEmpty ?? true)
     }
     
     public func initializeProfile() {
         guard loggedIn(), !profileLoading else { return }
         profileLoading = true
         
-        self.firestoreController.getUserProfileData(phoneNumber: self.phoneNumber ?? "") { (userProfile) in
-            guard let userProfile = userProfile else {
+        self.firestoreController.getUserProfileData(phoneNumber: self.userProfile.phoneNumber ?? "") { (downloadedUserProfile) in
+            guard let downloadedUserProfile = downloadedUserProfile else {
                 while let handler = self.notifyList.popLast() {
                     handler(false)
                 }
@@ -182,10 +169,7 @@ class UserModelSingleton {
                 return
             }
             
-            self.first = userProfile.first
-            self.last = userProfile.last
-            self.bio = userProfile.bio
-            self.profileImageURL = userProfile.profileImageURL
+            self.userProfile = downloadedUserProfile
             self.profileInitialized = true
             
             while let handler = self.notifyList.popLast() {
