@@ -262,7 +262,7 @@
             </objects>
             <point key="canvasLocation" x="1569" y="-1745"/>
         </scene>
-        <!--Feed-->
+        <!--View Controller-->
         <scene sceneID="BOL-eG-tfa">
             <objects>
                 <collectionViewController id="Gab-YO-Npi" customClass="FeedViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
@@ -297,13 +297,28 @@
                                 <action selector="NewPostButtonPressed:" destination="Gab-YO-Npi" id="9TH-o2-JE5"/>
                             </connections>
                         </barButtonItem>
+                        <connections>
+                            <outlet property="titleView" destination="8gt-e4-gX8" id="fmG-CN-aUG"/>
+                        </connections>
                     </navigationItem>
                     <connections>
+                        <outlet property="FeedSelectionButton" destination="8gt-e4-gX8" id="RrV-Fv-PK2"/>
                         <segue destination="oYo-Js-9zf" kind="presentation" identifier="GoToNewPost" id="Is0-TF-qjh"/>
                         <segue destination="6il-RT-V1U" kind="showDetail" identifier="GoToLogin" id="sIf-eP-CAE"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDT-y4-JOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8gt-e4-gX8" customClass="SelectFeedButtonView" customModule="Cliques" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                    <state key="normal" title="  Friends ⌄">
+                        <color key="titleColor" red="0.82745098039999998" green="0.83529411760000005" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <outlet property="ViewController" destination="Gab-YO-Npi" id="aFW-Az-S5Y"/>
+                    </connections>
+                </button>
             </objects>
             <point key="canvasLocation" x="2646" y="-398"/>
         </scene>
@@ -656,6 +671,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="dVB-VV-s7T"/>
         <segue reference="7mc-Mb-yWf"/>
-        <segue reference="gpZ-DG-V9H"/>
+        <segue reference="sIf-eP-CAE"/>
     </inferredMetricsTieBreakers>
 </document>

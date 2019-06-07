@@ -10,11 +10,13 @@ import UIKit
 
 class FeedViewController: UICollectionViewController {
     private var userModel: UserModelSingleton!
+    @IBOutlet var FeedSelectionButton: SelectFeedButtonView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         userModel = UserModelSingleton.GetInstance()
+        FeedSelectionButton.FeedSelectionChanged = FeedSelectionChanged
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -26,6 +28,10 @@ class FeedViewController: UICollectionViewController {
     
     @IBAction func NewPostButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "GoToNewPost", sender: self)
+    }
+    
+    private func FeedSelectionChanged(selectedClique: CliqueUtility.CliqueTitles) {
+        debugPrint(selectedClique.rawValue)
     }
 }
 
