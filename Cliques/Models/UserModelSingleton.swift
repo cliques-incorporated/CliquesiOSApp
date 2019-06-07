@@ -14,8 +14,7 @@ struct UserProfile : Codable {
     var first: String?
     var last: String?
     var bio: String?
-    var phoneNumber: String?
-    var profileImageURL: URL?
+    var uniqueID: String?
     var friendsClique: [String]?
     var familyClique: [String]?
     var closeFriendsClique: [String]?
@@ -67,8 +66,8 @@ class UserModelSingleton {
                 return
             }
             
-            self.userProfile.phoneNumber = result?.user.phoneNumber
-            self.firestoreController.getUserProfileData(phoneNumber: self.userProfile.phoneNumber ?? "") { (downloadedUserProfile) in
+            self.userProfile.uniqueID = result?.user.phoneNumber
+            self.firestoreController.getUserProfileData(uniqueID: self.userProfile.uniqueID ?? "") { (downloadedUserProfile) in
                 guard let downloadedUserProfile = downloadedUserProfile else {
                     // Sign in successful, user profile has not been created
                     loginComplete(true, false)
@@ -102,19 +101,15 @@ class UserModelSingleton {
     }
     
     public func getPhoneNumber() -> String {
-        return (userProfile.phoneNumber ?? "")
+        return (userProfile.uniqueID ?? "")
     }
     
     public func getBio() -> String {
         return (userProfile.bio ?? "")
     }
     
-    public func getProfileImageURL() -> URL? {
-        return userProfile.profileImageURL
-    }
-    
     public func getProfileImageRef() -> StorageReference {
-        return firebaseStorageController.getProfileImageRef(phoneNumber: userProfile.phoneNumber ?? "")
+        return firebaseStorageController.getProfileImageRef(userID: userProfile.uniqueID ?? "")
     }
     
     public func getCloseFriendsClique() -> [String] {
@@ -151,15 +146,15 @@ class UserModelSingleton {
     }
     
     public func loggedIn() -> Bool {
-        userProfile.phoneNumber = Auth.auth().currentUser?.phoneNumber
-        return !(userProfile.phoneNumber?.isEmpty ?? true)
+        userProfile.uniqueID = Auth.auth().currentUser?.phoneNumber
+        return !(userProfile.uniqueID?.isEmpty ?? true)
     }
     
     public func initializeProfile() {
         guard loggedIn(), !profileLoading else { return }
         profileLoading = true
         
-        self.firestoreController.getUserProfileData(phoneNumber: self.userProfile.phoneNumber ?? "") { (downloadedUserProfile) in
+        self.firestoreController.getUserProfileData(uniqueID: self.userProfile.uniqueID ?? "") { (downloadedUserProfile) in
             guard let downloadedUserProfile = downloadedUserProfile else {
                 while let handler = self.notifyList.popLast() {
                     handler(false)

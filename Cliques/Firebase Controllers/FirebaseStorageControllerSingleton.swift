@@ -24,9 +24,9 @@ class FirebaseStorageControllerSingleton {
         }
     }
     
-    func uploadProfileImage(phoneNumber: String, profileImage: UIImage, uploadCompletionHandler: @escaping (URL?)->()) {
+    func uploadProfileImage(userID: String, profileImage: UIImage, uploadCompletionHandler: @escaping (URL?)->()) {
         guard let profileImageData = profileImage.pngData() else { return }
-        let profileImageRef = getProfileImageRef(phoneNumber: phoneNumber)
+        let profileImageRef = getProfileImageRef(userID: userID)
         profileImageRef.putData(profileImageData, metadata: nil) { metadata, error in
             if let error = error {
                 debugPrint(error)
@@ -38,9 +38,9 @@ class FirebaseStorageControllerSingleton {
         }
     }
     
-    func getProfileImageRef(phoneNumber: String) -> StorageReference {
+    func getProfileImageRef(userID: String) -> StorageReference {
         let profileImagesBucketRef = storage.reference().child(FirebaseStorageControllerSingleton.ProfileImageDir)
-        return profileImagesBucketRef.child(phoneNumber + ".png")
+        return profileImagesBucketRef.child(userID + ".png")
     }
     
     func uploadPostImage(userID: String, postID: String, image: UIImage, uploadCompletionHandler: @escaping(Bool)->()) {

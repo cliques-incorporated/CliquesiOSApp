@@ -33,14 +33,14 @@ class FirestoreControllerSingleton {
     }
     
     func addUserData(profile: UserProfile, completionHandler: @escaping (_ success: Bool)->()) {
-        guard let phoneNumber = profile.phoneNumber else {
+        guard let uniqueID = profile.uniqueID else {
             completionHandler(false)
             return
         }
         
         do {
             let profileData = try FirestoreEncoder().encode(profile);
-            firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).setData(profileData) { err in
+    firestoreDatabase.collection(FirestoreUsersCollection).document(uniqueID).setData(profileData) { err in
                 completionHandler(err == nil)
             }
         } catch {
@@ -48,14 +48,14 @@ class FirestoreControllerSingleton {
         }
     }
     
-    func doesUserProfileExist(phoneNumber: String, completionHandler: @escaping (Bool?) -> ()){
-        firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).getDocument { (document, error) in
+    func doesUserProfileExist(uniqueID: String, completionHandler: @escaping (Bool?) -> ()){
+        firestoreDatabase.collection(FirestoreUsersCollection).document(uniqueID).getDocument { (document, error) in
             completionHandler(document?.exists)
         }
     }
     
-    func getUserProfileData(phoneNumber: String, completionHandler: @escaping (UserProfile?) -> ()) {
-        firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).getDocument { (document, error) in
+    func getUserProfileData(uniqueID: String, completionHandler: @escaping (UserProfile?) -> ()) {
+        firestoreDatabase.collection(FirestoreUsersCollection).document(uniqueID).getDocument { (document, error) in
             guard let document = document, document.exists, let data = document.data() else {
                 completionHandler(nil)
                 return
