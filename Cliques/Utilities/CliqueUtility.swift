@@ -35,4 +35,17 @@ class CliqueUtility {
         }
     }
     
+    public static func GetDatabaseString(clique: CliqueTitles) -> String {
+        switch clique {
+        case .Public:
+            return "publicClique"
+        case .Friends:
+            return "friendsClique"
+        case .CloseFriends:
+            return "closeFriendsClique"
+        case .Family:
+            return "familyClique"
+        }
+    }
+    
 }

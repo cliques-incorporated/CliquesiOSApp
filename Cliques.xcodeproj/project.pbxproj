@@ -18,6 +18,7 @@
 		F5730FD5228F104B00F74FCF /* AddConnectionSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5730FD3228F104B00F74FCF /* AddConnectionSearchViewController.xib */; };
 		F585726522AAD0EA00783ED0 /* SelectFeedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585726422AAD0EA00783ED0 /* SelectFeedButtonView.swift */; };
 		F585726722AAD23500783ED0 /* CliqueUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585726622AAD23500783ED0 /* CliqueUtility.swift */; };
+		F585745E22AB180900783ED0 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585745D22AB180900783ED0 /* FeedModel.swift */; };
 		F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEB225D53B90063D9FA /* AppDelegate.swift */; };
 		F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EED225D53B90063D9FA /* FeedViewController.swift */; };
 		F5970EF0225D53B90063D9FA /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEF225D53B90063D9FA /* ConnectionsViewController.swift */; };
@@ -63,6 +64,7 @@
 		F5730FD3228F104B00F74FCF /* AddConnectionSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddConnectionSearchViewController.xib; sourceTree = "<group>"; };
 		F585726422AAD0EA00783ED0 /* SelectFeedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeedButtonView.swift; sourceTree = "<group>"; };
 		F585726622AAD23500783ED0 /* CliqueUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliqueUtility.swift; sourceTree = "<group>"; };
+		F585745D22AB180900783ED0 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		F5970EE8225D53B90063D9FA /* Cliques.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cliques.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5970EEB225D53B90063D9FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5970EED225D53B90063D9FA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			children = (
 				F501E0E8228787B30078E3E9 /* UserModelSingleton.swift */,
 				F535509022A99E1C00F413A3 /* PostModel.swift */,
+				F585745D22AB180900783ED0 /* FeedModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				F535509122A99E1C00F413A3 /* PostModel.swift in Sources */,
 				F5FD1BDA2288E18B00419653 /* NewPostViewController.swift in Sources */,
 				F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */,
+				F585745E22AB180900783ED0 /* FeedModel.swift in Sources */,
 				F5BEC2BB2284E2E600A02532 /* FirebaseLoginControllerSingleton.swift in Sources */,
 				F585726722AAD23500783ED0 /* CliqueUtility.swift in Sources */,
 				F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */,

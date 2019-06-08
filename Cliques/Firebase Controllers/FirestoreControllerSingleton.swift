@@ -85,4 +85,46 @@ class FirestoreControllerSingleton {
             completionHandler(nil)
         }
     }
+    
+    func getUserFeed(userID: String, usersInFeed: [String], clique: CliqueUtility.CliqueTitles, completion: ([Post])) {
+        let postRef = firestoreDatabase.collection(FirestorePostsCollection)
+        let feedQuery = postRef.whereField("sharedWith", arrayContains: userID)
+            .limit(to: 30)
+            .order(by: "timestamp")
+        
+    
+        let personalQuery = postRef.whereField("authorID", isEqualTo: userID)
+            .whereField(CliqueUtility.GetDatabaseString(clique: clique), isEqualTo: true)
+            .limit(to: 30)
+            .order(by: "timestamp")
+        
+        feedQuery.getDocuments() { (feedSnapshot, error) in
+            guard let feedSnapshot = feedSnapshot, error == nil else {
+                return
+            }
+            
+            personalQuery.getDocuments() { (personalSnapshot, error) in
+                guard let personalSnapshot = personalSnapshot, error == nil else {
+                    return
+                }
+                
+                do {
+                    let documents = personalSnapshot.documents + feedSnapshot.documents
+                    var
+                    
+                    for item in feed {
+                        let post = try FirestoreDecoder().decode(Post.self, from: item.data())
+                        
+                    }
+                    
+                    //var feed = feedPosts + personalPosts
+                    //feed.sort(by: {$0.timestamp > $1.timestamp})
+                    
+                
+                } catch {
+                    
+                }
+            }
+        }
+    }
 }
