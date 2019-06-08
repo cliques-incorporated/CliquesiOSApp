@@ -10,10 +10,23 @@ import Foundation
 import UIKit
 
 class CliqueUtility {
-    public static let PublicColor = UIColor.init(red: 28/255.0, green: 185/255.0, blue: 152/255.0, alpha: 1.0)
-    public static let FriendsColor = UIColor.init(red: 211/255.0, green: 213/255.0, blue: 50/255.0, alpha: 1.0)
-    public static let CloseFriendsColor = UIColor.init(red: 120/255.0, green: 128/255.0, blue: 255/255.0, alpha: 1.0)
-    public static let FamilyColor = UIColor.init(red: 191/255.0, green: 90/255.0, blue: 97/255.0, alpha: 1.0)
+    private static let PublicColor = UIColor.init(red: 28/255.0, green: 185/255.0, blue: 152/255.0, alpha: 1.0)
+    private static let FriendsColor = UIColor.init(red: 211/255.0, green: 213/255.0, blue: 50/255.0, alpha: 1.0)
+    private static let CloseFriendsColor = UIColor.init(red: 120/255.0, green: 128/255.0, blue: 255/255.0, alpha: 1.0)
+    private static let FamilyColor = UIColor.init(red: 191/255.0, green: 90/255.0, blue: 97/255.0, alpha: 1.0)
+    
+    public static func getFamilyColor() -> UIColor {
+        return FamilyColor
+    }
+    public static func getPublicColor() -> UIColor {
+        return PublicColor
+    }
+    public static func getCloseFriendsColor() -> UIColor {
+        return CloseFriendsColor
+    }
+    public static func getFriendsColor() -> UIColor {
+        return FriendsColor
+    }
     
     public enum CliqueTitles: String {
         case Public = "Public"
