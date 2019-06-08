@@ -495,6 +495,54 @@
             <point key="canvasLocation" x="2646" y="2136"/>
         </scene>
         <!--Connections-->
+        <scene sceneID="sXl-gb-Efy">
+            <objects>
+                <tableViewController id="iv1-8Q-Spj" customClass="UserConnectionsTableViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RdV-aw-2C0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlainCell" textLabel="o5l-pV-3bY" detailTextLabel="zs9-FD-IWY" style="IBUITableViewCellStyleSubtitle" id="Ybs-Ve-fDq">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ybs-Ve-fDq" id="4Ix-ep-wIW">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o5l-pV-3bY">
+                                            <rect key="frame" x="16.000000000000004" y="5" width="33.333333333333336" height="20.333333333333332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zs9-FD-IWY">
+                                            <rect key="frame" x="15.999999999999996" y="25.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iv1-8Q-Spj" id="dP4-lT-9Y3"/>
+                            <outlet property="delegate" destination="iv1-8Q-Spj" id="bne-go-Dgp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Connections" id="ZcJ-Pq-sR5"/>
+                    <connections>
+                        <outlet property="UserConnectionTableView" destination="RdV-aw-2C0" id="MKa-1D-x8O"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d9g-eT-izA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2313" y="1017"/>
+        </scene>
+        <!--Connections-->
         <scene sceneID="IWb-Du-RNb">
             <objects>
                 <collectionViewController id="yUB-pr-96Q" customClass="ConnectionsViewController" customModule="Cliques" customModuleProvider="target" sceneMemberID="viewController">
@@ -527,7 +575,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMl-Qj-dpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2646" y="1156"/>
+            <point key="canvasLocation" x="3292" y="966"/>
         </scene>
         <!--Overview Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -636,12 +684,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="yUB-pr-96Q" kind="relationship" relationship="rootViewController" id="4Ky-QX-pDR"/>
+                        <segue destination="iv1-8Q-Spj" kind="relationship" relationship="rootViewController" id="kEw-PQ-mZn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbu-12-fOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1689" y="1156"/>
+            <point key="canvasLocation" x="1495" y="1125"/>
         </scene>
     </scenes>
     <resources>
