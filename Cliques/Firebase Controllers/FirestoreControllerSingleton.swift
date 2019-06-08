@@ -86,7 +86,7 @@ class FirestoreControllerSingleton {
         }
     }
     
-    func getUserFeed(userID: String, usersInFeed: [String], clique: CliqueUtility.CliqueTitles, completion: ([Post])) {
+    /*func getUserFeed(userID: String, usersInFeed: [String], clique: CliqueUtility.CliqueTitles, completion: ([Post])) {
         let postRef = firestoreDatabase.collection(FirestorePostsCollection)
         let feedQuery = postRef.whereField("sharedWith", arrayContains: userID)
             .limit(to: 30)
@@ -126,5 +126,5 @@ class FirestoreControllerSingleton {
                 }
             }
         }
-    }
+    }*/
 }
