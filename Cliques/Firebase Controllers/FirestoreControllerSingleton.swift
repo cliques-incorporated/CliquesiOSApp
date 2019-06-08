@@ -15,12 +15,14 @@ class FirestoreControllerSingleton {
     private let firestoreDatabase: Firestore
     private let FirestoreUsersCollection = "users"
     private let FirestorePostsCollection = "posts"
+    private let storageController: FirebaseStorageControllerSingleton
     
     private init() {
         firestoreDatabase = Firestore.firestore()
         let settings = firestoreDatabase.settings
         settings.areTimestampsInSnapshotsEnabled = true
         firestoreDatabase.settings = settings
+        storageController = FirebaseStorageControllerSingleton.GetInstance()
     }
     
     public static func GetInstance() -> FirestoreControllerSingleton {
@@ -86,7 +88,7 @@ class FirestoreControllerSingleton {
         }
     }
     
-    /*func getUserFeed(userID: String, usersInFeed: [String], clique: CliqueUtility.CliqueTitles, completion: ([Post])) {
+    func getUserFeed(userID: String, usersInFeed: [String], clique: CliqueUtility.CliqueTitles, completion: @escaping ([FeedItem]?) -> ()) {
         let postRef = firestoreDatabase.collection(FirestorePostsCollection)
         let feedQuery = postRef.whereField("sharedWith", arrayContains: userID)
             .limit(to: 30)
@@ -100,31 +102,33 @@ class FirestoreControllerSingleton {
         
         feedQuery.getDocuments() { (feedSnapshot, error) in
             guard let feedSnapshot = feedSnapshot, error == nil else {
+                completion(nil)
                 return
             }
             
             personalQuery.getDocuments() { (personalSnapshot, error) in
                 guard let personalSnapshot = personalSnapshot, error == nil else {
+                    completion(nil)
                     return
                 }
                 
                 do {
                     let documents = personalSnapshot.documents + feedSnapshot.documents
-                    var
+                    var feed = [FeedItem]()
                     
-                    for item in feed {
+                    for item in documents {
                         let post = try FirestoreDecoder().decode(Post.self, from: item.data())
                         
+                        feed.append(FeedItem(post: post, postImage: self.storageController.getPostImageRef(postID: item.documentID)))
                     }
                     
-                    //var feed = feedPosts + personalPosts
-                    //feed.sort(by: {$0.timestamp > $1.timestamp})
-                    
-                
+                    feed.sort(by: {$0.post.timestamp > $1.post.timestamp})
+                    feed = feed.dropLast(30)
+                    completion(feed)
                 } catch {
-                    
+                    completion(nil)
                 }
             }
         }
-    }*/
+    }
 }

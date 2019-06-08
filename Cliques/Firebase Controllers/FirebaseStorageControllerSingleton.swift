@@ -45,7 +45,7 @@ class FirebaseStorageControllerSingleton {
     
     func uploadPostImage(userID: String, postID: String, image: UIImage, uploadCompletionHandler: @escaping(Bool)->()) {
         guard let imageData = image.pngData() else { return }
-        let postImageRef = getPostImageRef(userID: userID, postID: postID)
+        let postImageRef = getPostImageRef(postID: postID)
         postImageRef.putData(imageData, metadata: nil) { metadata, error in
             if let error = error {
                 debugPrint(error)
@@ -56,7 +56,7 @@ class FirebaseStorageControllerSingleton {
         }
     }
     
-    func getPostImageRef(userID: String, postID: String) -> StorageReference {
+    func getPostImageRef(postID: String) -> StorageReference {
         let postImagesBucket = storage.reference().child(FirebaseStorageControllerSingleton.PostImageDir)
         return postImagesBucket.child(postID + ".png");
         

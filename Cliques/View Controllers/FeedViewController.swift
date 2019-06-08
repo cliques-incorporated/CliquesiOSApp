@@ -10,6 +10,11 @@ import UIKit
 
 class FeedViewController: UICollectionViewController {
     private var userModel: UserModelSingleton!
+    private var publicFeedModel: FeedModel?
+    private var familyFeedModel: FeedModel?
+    private var closeFriendsFeedModel: FeedModel?
+    private var friendsFeedModel: FeedModel?
+    
     @IBOutlet var FeedSelectionButton: SelectFeedButtonView!
     
     override func viewDidLoad() {
@@ -17,6 +22,13 @@ class FeedViewController: UICollectionViewController {
         
         userModel = UserModelSingleton.GetInstance()
         FeedSelectionButton.FeedSelectionChanged = FeedSelectionChanged
+        
+        publicFeedModel = FeedModel(clique: .Public, updateCompletionHandler: feedUpdated)
+        familyFeedModel = FeedModel(clique: .Family, updateCompletionHandler: feedUpdated)
+        closeFriendsFeedModel = FeedModel(clique: .CloseFriends, updateCompletionHandler: feedUpdated)
+        friendsFeedModel = FeedModel(clique: .Friends, updateCompletionHandler: feedUpdated)
+        
+        updateFeeds()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -32,6 +44,23 @@ class FeedViewController: UICollectionViewController {
     
     private func FeedSelectionChanged(selectedClique: CliqueUtility.CliqueTitles) {
         debugPrint(selectedClique.rawValue)
+    }
+    
+    
+    private func feedUpdated(success: Bool) {
+        guard success else {
+            return
+        }
+        
+        
+        
+    }
+    
+    private func updateFeeds() {
+        publicFeedModel?.update()
+        friendsFeedModel?.update()
+        familyFeedModel?.update()
+        closeFriendsFeedModel?.update()
     }
 }
 
