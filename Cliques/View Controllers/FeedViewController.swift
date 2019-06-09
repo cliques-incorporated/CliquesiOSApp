@@ -22,11 +22,13 @@ class FeedViewController: UICollectionViewController {
         
         userModel = UserModelSingleton.GetInstance()
         FeedSelectionButton.FeedSelectionChanged = FeedSelectionChanged
+        var feedFactory = FeedFactory(feedUpdatedHandler: feedUpdated(success:))
         
-        publicFeedModel = FeedModel(clique: .Public, updateCompletionHandler: feedUpdated)
-        familyFeedModel = FeedModel(clique: .Family, updateCompletionHandler: feedUpdated)
-        closeFriendsFeedModel = FeedModel(clique: .CloseFriends, updateCompletionHandler: feedUpdated)
-        friendsFeedModel = FeedModel(clique: .Friends, updateCompletionHandler: feedUpdated)
+        //using the factory!
+        publicFeedModel = feedFactory.makeFeedModel(clique: .Public)
+        friendsFeedModel = feedFactory.makeFeedModel(clique: .Friends)
+        closeFriendsFeedModel = feedFactory.makeFeedModel(clique: .CloseFriends)
+        familyFeedModel = feedFactory.makeFeedModel(clique: .Family)
         
         updateFeeds()
     }

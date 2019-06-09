@@ -3,11 +3,35 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3B7AA14D40A8E30D20F94D68 /* Pods_Cliques.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF610733C7DEF27E80AC8C0B /* Pods_Cliques.framework */; };
+		53979BB822AC6DEF004C1B08 /* CliqueUtilitiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53979BB722AC6DEF004C1B08 /* CliqueUtilitiesTest.swift */; };
+		53979BD622AC7732004C1B08 /* FeedFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53979BD522AC7732004C1B08 /* FeedFactory.swift */; };
+		53979BDB22AC7D6C004C1B08 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585745D22AB180900783ED0 /* FeedModel.swift */; };
+		53979BDC22AC7D71004C1B08 /* CliqueUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585726622AAD23500783ED0 /* CliqueUtility.swift */; };
+		53979BDD22AC7D79004C1B08 /* FeedFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53979BD522AC7732004C1B08 /* FeedFactory.swift */; };
+		53979BE022AC7DAA004C1B08 /* FeedFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53979BDE22AC7DAA004C1B08 /* FeedFactoryTests.swift */; };
+		53979BE222AC8425004C1B08 /* UserModelSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E8228787B30078E3E9 /* UserModelSingleton.swift */; };
+		53979BE322AC8465004C1B08 /* FirestoreControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C822874F4A00A02532 /* FirestoreControllerSingleton.swift */; };
+		53979BE422AC8468004C1B08 /* FirebaseStorageControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E6228758B90078E3E9 /* FirebaseStorageControllerSingleton.swift */; };
+		53979BE522AC846B004C1B08 /* FirebaseLoginControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BA2284E2E600A02532 /* FirebaseLoginControllerSingleton.swift */; };
+		53979BE622AC846E004C1B08 /* AddConnectionSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5730FD2228F104B00F74FCF /* AddConnectionSearchViewController.swift */; };
+		53979BE722AC8471004C1B08 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B980D3228245960076BA1B /* LoginViewController.swift */; };
+		53979BE822AC8474004C1B08 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEF225D53B90063D9FA /* ConnectionsViewController.swift */; };
+		53979BE922AC8477004C1B08 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C02286639D00A02532 /* NewUserViewController.swift */; };
+		53979BEA22AC847A004C1B08 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BE2286215100A02532 /* ProfileViewController.swift */; };
+		53979BEB22AC847D004C1B08 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD1BD92288E18B00419653 /* NewPostViewController.swift */; };
+		53979BEC22AC8481004C1B08 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EED225D53B90063D9FA /* FeedViewController.swift */; };
+		53979BED22AC8484004C1B08 /* OverviewTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */; };
+		53979BEE22AC848D004C1B08 /* SelectFeedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585726422AAD0EA00783ED0 /* SelectFeedButtonView.swift */; };
+		53979BEF22AC8490004C1B08 /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3B8C5228A0E9700CD2883 /* ToggleButtonView.swift */; };
+		53979BF022AC8493004C1B08 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */; };
+		53979BF122AC8496004C1B08 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B861E7228A6039006C6FD5 /* PlaceholderTextView.swift */; };
+		53979BF222AC849D004C1B08 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535509022A99E1C00F413A3 /* PostModel.swift */; };
+		53979BF322AC84B0004C1B08 /* ImageRequestUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C22287230A00A02532 /* ImageRequestUtility.swift */; };
 		F07492FCBEAE2047AB3E3C75 /* Pods_CliquesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BDEBE940CEC60DD5259187 /* Pods_CliquesTests.framework */; };
 		F501E0E7228758B90078E3E9 /* FirebaseStorageControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E6228758B90078E3E9 /* FirebaseStorageControllerSingleton.swift */; };
 		F501E0E9228787B30078E3E9 /* UserModelSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E8228787B30078E3E9 /* UserModelSingleton.swift */; };
@@ -51,6 +75,9 @@
 /* Begin PBXFileReference section */
 		3C78BBEA7CB8DC54EA88CC7A /* Pods-CliquesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CliquesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CliquesTests/Pods-CliquesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0201FED6B79770A2303911 /* Pods-Cliques.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cliques.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cliques/Pods-Cliques.release.xcconfig"; sourceTree = "<group>"; };
+		53979BB722AC6DEF004C1B08 /* CliqueUtilitiesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CliqueUtilitiesTest.swift; sourceTree = "<group>"; };
+		53979BD522AC7732004C1B08 /* FeedFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedFactory.swift; path = Cliques/Factories/FeedFactory.swift; sourceTree = SOURCE_ROOT; };
+		53979BDE22AC7DAA004C1B08 /* FeedFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFactoryTests.swift; sourceTree = "<group>"; };
 		A08E64D628FE950F702AFDE1 /* Pods-Cliques.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cliques.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cliques/Pods-Cliques.debug.xcconfig"; sourceTree = "<group>"; };
 		B75CA1BC463FD5D245C6F611 /* Pods-CliquesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CliquesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CliquesTests/Pods-CliquesTests.release.xcconfig"; sourceTree = "<group>"; };
 		D0BDEBE940CEC60DD5259187 /* Pods_CliquesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CliquesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +136,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53979BD122AC7531004C1B08 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				53979BD522AC7732004C1B08 /* FeedFactory.swift */,
+			);
+			name = Factories;
+			path = ../Factories;
+			sourceTree = "<group>";
+		};
 		55FFB1E0C81D872B984E9AD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +249,7 @@
 				F5BEC2C62287416500A02532 /* Assets.xcassets */,
 				F5BEC2B92284E04000A02532 /* Cliques.entitlements */,
 				F5970EEB225D53B90063D9FA /* AppDelegate.swift */,
+				53979BD122AC7531004C1B08 /* Factories */,
 				F5730FD0228E514A00F74FCF /* Models */,
 				F5730FCE228E510800F74FCF /* Views */,
 				F5730FCC228E4FE800F74FCF /* View Controllers */,
@@ -227,8 +264,10 @@
 		F5970F01225D53BB0063D9FA /* CliquesTests */ = {
 			isa = PBXGroup;
 			children = (
+				53979BB722AC6DEF004C1B08 /* CliqueUtilitiesTest.swift */,
 				F5970F02225D53BB0063D9FA /* CliquesTests.swift */,
 				F5970F04225D53BC0063D9FA /* Info.plist */,
+				53979BDE22AC7DAA004C1B08 /* FeedFactoryTests.swift */,
 			);
 			path = CliquesTests;
 			sourceTree = "<group>";
@@ -369,38 +408,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Cliques/Pods-Cliques-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
-				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Cliques/Pods-Cliques-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Cliques/Pods-Cliques-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cliques/Pods-Cliques-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cliques/Pods-Cliques-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8473C4400E140E760CB5F621 /* [CP] Check Pods Manifest.lock */ = {
@@ -431,20 +447,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Cliques/Pods-Cliques-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-Cliques/Pods-Cliques-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-Cliques/Pods-Cliques-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cliques/Pods-Cliques-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cliques/Pods-Cliques-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -464,6 +475,7 @@
 				F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */,
 				F5970EF0225D53B90063D9FA /* ConnectionsViewController.swift in Sources */,
 				F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */,
+				53979BD622AC7732004C1B08 /* FeedFactory.swift in Sources */,
 				F5E3B8C6228A0E9700CD2883 /* ToggleButtonView.swift in Sources */,
 				F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */,
 				F5B861E8228A6039006C6FD5 /* PlaceholderTextView.swift in Sources */,
@@ -482,7 +494,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53979BE722AC8471004C1B08 /* LoginViewController.swift in Sources */,
 				F5970F03225D53BB0063D9FA /* CliquesTests.swift in Sources */,
+				53979BDD22AC7D79004C1B08 /* FeedFactory.swift in Sources */,
+				53979BE022AC7DAA004C1B08 /* FeedFactoryTests.swift in Sources */,
+				53979BE822AC8474004C1B08 /* ConnectionsViewController.swift in Sources */,
+				53979BF222AC849D004C1B08 /* PostModel.swift in Sources */,
+				53979BEB22AC847D004C1B08 /* NewPostViewController.swift in Sources */,
+				53979BEF22AC8490004C1B08 /* ToggleButtonView.swift in Sources */,
+				53979BF022AC8493004C1B08 /* CircularProfileImageView.swift in Sources */,
+				53979BE622AC846E004C1B08 /* AddConnectionSearchViewController.swift in Sources */,
+				53979BF122AC8496004C1B08 /* PlaceholderTextView.swift in Sources */,
+				53979BE922AC8477004C1B08 /* NewUserViewController.swift in Sources */,
+				53979BED22AC8484004C1B08 /* OverviewTabBarController.swift in Sources */,
+				53979BE322AC8465004C1B08 /* FirestoreControllerSingleton.swift in Sources */,
+				53979BEC22AC8481004C1B08 /* FeedViewController.swift in Sources */,
+				53979BEE22AC848D004C1B08 /* SelectFeedButtonView.swift in Sources */,
+				53979BE222AC8425004C1B08 /* UserModelSingleton.swift in Sources */,
+				53979BE422AC8468004C1B08 /* FirebaseStorageControllerSingleton.swift in Sources */,
+				53979BE522AC846B004C1B08 /* FirebaseLoginControllerSingleton.swift in Sources */,
+				53979BDC22AC7D71004C1B08 /* CliqueUtility.swift in Sources */,
+				53979BF322AC84B0004C1B08 /* ImageRequestUtility.swift in Sources */,
+				53979BEA22AC847A004C1B08 /* ProfileViewController.swift in Sources */,
+				53979BDB22AC7D6C004C1B08 /* FeedModel.swift in Sources */,
+				53979BB822AC6DEF004C1B08 /* CliqueUtilitiesTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
