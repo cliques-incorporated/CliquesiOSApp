@@ -15,12 +15,15 @@ class FirestoreControllerSingleton {
     private let firestoreDatabase: Firestore
     private let FirestoreUsersCollection = "users"
     private let FirestorePostsCollection = "posts"
+    private let storageController: FirebaseStorageControllerSingleton
     
     private init() {
         firestoreDatabase = Firestore.firestore()
         let settings = firestoreDatabase.settings
         settings.areTimestampsInSnapshotsEnabled = true
+        settings.isPersistenceEnabled = true
         firestoreDatabase.settings = settings
+        storageController = FirebaseStorageControllerSingleton.GetInstance()
     }
     
     public static func GetInstance() -> FirestoreControllerSingleton {
@@ -32,32 +35,41 @@ class FirestoreControllerSingleton {
         }
     }
     
-    func addUserData(phoneNumber: String, firstName: String, lastName: String, bio: String, photoURL: URL, completionHandler: @escaping (Error?)->()) {
-        firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).setData([
-            "id": phoneNumber,
-            "first": firstName,
-            "last": lastName,
-            "bio": bio,
-            "profileImageURL": photoURL.absoluteString
-        ]) { err in
-            completionHandler(err)
+    func addUserData(profile: UserProfile, completionHandler: @escaping (_ success: Bool)->()) {
+        guard let uniqueID = profile.uniqueID else {
+            completionHandler(false)
+            return
+        }
+        
+        do {
+            let profileData = try FirestoreEncoder().encode(profile);
+    firestoreDatabase.collection(FirestoreUsersCollection).document(uniqueID).setData(profileData) { err in
+                completionHandler(err == nil)
+            }
+        } catch {
+            completionHandler(false)
         }
     }
     
-    func doesUserProfileExist(phoneNumber: String, completionHandler: @escaping (Bool?) -> ()){
-        firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).getDocument { (document, error) in
+    func doesUserProfileExist(uniqueID: String, completionHandler: @escaping (Bool?) -> ()){
+        firestoreDatabase.collection(FirestoreUsersCollection).document(uniqueID).getDocument { (document, error) in
             completionHandler(document?.exists)
         }
     }
     
-    func getUserProfileData(phoneNumber: String, completionHandler: @escaping (UserProfile?) -> ()) {
-        firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).getDocument { (document, error) in
+    func getUserProfileData(uniqueID: String, completionHandler: @escaping (UserProfile?) -> ()) {
+        firestoreDatabase.collection(FirestoreUsersCollection).document(uniqueID).getDocument { (document, error) in
             guard let document = document, document.exists, let data = document.data() else {
                 completionHandler(nil)
                 return
             }
             
-            completionHandler(UserProfile(from: data))
+            do {
+                let profile = try FirestoreDecoder().decode(UserProfile.self, from: data)
+                completionHandler(profile)
+            } catch {
+                completionHandler(nil)
+            }
         }
     }
     
@@ -65,8 +77,7 @@ class FirestoreControllerSingleton {
         do {
             let postData = try FirestoreEncoder().encode(post);
             var ref: DocumentReference? = nil
-            ref = firestoreDatabase.collection(FirestorePostsCollection).document(authorID)
-                .collection(FirestorePostsCollection).addDocument(data: postData) { err in
+            ref = firestoreDatabase.collection(FirestorePostsCollection).addDocument(data: postData) { err in
                     if(err == nil) {
                         completionHandler(ref?.documentID)
                     } else {
@@ -75,6 +86,53 @@ class FirestoreControllerSingleton {
             }
         } catch {
             completionHandler(nil)
+        }
+    }
+    
+    func getUserFeed(userID: String, usersInFeed: [String], clique: CliqueUtility.CliqueTitles, completion: @escaping ([FeedItem]?) -> ()) {
+        let postRef = firestoreDatabase.collection(FirestorePostsCollection)
+        let feedQuery = postRef.whereField("sharedWith", arrayContains: userID)
+            .limit(to: 30)
+            .order(by: "timestamp")
+        
+    
+        let personalQuery = postRef.whereField("authorID", isEqualTo: userID)
+            .whereField(CliqueUtility.GetDatabaseString(clique: clique), isEqualTo: true)
+            .limit(to: 30)
+            .order(by: "timestamp")
+        
+        feedQuery.getDocuments() { (feedSnapshot, error) in
+            guard let feedSnapshot = feedSnapshot, error == nil else {
+                completion(nil)
+                return
+            }
+            
+            personalQuery.getDocuments() { (personalSnapshot, error) in
+                guard let personalSnapshot = personalSnapshot, error == nil else {
+                    completion(nil)
+                    return
+                }
+                
+                do {
+                    let documents = personalSnapshot.documents + feedSnapshot.documents
+                    var feed = [FeedItem]()
+                    
+                    for item in documents {
+                        let data = item.data()
+                        debugPrint(data.debugDescription)
+                        
+                        let post = try FirestoreDecoder().decode(Post.self, from: data)
+                        
+                        feed.append(FeedItem(post: post, postImage: self.storageController.getPostImageRef(postID: item.documentID), profileImage: self.storageController.getProfileImageRef(userID: post.authorID)))
+                    }
+                    
+                    feed.sort(by: {$0.post.timestamp > $1.post.timestamp})
+                    completion(feed)
+                } catch let error {
+                    debugPrint(error.localizedDescription)
+                    completion(nil)
+                }
+            }
         }
     }
 }

@@ -10,11 +10,15 @@ import Foundation
 import UIKit
 
 struct Post: Codable {
+    var authorID: String
+    var authorName: String
+    var timestamp: Double
     var caption: String
     var publicClique: Bool
     var friendsClique: Bool
     var closeFriendsClique: Bool
     var familyClique: Bool
+    var sharedWith: [String]
 }
 
 class PostModel {
@@ -28,8 +32,27 @@ class PostModel {
     init(image: UIImage, caption: String, publicClique: Bool = false, friendsClique: Bool = false, closeFriendsClique: Bool = false, familyClique: Bool = false) {
         firestoreController = FirestoreControllerSingleton.GetInstance()
         firebaseStorageController = FirebaseStorageControllerSingleton.GetInstance()
+        let userModel = UserModelSingleton.GetInstance()
         
-        post = Post(caption: caption, publicClique: publicClique, friendsClique: friendsClique, closeFriendsClique: closeFriendsClique, familyClique: familyClique)
+        
+        var sharedWith = [String]()
+        if(publicClique) {
+            sharedWith.append(contentsOf: userModel.getPublicClique())
+        }
+        
+        if(friendsClique) {
+            sharedWith.append(contentsOf: userModel.getFriendsClique())
+        }
+        
+        if(closeFriendsClique) {
+            sharedWith.append(contentsOf: userModel.getCloseFriendsClique())
+        }
+        
+        if(familyClique) {
+            sharedWith.append(contentsOf: userModel.getFamilyClique())
+        }
+        
+        post = Post(authorID: userModel.getPhoneNumber(), authorName: userModel.getName(), timestamp: NSDate().timeIntervalSince1970,  caption: caption, publicClique: publicClique, friendsClique: friendsClique, closeFriendsClique: closeFriendsClique, familyClique: familyClique, sharedWith: sharedWith)
         
         self.image = image
         self.authorID = UserModelSingleton.GetInstance().getPhoneNumber()

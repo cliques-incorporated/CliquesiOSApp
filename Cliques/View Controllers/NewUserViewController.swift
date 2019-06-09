@@ -115,21 +115,21 @@ class NewUserViewController: UIViewController {
         }
         
         displayUploadingIndicator()
-        firebaseStorageController?.uploadProfileImage(phoneNumber: phoneNumber, profileImage: image, uploadCompletionHandler: profileImageUploaded)
+        firebaseStorageController?.uploadProfileImage(userID: phoneNumber, profileImage: image, uploadCompletionHandler: profileImageUploaded)
     }
     
     private func profileImageUploaded(imageURL: URL?) {
-        guard let imageURL = imageURL else {
+        guard imageURL != nil else {
             hideUploadingIndicator()
             displayErrorAlert()
             return
         }
         
-        firestoreController?.addUserData(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, bio: bio, photoURL: imageURL, completionHandler: userProfileDataUploaded)
+        firestoreController?.addUserData(profile: UserProfile(first: firstName, last: lastName, bio: bio, uniqueID: phoneNumber, friendsClique: [""], familyClique: [""], closeFriendsClique: [""], publicClique: [""]), completionHandler: userProfileDataUploaded)
     }
     
-    private func userProfileDataUploaded(error: Error?) {
-        guard error == nil else {
+    private func userProfileDataUploaded(success: Bool) {
+        guard success else {
             hideUploadingIndicator()
             displayErrorAlert()
             return
