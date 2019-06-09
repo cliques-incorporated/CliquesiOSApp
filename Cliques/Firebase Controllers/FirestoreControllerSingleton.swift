@@ -21,6 +21,7 @@ class FirestoreControllerSingleton {
         firestoreDatabase = Firestore.firestore()
         let settings = firestoreDatabase.settings
         settings.areTimestampsInSnapshotsEnabled = true
+        settings.isPersistenceEnabled = true
         firestoreDatabase.settings = settings
         storageController = FirebaseStorageControllerSingleton.GetInstance()
     }
@@ -117,15 +118,18 @@ class FirestoreControllerSingleton {
                     var feed = [FeedItem]()
                     
                     for item in documents {
-                        let post = try FirestoreDecoder().decode(Post.self, from: item.data())
+                        let data = item.data()
+                        debugPrint(data.debugDescription)
                         
-                        feed.append(FeedItem(post: post, postImage: self.storageController.getPostImageRef(postID: item.documentID)))
+                        let post = try FirestoreDecoder().decode(Post.self, from: data)
+                        
+                        feed.append(FeedItem(post: post, postImage: self.storageController.getPostImageRef(postID: item.documentID), profileImage: self.storageController.getProfileImageRef(userID: post.authorID)))
                     }
                     
                     feed.sort(by: {$0.post.timestamp > $1.post.timestamp})
-                    feed = feed.dropLast(30)
                     completion(feed)
-                } catch {
+                } catch let error {
+                    debugPrint(error.localizedDescription)
                     completion(nil)
                 }
             }

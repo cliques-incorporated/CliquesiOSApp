@@ -36,6 +36,7 @@
 		F501E0E7228758B90078E3E9 /* FirebaseStorageControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E6228758B90078E3E9 /* FirebaseStorageControllerSingleton.swift */; };
 		F501E0E9228787B30078E3E9 /* UserModelSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E8228787B30078E3E9 /* UserModelSingleton.swift */; };
 		F501E0EB22878F730078E3E9 /* OverviewTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */; };
+		F51F667D22AC6F0500B8D69B /* FeedItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F667C22AC6F0500B8D69B /* FeedItemTableViewCell.swift */; };
 		F535509122A99E1C00F413A3 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535509022A99E1C00F413A3 /* PostModel.swift */; };
 		F5588342228C7AE9006B99B3 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */; };
 		F5730FD4228F104B00F74FCF /* AddConnectionSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5730FD2228F104B00F74FCF /* AddConnectionSearchViewController.swift */; };
@@ -85,6 +86,7 @@
 		F501E0E6228758B90078E3E9 /* FirebaseStorageControllerSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageControllerSingleton.swift; sourceTree = "<group>"; };
 		F501E0E8228787B30078E3E9 /* UserModelSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelSingleton.swift; sourceTree = "<group>"; };
 		F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTabBarController.swift; sourceTree = "<group>"; };
+		F51F667C22AC6F0500B8D69B /* FeedItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemTableViewCell.swift; sourceTree = "<group>"; };
 		F535509022A99E1C00F413A3 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
 		F5730FD2228F104B00F74FCF /* AddConnectionSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConnectionSearchViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */,
 				F5E3B8C5228A0E9700CD2883 /* ToggleButtonView.swift */,
 				F585726422AAD0EA00783ED0 /* SelectFeedButtonView.swift */,
+				F51F667C22AC6F0500B8D69B /* FeedItemTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				F5588342228C7AE9006B99B3 /* CircularProfileImageView.swift in Sources */,
 				F5BEC2C32287230A00A02532 /* ImageRequestUtility.swift in Sources */,
 				F501E0E9228787B30078E3E9 /* UserModelSingleton.swift in Sources */,
+				F51F667D22AC6F0500B8D69B /* FeedItemTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

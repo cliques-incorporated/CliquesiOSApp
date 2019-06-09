@@ -12,6 +12,7 @@ import Firebase
 struct FeedItem {
     let post: Post
     let postImage: StorageReference
+    let profileImage: StorageReference
 }
 
 class FeedModel {
