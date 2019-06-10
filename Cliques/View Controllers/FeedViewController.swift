@@ -10,10 +10,7 @@ import UIKit
 
 class FeedViewController: UITableViewController {
     private var userModel: UserModelSingleton!
-    private var publicFeedModel: FeedModel?
-    private var familyFeedModel: FeedModel?
-    private var closeFriendsFeedModel: FeedModel?
-    private var friendsFeedModel: FeedModel?
+    private var feedModel: FeedModelSingleton!
     @IBOutlet var FeedTableView: UITableView!
     
     @IBOutlet var FeedSelectionButton: SelectFeedButtonView!
@@ -21,14 +18,9 @@ class FeedViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         userModel = UserModelSingleton.GetInstance()
+        feedModel = FeedModelSingleton.GetInstance()
         FeedSelectionButton.FeedSelectionChanged = FeedSelectionChanged
-        let feedFactory = FeedFactory(feedUpdatedHandler: feedUpdated(success:))
         
-        //using the factory!
-        publicFeedModel = feedFactory.makeFeedModel(clique: .Public)
-        friendsFeedModel = feedFactory.makeFeedModel(clique: .Friends)
-        closeFriendsFeedModel = feedFactory.makeFeedModel(clique: .CloseFriends)
-        familyFeedModel = feedFactory.makeFeedModel(clique: .Family)
         
         updateFeeds()
     }
@@ -63,10 +55,7 @@ class FeedViewController: UITableViewController {
     }
     
     private func updateFeeds() {
-        publicFeedModel?.update()
-        friendsFeedModel?.update()
-        familyFeedModel?.update()
-        closeFriendsFeedModel?.update()
+        feedModel.update(completionHandler: feedUpdated)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -74,16 +63,7 @@ class FeedViewController: UITableViewController {
     }
     
     private func getCurrentFeed() -> [FeedItem] {
-        switch FeedSelectionButton.getSelectedClique() {
-        case .CloseFriends:
-            return closeFriendsFeedModel?.getFeed() ?? [FeedItem]()
-        case .Public:
-            return publicFeedModel?.getFeed() ?? [FeedItem]()
-        case .Family:
-            return familyFeedModel?.getFeed() ?? [FeedItem]()
-        case .Friends:
-            return friendsFeedModel?.getFeed() ?? [FeedItem]()
-        }
+        return feedModel.getFeed(clique: FeedSelectionButton.getSelectedClique())
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
