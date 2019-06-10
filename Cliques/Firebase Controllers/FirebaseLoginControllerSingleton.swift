@@ -9,7 +9,19 @@
 import FirebaseAuth
 import Firebase
 
-class FirebaseLoginController {
+class FirebaseLoginControllerSingleton {
+    private static var uniqueInstance: FirebaseLoginControllerSingleton?
+    
+    private init() {}
+    public static func GetInstance() -> FirebaseLoginControllerSingleton {
+        if let initializedUniqueInstance = uniqueInstance {
+            return initializedUniqueInstance
+        } else {
+            uniqueInstance = FirebaseLoginControllerSingleton()
+            return uniqueInstance!
+        }
+    }
+    
     func verifyPhoneNumber(phoneNumber: String, verificationRequestSuccess:@escaping (Error?)->()) {
         let number = "+1" + phoneNumber
         
@@ -32,7 +44,7 @@ class FirebaseLoginController {
         
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: verificationCode)
         
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+        Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
             }
@@ -41,7 +53,7 @@ class FirebaseLoginController {
         }
     }
     
-    func signOut() {
+    static func signOut() {
         do {
             try Auth.auth().signOut()
         } catch let error {

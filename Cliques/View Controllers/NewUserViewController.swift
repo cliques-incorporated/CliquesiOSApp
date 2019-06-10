@@ -5,7 +5,6 @@
 //  Created by Ethan Kusters on 5/10/19.
 //  Copyright © 2019 Ethan Kusters. All rights reserved.
 //
-
 import UIKit
 import Firebase
 import Photos
@@ -27,8 +26,8 @@ class NewUserViewController: UIViewController {
     private let allFieldsRequiredAlert = UIAlertController(title: "We're missing something...", message: "All fields are required!", preferredStyle: .alert)
     private let errorAlert = UIAlertController(title: "Uh oh!", message: "Something went wrong. Please try again.", preferredStyle: .alert)
     
-    private var firestoreController: FirestoreController?
-    private var firebaseStorageController: FirebaseStorageController?
+    private var firestoreController: FirestoreControllerSingleton?
+    private var firebaseStorageController: FirebaseStorageControllerSingleton?
     
     public var firstName = ""
     public var lastName = ""
@@ -48,8 +47,8 @@ class NewUserViewController: UIViewController {
             imageSelected = true
             ProfileImageView.image = profileImage
         }
-        firestoreController = FirestoreController()
-        firebaseStorageController = FirebaseStorageController()
+        firestoreController = FirestoreControllerSingleton.GetInstance()
+        firebaseStorageController = FirebaseStorageControllerSingleton.GetInstance()
         
         // Do any additional setup after loading the view.
         allFieldsRequiredAlert.addAction((UIAlertAction(title: "Got It", style: .cancel, handler: nil)))
@@ -116,21 +115,21 @@ class NewUserViewController: UIViewController {
         }
         
         displayUploadingIndicator()
-        firebaseStorageController?.uploadProfileImage(phoneNumber: phoneNumber, profileImage: image, uploadCompletionHandler: profileImageUploaded)
+        firebaseStorageController?.uploadProfileImage(userID: phoneNumber, profileImage: image, uploadCompletionHandler: profileImageUploaded)
     }
     
     private func profileImageUploaded(imageURL: URL?) {
-        guard let imageURL = imageURL else {
+        guard imageURL != nil else {
             hideUploadingIndicator()
             displayErrorAlert()
             return
         }
         
-        firestoreController?.addUserData(phoneNumber: phoneNumber, firstName: firstName, lastName: lastName, bio: bio, photoURL: imageURL, completionHandler: userProfileDataUploaded)
+        firestoreController?.addUserData(profile: UserProfile(first: firstName, last: lastName, bio: bio, uniqueID: phoneNumber, friendsClique: [""], familyClique: [""], closeFriendsClique: [""], publicClique: [""]), completionHandler: userProfileDataUploaded)
     }
     
-    private func userProfileDataUploaded(error: Error?) {
-        guard error == nil else {
+    private func userProfileDataUploaded(success: Bool) {
+        guard success else {
             hideUploadingIndicator()
             displayErrorAlert()
             return

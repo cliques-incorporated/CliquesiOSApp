@@ -5,7 +5,6 @@
 //  Created by Ethan Kusters on 5/10/19.
 //  Copyright © 2019 Ethan Kusters. All rights reserved.
 //
-
 import UIKit
 import FirebaseUI
 
@@ -15,16 +14,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var PhoneNumberLabel: UILabel!
     @IBOutlet weak var BioLabel: UILabel!
     
-    private var userModel: UserModel!
+    private var userModel: UserModelSingleton!
     
     private let editProfileOptionMenu = UIAlertController(title: nil, message: "Edit Profile", preferredStyle: .actionSheet)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let overviewController = tabBarController as? OverviewTabBarController {
-            self.userModel = overviewController.getUserModel()
-        }
+        userModel = UserModelSingleton.GetInstance()
         
         // Do any additional setup after loading the view.
         editProfileOptionMenu.addAction((UIAlertAction(title: "Edit Profile", style: .default, handler: editProfile)))
