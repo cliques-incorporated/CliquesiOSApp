@@ -342,6 +342,7 @@
                         </connections>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="qu5-O3-lSR">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="RefreshControlRefreshing:" destination="HSM-zE-GCq" eventType="valueChanged" id="YRo-dr-Wi1"/>
@@ -506,33 +507,82 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+15555555555" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aPb-f2-L61" userLabel="Phone Number Label">
-                                <rect key="frame" x="110" y="154" width="255" height="24"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aPb-f2-L61" userLabel="Bio Label">
+                                <rect key="frame" x="110" y="149" width="255" height="0.0"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sbl-Sr-gVF" userLabel="Bio Label">
-                                <rect key="frame" x="20" y="203" width="335" height="0.0"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HwP-dz-Ia0">
+                                <rect key="frame" x="0.0" y="188" width="375" height="541"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="BDW-n1-yPW">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="40"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserFeedCell" id="96R-9k-Bcv" customClass="UserFeedCollectionViewCell" customModule="Cliques" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="40" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HTC-TO-fo9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="HTC-TO-fo9" secondAttribute="trailing" id="07a-tk-65B"/>
+                                            <constraint firstAttribute="bottom" secondItem="HTC-TO-fo9" secondAttribute="bottom" id="6VB-En-XZu"/>
+                                            <constraint firstItem="HTC-TO-fo9" firstAttribute="leading" secondItem="96R-9k-Bcv" secondAttribute="leading" id="JDe-sD-D3i"/>
+                                            <constraint firstItem="HTC-TO-fo9" firstAttribute="top" secondItem="96R-9k-Bcv" secondAttribute="top" id="cLF-RQ-lTZ"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="image" destination="HTC-TO-fo9" id="SUu-lO-4b5"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="UserFeedHeader" id="jNA-9f-FjH" customClass="UserFeedHeaderViewCell" customModule="Cliques" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Public Clique" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFG-Od-JCl">
+                                            <rect key="frame" x="5" y="8" width="370" height="32"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="wFG-Od-JCl" firstAttribute="leading" secondItem="jNA-9f-FjH" secondAttribute="leading" constant="5" id="TkU-WY-G3W"/>
+                                        <constraint firstAttribute="trailing" secondItem="wFG-Od-JCl" secondAttribute="trailing" id="afO-LU-Bux"/>
+                                        <constraint firstAttribute="bottom" secondItem="wFG-Od-JCl" secondAttribute="bottom" id="fCA-OH-8en"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="headerText" destination="wFG-Od-JCl" id="fcU-i9-eIJ"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="sbl-Sr-gVF" firstAttribute="top" secondItem="Jln-O9-NiH" secondAttribute="bottom" constant="15" id="6bk-an-ahd"/>
                             <constraint firstItem="Jln-O9-NiH" firstAttribute="top" secondItem="QtC-P2-vOS" secondAttribute="top" constant="20" id="APX-JG-6xx"/>
-                            <constraint firstItem="sbl-Sr-gVF" firstAttribute="centerX" secondItem="kXR-At-0kV" secondAttribute="centerX" id="U8D-SD-NdG"/>
-                            <constraint firstItem="aPb-f2-L61" firstAttribute="top" secondItem="6UT-hN-xgm" secondAttribute="bottom" constant="10" id="Vwb-F6-wSB"/>
+                            <constraint firstItem="HwP-dz-Ia0" firstAttribute="leading" secondItem="QtC-P2-vOS" secondAttribute="leading" id="UqL-Cq-o4k"/>
+                            <constraint firstItem="aPb-f2-L61" firstAttribute="top" secondItem="6UT-hN-xgm" secondAttribute="bottom" constant="5" id="Vwb-F6-wSB"/>
+                            <constraint firstItem="QtC-P2-vOS" firstAttribute="bottom" secondItem="HwP-dz-Ia0" secondAttribute="bottom" id="bnY-ah-YmF"/>
                             <constraint firstItem="Jln-O9-NiH" firstAttribute="leading" secondItem="QtC-P2-vOS" secondAttribute="leading" constant="20" id="cAs-wu-jLB"/>
                             <constraint firstItem="6UT-hN-xgm" firstAttribute="top" secondItem="Jln-O9-NiH" secondAttribute="top" id="fTc-KS-25d"/>
                             <constraint firstItem="QtC-P2-vOS" firstAttribute="trailing" secondItem="aPb-f2-L61" secondAttribute="trailing" constant="10" id="fvi-KS-Jfd"/>
                             <constraint firstItem="6UT-hN-xgm" firstAttribute="leading" secondItem="Jln-O9-NiH" secondAttribute="trailing" constant="10" id="hMf-wN-Adz"/>
                             <constraint firstItem="aPb-f2-L61" firstAttribute="leading" secondItem="6UT-hN-xgm" secondAttribute="leading" id="kG5-DF-xZY"/>
                             <constraint firstItem="QtC-P2-vOS" firstAttribute="trailing" secondItem="6UT-hN-xgm" secondAttribute="trailing" constant="10" id="nCa-Ze-OaT"/>
-                            <constraint firstItem="sbl-Sr-gVF" firstAttribute="leading" secondItem="Jln-O9-NiH" secondAttribute="leading" id="yKP-gs-3qV"/>
+                            <constraint firstItem="HwP-dz-Ia0" firstAttribute="centerX" secondItem="kXR-At-0kV" secondAttribute="centerX" id="nRD-L6-1O5"/>
+                            <constraint firstItem="HwP-dz-Ia0" firstAttribute="top" secondItem="Jln-O9-NiH" secondAttribute="bottom" id="oly-Na-Jnv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QtC-P2-vOS"/>
                     </view>
@@ -544,10 +594,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="BioLabel" destination="sbl-Sr-gVF" id="8ab-OB-meC"/>
+                        <outlet property="BioLabel" destination="aPb-f2-L61" id="PRY-lq-0mI"/>
                         <outlet property="NameLabel" destination="6UT-hN-xgm" id="ybz-p0-cha"/>
-                        <outlet property="PhoneNumberLabel" destination="aPb-f2-L61" id="i4Q-vf-sUq"/>
                         <outlet property="ProfileImageView" destination="Jln-O9-NiH" id="ee9-qj-sXA"/>
+                        <outlet property="UserPostsCollectionView" destination="HwP-dz-Ia0" id="csr-RD-c6x"/>
                         <segue destination="6il-RT-V1U" kind="showDetail" identifier="GoToLogin" id="gpZ-DG-V9H"/>
                         <segue destination="Kiy-C6-Sxl" kind="presentation" identifier="GoToEditProfile" id="cTc-KW-Bob"/>
                     </connections>
@@ -718,6 +768,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="dVB-VV-s7T"/>
         <segue reference="7mc-Mb-yWf"/>
-        <segue reference="PyT-Ua-lHo"/>
+        <segue reference="gpZ-DG-V9H"/>
     </inferredMetricsTieBreakers>
 </document>

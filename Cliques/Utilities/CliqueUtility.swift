@@ -61,4 +61,19 @@ class CliqueUtility {
         }
     }
     
+    public static func GetCliqueForIndex(index: Int) -> CliqueTitles? {
+        switch index {
+        case 0:
+            return .Public
+        case 1:
+            return .Friends
+        case 2:
+            return .CloseFriends
+        case 3:
+            return .Family
+        default:
+            return nil
+        }
+    }
+    
 }
