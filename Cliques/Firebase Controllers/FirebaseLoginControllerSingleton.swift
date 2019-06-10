@@ -44,7 +44,7 @@ class FirebaseLoginControllerSingleton {
         
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: verificationCode)
         
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+        Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
             }

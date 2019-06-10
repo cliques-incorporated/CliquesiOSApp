@@ -20,7 +20,6 @@ class FirestoreControllerSingleton {
     private init() {
         firestoreDatabase = Firestore.firestore()
         let settings = firestoreDatabase.settings
-        settings.areTimestampsInSnapshotsEnabled = true
         settings.isPersistenceEnabled = true
         firestoreDatabase.settings = settings
         storageController = FirebaseStorageControllerSingleton.GetInstance()

@@ -22,7 +22,7 @@ class FeedViewController: UITableViewController {
         super.viewDidLoad()
         userModel = UserModelSingleton.GetInstance()
         FeedSelectionButton.FeedSelectionChanged = FeedSelectionChanged
-        var feedFactory = FeedFactory(feedUpdatedHandler: feedUpdated(success:))
+        let feedFactory = FeedFactory(feedUpdatedHandler: feedUpdated(success:))
         
         //using the factory!
         publicFeedModel = feedFactory.makeFeedModel(clique: .Public)
