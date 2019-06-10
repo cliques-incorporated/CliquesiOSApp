@@ -59,6 +59,7 @@
 		F5BEC2C32287230A00A02532 /* ImageRequestUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C22287230A00A02532 /* ImageRequestUtility.swift */; };
 		F5BEC2C72287416600A02532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5BEC2C62287416500A02532 /* Assets.xcassets */; };
 		F5BEC2C922874F4A00A02532 /* FirestoreControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C822874F4A00A02532 /* FirestoreControllerSingleton.swift */; };
+		F5C1A66022ADF9D200470CC7 /* FeedItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F667C22AC6F0500B8D69B /* FeedItemTableViewCell.swift */; };
 		F5E3B8C6228A0E9700CD2883 /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3B8C5228A0E9700CD2883 /* ToggleButtonView.swift */; };
 		F5FD1BDA2288E18B00419653 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FD1BD92288E18B00419653 /* NewPostViewController.swift */; };
 /* End PBXBuildFile section */
@@ -488,6 +489,7 @@
 				53979BF222AC849D004C1B08 /* PostModel.swift in Sources */,
 				53979BEB22AC847D004C1B08 /* NewPostViewController.swift in Sources */,
 				53979BEF22AC8490004C1B08 /* ToggleButtonView.swift in Sources */,
+				F5C1A66022ADF9D200470CC7 /* FeedItemTableViewCell.swift in Sources */,
 				53979BF022AC8493004C1B08 /* CircularProfileImageView.swift in Sources */,
 				53979BE622AC846E004C1B08 /* AddConnectionSearchViewController.swift in Sources */,
 				53979BF122AC8496004C1B08 /* PlaceholderTextView.swift in Sources */,
@@ -698,6 +700,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L7VPWUZ6Y2;
 				INFOPLIST_FILE = CliquesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -719,6 +722,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L7VPWUZ6Y2;
 				INFOPLIST_FILE = CliquesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
