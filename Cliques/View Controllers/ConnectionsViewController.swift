@@ -17,7 +17,6 @@ class ConnectionsViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
         self.definesPresentationContext = true
         searchController = UISearchController(searchResultsController: searchResultsController)
-        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.placeholder = "Add a Connection"

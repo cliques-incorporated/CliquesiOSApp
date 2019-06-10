@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 struct Post: Codable {
-    var author: String
+    var authorID: String
+    var authorName: String
     var timestamp: Double
     var caption: String
     var publicClique: Bool
@@ -51,7 +52,7 @@ class PostModel {
             sharedWith.append(contentsOf: userModel.getFamilyClique())
         }
         
-        post = Post(author: userModel.getPhoneNumber(), timestamp: NSDate().timeIntervalSince1970,  caption: caption, publicClique: publicClique, friendsClique: friendsClique, closeFriendsClique: closeFriendsClique, familyClique: familyClique, sharedWith: sharedWith)
+        post = Post(authorID: userModel.getPhoneNumber(), authorName: userModel.getName(), timestamp: NSDate().timeIntervalSince1970,  caption: caption, publicClique: publicClique, friendsClique: friendsClique, closeFriendsClique: closeFriendsClique, familyClique: familyClique, sharedWith: sharedWith)
         
         self.image = image
         self.authorID = UserModelSingleton.GetInstance().getPhoneNumber()

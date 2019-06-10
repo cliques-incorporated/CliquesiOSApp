@@ -15,12 +15,14 @@ class FirestoreControllerSingleton {
     private let firestoreDatabase: Firestore
     private let FirestoreUsersCollection = "users"
     private let FirestorePostsCollection = "posts"
+    private let storageController: FirebaseStorageControllerSingleton
     
     private init() {
         firestoreDatabase = Firestore.firestore()
         let settings = firestoreDatabase.settings
-        settings.areTimestampsInSnapshotsEnabled = true
+        settings.isPersistenceEnabled = true
         firestoreDatabase.settings = settings
+        storageController = FirebaseStorageControllerSingleton.GetInstance()
     }
     
     public static func GetInstance() -> FirestoreControllerSingleton {
@@ -33,14 +35,14 @@ class FirestoreControllerSingleton {
     }
     
     func addUserData(profile: UserProfile, completionHandler: @escaping (_ success: Bool)->()) {
-        guard let phoneNumber = profile.phoneNumber else {
+        guard let uniqueID = profile.uniqueID else {
             completionHandler(false)
             return
         }
         
         do {
             let profileData = try FirestoreEncoder().encode(profile);
-            firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).setData(profileData) { err in
+    firestoreDatabase.collection(FirestoreUsersCollection).document(uniqueID).setData(profileData) { err in
                 completionHandler(err == nil)
             }
         } catch {
@@ -48,14 +50,14 @@ class FirestoreControllerSingleton {
         }
     }
     
-    func doesUserProfileExist(phoneNumber: String, completionHandler: @escaping (Bool?) -> ()){
-        firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).getDocument { (document, error) in
+    func doesUserProfileExist(uniqueID: String, completionHandler: @escaping (Bool?) -> ()){
+        firestoreDatabase.collection(FirestoreUsersCollection).document(uniqueID).getDocument { (document, error) in
             completionHandler(document?.exists)
         }
     }
     
-    func getUserProfileData(phoneNumber: String, completionHandler: @escaping (UserProfile?) -> ()) {
-        firestoreDatabase.collection(FirestoreUsersCollection).document(phoneNumber).getDocument { (document, error) in
+    func getUserProfileData(uniqueID: String, completionHandler: @escaping (UserProfile?) -> ()) {
+        firestoreDatabase.collection(FirestoreUsersCollection).document(uniqueID).getDocument { (document, error) in
             guard let document = document, document.exists, let data = document.data() else {
                 completionHandler(nil)
                 return
@@ -83,6 +85,84 @@ class FirestoreControllerSingleton {
             }
         } catch {
             completionHandler(nil)
+        }
+    }
+    
+    func getUserPosts(userID: String, completion: @escaping ([UserPostItem]?) -> ()) {
+        let postRef = firestoreDatabase.collection(FirestorePostsCollection)
+        let postsQuery = postRef.whereField("authorID", isEqualTo: userID)
+            .limit(to: 200)
+            .order(by: "timestamp", descending: true)
+        
+        postsQuery.getDocuments() { (postsSnapshot, error) in
+            guard let postsSnapshot = postsSnapshot, error == nil else {
+                completion(nil)
+                return
+            }
+            
+            do {
+                var feed = [UserPostItem]()
+                
+                for item in postsSnapshot.documents {
+                    let data = item.data()
+                    debugPrint(data.debugDescription)
+                    
+                    let post = try FirestoreDecoder().decode(Post.self, from: data)
+                    feed.append(UserPostItem(post: post, postImage: self.storageController.getPostImageRef(postID: item.documentID)))
+                }
+                
+                completion(feed)
+            } catch let error {
+                debugPrint(error.localizedDescription)
+                completion(nil)
+            }
+            
+        }
+        
+    }
+    
+    func getUserFeed(userID: String, completion: @escaping ([FeedItem]?) -> ()) {
+        let postRef = firestoreDatabase.collection(FirestorePostsCollection)
+        let feedQuery = postRef.whereField("sharedWith", arrayContains: userID)
+            .limit(to: 200)
+            .order(by: "timestamp", descending: true)
+        
+    
+        let personalQuery = postRef.whereField("authorID", isEqualTo: userID)
+            .limit(to: 30)
+            .order(by: "timestamp", descending: true)
+        
+        feedQuery.getDocuments() { (feedSnapshot, error) in
+            guard let feedSnapshot = feedSnapshot, error == nil else {
+                completion(nil)
+                return
+            }
+            
+            personalQuery.getDocuments() { (personalSnapshot, error) in
+                guard let personalSnapshot = personalSnapshot, error == nil else {
+                    completion(nil)
+                    return
+                }
+                
+                do {
+                    let documents = personalSnapshot.documents + feedSnapshot.documents
+                    var feed = [FeedItem]()
+                    
+                    for item in documents {
+                        let data = item.data()
+                        debugPrint(data.debugDescription)
+                        
+                        let post = try FirestoreDecoder().decode(Post.self, from: data)
+                        
+                        feed.append(FeedItem(post: post, postImage: self.storageController.getPostImageRef(postID: item.documentID), profileImage: self.storageController.getProfileImageRef(userID: post.authorID)))
+                    }
+                    
+                    completion(feed)
+                } catch let error {
+                    debugPrint(error.localizedDescription)
+                    completion(nil)
+                }
+            }
         }
     }
 }

@@ -4,4 +4,6 @@ xcode_workspace: Cliques.xcworkspace
 xcode_scheme: Cliques
 xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone X
 before_install:
+- sudo gem install cocoapods
+- pod update
 - pod install

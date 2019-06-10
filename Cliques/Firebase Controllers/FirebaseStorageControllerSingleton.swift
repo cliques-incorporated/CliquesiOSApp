@@ -24,9 +24,9 @@ class FirebaseStorageControllerSingleton {
         }
     }
     
-    func uploadProfileImage(phoneNumber: String, profileImage: UIImage, uploadCompletionHandler: @escaping (URL?)->()) {
+    func uploadProfileImage(userID: String, profileImage: UIImage, uploadCompletionHandler: @escaping (URL?)->()) {
         guard let profileImageData = profileImage.pngData() else { return }
-        let profileImageRef = getProfileImageRef(phoneNumber: phoneNumber)
+        let profileImageRef = getProfileImageRef(userID: userID)
         profileImageRef.putData(profileImageData, metadata: nil) { metadata, error in
             if let error = error {
                 debugPrint(error)
@@ -38,14 +38,14 @@ class FirebaseStorageControllerSingleton {
         }
     }
     
-    func getProfileImageRef(phoneNumber: String) -> StorageReference {
+    func getProfileImageRef(userID: String) -> StorageReference {
         let profileImagesBucketRef = storage.reference().child(FirebaseStorageControllerSingleton.ProfileImageDir)
-        return profileImagesBucketRef.child(phoneNumber + ".png")
+        return profileImagesBucketRef.child(userID + ".png")
     }
     
     func uploadPostImage(userID: String, postID: String, image: UIImage, uploadCompletionHandler: @escaping(Bool)->()) {
         guard let imageData = image.pngData() else { return }
-        let postImageRef = getPostImageRef(userID: userID, postID: postID)
+        let postImageRef = getPostImageRef(postID: postID)
         postImageRef.putData(imageData, metadata: nil) { metadata, error in
             if let error = error {
                 debugPrint(error)
@@ -56,7 +56,7 @@ class FirebaseStorageControllerSingleton {
         }
     }
     
-    func getPostImageRef(userID: String, postID: String) -> StorageReference {
+    func getPostImageRef(postID: String) -> StorageReference {
         let postImagesBucket = storage.reference().child(FirebaseStorageControllerSingleton.PostImageDir)
         return postImagesBucket.child(postID + ".png");
         
