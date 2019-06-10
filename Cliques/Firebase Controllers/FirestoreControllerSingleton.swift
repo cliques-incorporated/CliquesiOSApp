@@ -88,15 +88,14 @@ class FirestoreControllerSingleton {
         }
     }
     
-    func getUserFeed(userID: String, usersInFeed: [String], clique: CliqueUtility.CliqueTitles, completion: @escaping ([FeedItem]?) -> ()) {
+    func getUserFeed(userID: String, completion: @escaping ([FeedItem]?) -> ()) {
         let postRef = firestoreDatabase.collection(FirestorePostsCollection)
         let feedQuery = postRef.whereField("sharedWith", arrayContains: userID)
-            .limit(to: 30)
+            .limit(to: 200)
             .order(by: "timestamp")
         
     
         let personalQuery = postRef.whereField("authorID", isEqualTo: userID)
-            .whereField(CliqueUtility.GetDatabaseString(clique: clique), isEqualTo: true)
             .limit(to: 30)
             .order(by: "timestamp")
         
@@ -125,7 +124,6 @@ class FirestoreControllerSingleton {
                         feed.append(FeedItem(post: post, postImage: self.storageController.getPostImageRef(postID: item.documentID), profileImage: self.storageController.getProfileImageRef(userID: post.authorID)))
                     }
                     
-                    feed.sort(by: {$0.post.timestamp > $1.post.timestamp})
                     completion(feed)
                 } catch let error {
                     debugPrint(error.localizedDescription)
