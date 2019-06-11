@@ -9,11 +9,8 @@
 /* Begin PBXBuildFile section */
 		3B7AA14D40A8E30D20F94D68 /* Pods_Cliques.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF610733C7DEF27E80AC8C0B /* Pods_Cliques.framework */; };
 		53979BB822AC6DEF004C1B08 /* CliqueUtilitiesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53979BB722AC6DEF004C1B08 /* CliqueUtilitiesTest.swift */; };
-		53979BD622AC7732004C1B08 /* FeedFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53979BD522AC7732004C1B08 /* FeedFactory.swift */; };
-		53979BDB22AC7D6C004C1B08 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585745D22AB180900783ED0 /* FeedModel.swift */; };
+		53979BDB22AC7D6C004C1B08 /* FeedModelSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585745D22AB180900783ED0 /* FeedModelSingleton.swift */; };
 		53979BDC22AC7D71004C1B08 /* CliqueUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585726622AAD23500783ED0 /* CliqueUtility.swift */; };
-		53979BDD22AC7D79004C1B08 /* FeedFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53979BD522AC7732004C1B08 /* FeedFactory.swift */; };
-		53979BE022AC7DAA004C1B08 /* FeedFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53979BDE22AC7DAA004C1B08 /* FeedFactoryTests.swift */; };
 		53979BE222AC8425004C1B08 /* UserModelSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E8228787B30078E3E9 /* UserModelSingleton.swift */; };
 		53979BE322AC8465004C1B08 /* FirestoreControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C822874F4A00A02532 /* FirestoreControllerSingleton.swift */; };
 		53979BE422AC8468004C1B08 /* FirebaseStorageControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E6228758B90078E3E9 /* FirebaseStorageControllerSingleton.swift */; };
@@ -32,18 +29,21 @@
 		53979BF122AC8496004C1B08 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B861E7228A6039006C6FD5 /* PlaceholderTextView.swift */; };
 		53979BF222AC849D004C1B08 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535509022A99E1C00F413A3 /* PostModel.swift */; };
 		53979BF322AC84B0004C1B08 /* ImageRequestUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C22287230A00A02532 /* ImageRequestUtility.swift */; };
+		AAFAE62922AC59FC0040FFBA /* UserConnectionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFAE62822AC59FC0040FFBA /* UserConnectionsTableViewController.swift */; };
 		F07492FCBEAE2047AB3E3C75 /* Pods_CliquesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0BDEBE940CEC60DD5259187 /* Pods_CliquesTests.framework */; };
 		F501E0E7228758B90078E3E9 /* FirebaseStorageControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E6228758B90078E3E9 /* FirebaseStorageControllerSingleton.swift */; };
 		F501E0E9228787B30078E3E9 /* UserModelSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0E8228787B30078E3E9 /* UserModelSingleton.swift */; };
 		F501E0EB22878F730078E3E9 /* OverviewTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */; };
 		F51F667D22AC6F0500B8D69B /* FeedItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F667C22AC6F0500B8D69B /* FeedItemTableViewCell.swift */; };
+		F534AE4222AEECE40061886B /* UserFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534AE4122AEECE40061886B /* UserFeedCollectionViewCell.swift */; };
+		F534AE4422AEED460061886B /* UserFeedHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534AE4322AEED460061886B /* UserFeedHeaderViewCell.swift */; };
 		F535509122A99E1C00F413A3 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535509022A99E1C00F413A3 /* PostModel.swift */; };
 		F5588342228C7AE9006B99B3 /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */; };
 		F5730FD4228F104B00F74FCF /* AddConnectionSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5730FD2228F104B00F74FCF /* AddConnectionSearchViewController.swift */; };
 		F5730FD5228F104B00F74FCF /* AddConnectionSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5730FD3228F104B00F74FCF /* AddConnectionSearchViewController.xib */; };
 		F585726522AAD0EA00783ED0 /* SelectFeedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585726422AAD0EA00783ED0 /* SelectFeedButtonView.swift */; };
 		F585726722AAD23500783ED0 /* CliqueUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585726622AAD23500783ED0 /* CliqueUtility.swift */; };
-		F585745E22AB180900783ED0 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585745D22AB180900783ED0 /* FeedModel.swift */; };
+		F585745E22AB180900783ED0 /* FeedModelSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585745D22AB180900783ED0 /* FeedModelSingleton.swift */; };
 		F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEB225D53B90063D9FA /* AppDelegate.swift */; };
 		F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EED225D53B90063D9FA /* FeedViewController.swift */; };
 		F5970EF0225D53B90063D9FA /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EEF225D53B90063D9FA /* ConnectionsViewController.swift */; };
@@ -51,6 +51,8 @@
 		F5970EF8225D53BB0063D9FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */; };
 		F5970F03225D53BB0063D9FA /* CliquesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970F02225D53BB0063D9FA /* CliquesTests.swift */; };
 		F59952502284DEDF008CC05D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F599524F2284DEDF008CC05D /* GoogleService-Info.plist */; };
+		F5A008EC22B02EB400279EDF /* UserFeedHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534AE4322AEED460061886B /* UserFeedHeaderViewCell.swift */; };
+		F5A008ED22B02EB700279EDF /* UserFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534AE4122AEECE40061886B /* UserFeedCollectionViewCell.swift */; };
 		F5B861E8228A6039006C6FD5 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B861E7228A6039006C6FD5 /* PlaceholderTextView.swift */; };
 		F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B980D3228245960076BA1B /* LoginViewController.swift */; };
 		F5BEC2BB2284E2E600A02532 /* FirebaseLoginControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BA2284E2E600A02532 /* FirebaseLoginControllerSingleton.swift */; };
@@ -78,9 +80,8 @@
 		3C78BBEA7CB8DC54EA88CC7A /* Pods-CliquesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CliquesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CliquesTests/Pods-CliquesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0201FED6B79770A2303911 /* Pods-Cliques.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cliques.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cliques/Pods-Cliques.release.xcconfig"; sourceTree = "<group>"; };
 		53979BB722AC6DEF004C1B08 /* CliqueUtilitiesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CliqueUtilitiesTest.swift; sourceTree = "<group>"; };
-		53979BD522AC7732004C1B08 /* FeedFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedFactory.swift; path = Cliques/Factories/FeedFactory.swift; sourceTree = SOURCE_ROOT; };
-		53979BDE22AC7DAA004C1B08 /* FeedFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFactoryTests.swift; sourceTree = "<group>"; };
 		A08E64D628FE950F702AFDE1 /* Pods-Cliques.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cliques.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cliques/Pods-Cliques.debug.xcconfig"; sourceTree = "<group>"; };
+		AAFAE62822AC59FC0040FFBA /* UserConnectionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserConnectionsTableViewController.swift; path = ../../UserConnectionsTableViewController.swift; sourceTree = "<group>"; };
 		B75CA1BC463FD5D245C6F611 /* Pods-CliquesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CliquesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CliquesTests/Pods-CliquesTests.release.xcconfig"; sourceTree = "<group>"; };
 		D0BDEBE940CEC60DD5259187 /* Pods_CliquesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CliquesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF610733C7DEF27E80AC8C0B /* Pods_Cliques.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cliques.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,13 +89,15 @@
 		F501E0E8228787B30078E3E9 /* UserModelSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelSingleton.swift; sourceTree = "<group>"; };
 		F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTabBarController.swift; sourceTree = "<group>"; };
 		F51F667C22AC6F0500B8D69B /* FeedItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemTableViewCell.swift; sourceTree = "<group>"; };
+		F534AE4122AEECE40061886B /* UserFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		F534AE4322AEED460061886B /* UserFeedHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedHeaderViewCell.swift; sourceTree = "<group>"; };
 		F535509022A99E1C00F413A3 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
 		F5730FD2228F104B00F74FCF /* AddConnectionSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConnectionSearchViewController.swift; sourceTree = "<group>"; };
 		F5730FD3228F104B00F74FCF /* AddConnectionSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddConnectionSearchViewController.xib; sourceTree = "<group>"; };
 		F585726422AAD0EA00783ED0 /* SelectFeedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeedButtonView.swift; sourceTree = "<group>"; };
 		F585726622AAD23500783ED0 /* CliqueUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliqueUtility.swift; sourceTree = "<group>"; };
-		F585745D22AB180900783ED0 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		F585745D22AB180900783ED0 /* FeedModelSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelSingleton.swift; sourceTree = "<group>"; };
 		F5970EE8225D53B90063D9FA /* Cliques.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cliques.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5970EEB225D53B90063D9FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5970EED225D53B90063D9FA /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -142,7 +145,6 @@
 		53979BD122AC7531004C1B08 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				53979BD522AC7732004C1B08 /* FeedFactory.swift */,
 			);
 			name = Factories;
 			path = ../Factories;
@@ -171,6 +173,7 @@
 		F5730FCC228E4FE800F74FCF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AAFAE62822AC59FC0040FFBA /* UserConnectionsTableViewController.swift */,
 				F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */,
 				F5970EED225D53B90063D9FA /* FeedViewController.swift */,
 				F5FD1BD92288E18B00419653 /* NewPostViewController.swift */,
@@ -194,6 +197,8 @@
 				F5E3B8C5228A0E9700CD2883 /* ToggleButtonView.swift */,
 				F585726422AAD0EA00783ED0 /* SelectFeedButtonView.swift */,
 				F51F667C22AC6F0500B8D69B /* FeedItemTableViewCell.swift */,
+				F534AE4122AEECE40061886B /* UserFeedCollectionViewCell.swift */,
+				F534AE4322AEED460061886B /* UserFeedHeaderViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,7 +218,7 @@
 			children = (
 				F501E0E8228787B30078E3E9 /* UserModelSingleton.swift */,
 				F535509022A99E1C00F413A3 /* PostModel.swift */,
-				F585745D22AB180900783ED0 /* FeedModel.swift */,
+				F585745D22AB180900783ED0 /* FeedModelSingleton.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -271,7 +276,6 @@
 				53979BB722AC6DEF004C1B08 /* CliqueUtilitiesTest.swift */,
 				F5970F02225D53BB0063D9FA /* CliquesTests.swift */,
 				F5970F04225D53BC0063D9FA /* Info.plist */,
-				53979BDE22AC7DAA004C1B08 /* FeedFactoryTests.swift */,
 			);
 			path = CliquesTests;
 			sourceTree = "<group>";
@@ -455,16 +459,18 @@
 				F535509122A99E1C00F413A3 /* PostModel.swift in Sources */,
 				F5FD1BDA2288E18B00419653 /* NewPostViewController.swift in Sources */,
 				F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */,
-				F585745E22AB180900783ED0 /* FeedModel.swift in Sources */,
+				F585745E22AB180900783ED0 /* FeedModelSingleton.swift in Sources */,
 				F5BEC2BB2284E2E600A02532 /* FirebaseLoginControllerSingleton.swift in Sources */,
 				F585726722AAD23500783ED0 /* CliqueUtility.swift in Sources */,
 				F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */,
 				F5970EF0225D53B90063D9FA /* ConnectionsViewController.swift in Sources */,
 				F5970EEC225D53B90063D9FA /* AppDelegate.swift in Sources */,
-				53979BD622AC7732004C1B08 /* FeedFactory.swift in Sources */,
+				F534AE4222AEECE40061886B /* UserFeedCollectionViewCell.swift in Sources */,
 				F5E3B8C6228A0E9700CD2883 /* ToggleButtonView.swift in Sources */,
+				AAFAE62922AC59FC0040FFBA /* UserConnectionsTableViewController.swift in Sources */,
 				F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */,
 				F5B861E8228A6039006C6FD5 /* PlaceholderTextView.swift in Sources */,
+				F534AE4422AEED460061886B /* UserFeedHeaderViewCell.swift in Sources */,
 				F585726522AAD0EA00783ED0 /* SelectFeedButtonView.swift in Sources */,
 				F5730FD4228F104B00F74FCF /* AddConnectionSearchViewController.swift in Sources */,
 				F5BEC2C12286639D00A02532 /* NewUserViewController.swift in Sources */,
@@ -483,13 +489,12 @@
 			files = (
 				53979BE722AC8471004C1B08 /* LoginViewController.swift in Sources */,
 				F5970F03225D53BB0063D9FA /* CliquesTests.swift in Sources */,
-				53979BDD22AC7D79004C1B08 /* FeedFactory.swift in Sources */,
-				53979BE022AC7DAA004C1B08 /* FeedFactoryTests.swift in Sources */,
 				53979BE822AC8474004C1B08 /* ConnectionsViewController.swift in Sources */,
 				53979BF222AC849D004C1B08 /* PostModel.swift in Sources */,
 				53979BEB22AC847D004C1B08 /* NewPostViewController.swift in Sources */,
 				53979BEF22AC8490004C1B08 /* ToggleButtonView.swift in Sources */,
 				F5C1A66022ADF9D200470CC7 /* FeedItemTableViewCell.swift in Sources */,
+				F5A008EC22B02EB400279EDF /* UserFeedHeaderViewCell.swift in Sources */,
 				53979BF022AC8493004C1B08 /* CircularProfileImageView.swift in Sources */,
 				53979BE622AC846E004C1B08 /* AddConnectionSearchViewController.swift in Sources */,
 				53979BF122AC8496004C1B08 /* PlaceholderTextView.swift in Sources */,
@@ -497,6 +502,7 @@
 				53979BED22AC8484004C1B08 /* OverviewTabBarController.swift in Sources */,
 				53979BE322AC8465004C1B08 /* FirestoreControllerSingleton.swift in Sources */,
 				53979BEC22AC8481004C1B08 /* FeedViewController.swift in Sources */,
+				F5A008ED22B02EB700279EDF /* UserFeedCollectionViewCell.swift in Sources */,
 				53979BEE22AC848D004C1B08 /* SelectFeedButtonView.swift in Sources */,
 				53979BE222AC8425004C1B08 /* UserModelSingleton.swift in Sources */,
 				53979BE422AC8468004C1B08 /* FirebaseStorageControllerSingleton.swift in Sources */,
@@ -504,7 +510,7 @@
 				53979BDC22AC7D71004C1B08 /* CliqueUtility.swift in Sources */,
 				53979BF322AC84B0004C1B08 /* ImageRequestUtility.swift in Sources */,
 				53979BEA22AC847A004C1B08 /* ProfileViewController.swift in Sources */,
-				53979BDB22AC7D6C004C1B08 /* FeedModel.swift in Sources */,
+				53979BDB22AC7D6C004C1B08 /* FeedModelSingleton.swift in Sources */,
 				53979BB822AC6DEF004C1B08 /* CliqueUtilitiesTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

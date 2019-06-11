@@ -88,17 +88,49 @@ class FirestoreControllerSingleton {
         }
     }
     
-    func getUserFeed(userID: String, usersInFeed: [String], clique: CliqueUtility.CliqueTitles, completion: @escaping ([FeedItem]?) -> ()) {
+    func getUserPosts(userID: String, completion: @escaping ([UserPostItem]?) -> ()) {
+        let postRef = firestoreDatabase.collection(FirestorePostsCollection)
+        let postsQuery = postRef.whereField("authorID", isEqualTo: userID)
+            .limit(to: 200)
+            .order(by: "timestamp", descending: true)
+        
+        postsQuery.getDocuments() { (postsSnapshot, error) in
+            guard let postsSnapshot = postsSnapshot, error == nil else {
+                completion(nil)
+                return
+            }
+            
+            do {
+                var feed = [UserPostItem]()
+                
+                for item in postsSnapshot.documents {
+                    let data = item.data()
+                    debugPrint(data.debugDescription)
+                    
+                    let post = try FirestoreDecoder().decode(Post.self, from: data)
+                    feed.append(UserPostItem(post: post, postImage: self.storageController.getPostImageRef(postID: item.documentID)))
+                }
+                
+                completion(feed)
+            } catch let error {
+                debugPrint(error.localizedDescription)
+                completion(nil)
+            }
+            
+        }
+        
+    }
+    
+    func getUserFeed(userID: String, completion: @escaping ([FeedItem]?) -> ()) {
         let postRef = firestoreDatabase.collection(FirestorePostsCollection)
         let feedQuery = postRef.whereField("sharedWith", arrayContains: userID)
-            .limit(to: 30)
-            .order(by: "timestamp")
+            .limit(to: 200)
+            .order(by: "timestamp", descending: true)
         
     
         let personalQuery = postRef.whereField("authorID", isEqualTo: userID)
-            .whereField(CliqueUtility.GetDatabaseString(clique: clique), isEqualTo: true)
             .limit(to: 30)
-            .order(by: "timestamp")
+            .order(by: "timestamp", descending: true)
         
         feedQuery.getDocuments() { (feedSnapshot, error) in
             guard let feedSnapshot = feedSnapshot, error == nil else {
@@ -125,7 +157,6 @@ class FirestoreControllerSingleton {
                         feed.append(FeedItem(post: post, postImage: self.storageController.getPostImageRef(postID: item.documentID), profileImage: self.storageController.getProfileImageRef(userID: post.authorID)))
                     }
                     
-                    feed.sort(by: {$0.post.timestamp > $1.post.timestamp})
                     completion(feed)
                 } catch let error {
                     debugPrint(error.localizedDescription)

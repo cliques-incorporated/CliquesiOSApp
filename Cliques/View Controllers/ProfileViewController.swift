@@ -8,11 +8,11 @@
 import UIKit
 import FirebaseUI
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var ProfileImageView: UIImageView!
     @IBOutlet weak var NameLabel: UILabel!
-    @IBOutlet weak var PhoneNumberLabel: UILabel!
     @IBOutlet weak var BioLabel: UILabel!
+    @IBOutlet weak var UserPostsCollectionView: UICollectionView!
     
     private var userModel: UserModelSingleton!
     
@@ -20,6 +20,9 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserPostsCollectionView.delegate = self
+        UserPostsCollectionView.dataSource = self
         
         userModel = UserModelSingleton.GetInstance()
         
@@ -49,9 +52,14 @@ class ProfileViewController: UIViewController {
         }
         
         NameLabel.text = userModel.getName()
-        PhoneNumberLabel.text = userModel.getPhoneNumber()
         BioLabel.text = userModel.getBio()
         ProfileImageView.sd_setImage(with: userModel.getProfileImageRef())
+        userModel.updatePosts(completionHandler: postsUpdate)
+    }
+    
+    private func postsUpdate(success: Bool) {
+        guard success else { return }
+        UserPostsCollectionView.reloadData()
     }
     
     private func signOut(alert: UIAlertAction) {
@@ -90,4 +98,50 @@ class ProfileViewController: UIViewController {
             editProfileVC.profileImage = ProfileImageView.image
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let clique = CliqueUtility.GetCliqueForIndex(index: section) else {
+            fatalError("Invalid section index.")
+        }
+        
+        return userModel.getPosts(clique: clique).count
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UserFeedHeader", for: indexPath) as? UserFeedHeaderViewCell else {
+            fatalError("The dequeued cell is not an instance of UserFeedHeaderViewCell.")
+        }
+        
+        guard let clique = CliqueUtility.GetCliqueForIndex(index: indexPath.section) else {
+            fatalError("Invalid section index.")
+        }
+        
+        cell.headerText.text = clique.rawValue
+        cell.headerText.textColor = CliqueUtility.GetCliqueColor(clique: clique)
+        return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserFeedCell", for: indexPath) as? UserFeedCollectionViewCell else {
+            fatalError("The dequeued cell is not an instance of UserFeedCollectionViewCell.")
+        }
+        
+        guard let clique = CliqueUtility.GetCliqueForIndex(index: indexPath.section) else {
+            fatalError("Invalid section index.")
+        }
+        
+        cell.image.sd_setImage(with: userModel.getPosts(clique: clique)[indexPath.row].postImage)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width / 3 - 5, height: UIScreen.main.bounds.width / 3 - 5)
+    }
+    
+    
 }

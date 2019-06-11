@@ -21,6 +21,11 @@ struct UserProfile : Codable {
     var publicClique: [String]?
 }
 
+struct UserPostItem {
+    let post: Post
+    let postImage: StorageReference
+}
+
 class UserModelSingleton {
     private static var uniqueInstance: UserModelSingleton?
     private var userProfile = UserProfile()
@@ -31,6 +36,7 @@ class UserModelSingleton {
     private let firestoreController: FirestoreControllerSingleton
     private let firebaseStorageController: FirebaseStorageControllerSingleton
     private var notifyList = [((Bool)->())]()
+    private var posts = [UserPostItem]()
     
     private init() {
         loginController = FirebaseLoginControllerSingleton.GetInstance()
@@ -173,8 +179,34 @@ class UserModelSingleton {
             
             self.profileLoading = false;
         }
+    }
+    
+    public func updatePosts(completionHandler: @escaping (_ success: Bool) -> ()) {
+        firestoreController.getUserPosts(userID: getPhoneNumber()) { posts in
+            guard let posts = posts else {
+                completionHandler(false)
+                return
+            }
+            
+            self.posts = posts
+            completionHandler(true)
+        }
+    }
+    
+    public func getPosts(clique: CliqueUtility.CliqueTitles) -> [UserPostItem] {
+        var cliquePosts: [UserPostItem]
+        switch clique {
+        case .Public:
+            cliquePosts = posts.filter{$0.post.publicClique}
+        case .Friends:
+            cliquePosts = posts.filter{$0.post.friendsClique}
+        case .CloseFriends:
+            cliquePosts = posts.filter{$0.post.closeFriendsClique}
+        case .Family:
+            cliquePosts = posts.filter{$0.post.familyClique}
+        }
         
-        
+        return cliquePosts
     }
     
     

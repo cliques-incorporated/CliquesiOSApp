@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:UserConnectionsTableViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:Cliques.xcodeproj">
    </FileRef>
    <FileRef
