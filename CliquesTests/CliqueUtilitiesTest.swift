@@ -9,16 +9,6 @@
 import XCTest
 
 class CliqueUtilitiesTest: XCTestCase {
-
-    override func setUp() {
-      
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func testColorGetters() {
           XCTAssertEqual(CliqueUtility.getFamilyColor(), UIColor.init(red: 191/255.0, green: 90/255.0, blue: 97/255.0, alpha: 1.0))
          XCTAssertEqual(CliqueUtility.getCloseFriendsColor(),UIColor.init(red: 120/255.0, green: 128/255.0, blue: 255/255.0, alpha: 1.0))
@@ -31,7 +21,6 @@ class CliqueUtilitiesTest: XCTestCase {
         XCTAssertEqual(CliqueUtility.GetCliqueColor(clique: CliqueUtility.CliqueTitles(rawValue: "Close Friends")!), CliqueUtility.getCloseFriendsColor())
         XCTAssertEqual(CliqueUtility.GetCliqueColor(clique: CliqueUtility.CliqueTitles(rawValue: "Friends")!), CliqueUtility.getFriendsColor())
         XCTAssertEqual(CliqueUtility.GetCliqueColor(clique: CliqueUtility.CliqueTitles(rawValue: "Public")!), CliqueUtility.getPublicColor())
-        
     }
     
     func testDatabaseStrings(){
@@ -39,14 +28,5 @@ class CliqueUtilitiesTest: XCTestCase {
         XCTAssertEqual(CliqueUtility.GetDatabaseString(clique: CliqueUtility.CliqueTitles(rawValue: "Close Friends")!),"closeFriendsClique" )
         XCTAssertEqual(CliqueUtility.GetDatabaseString(clique: CliqueUtility.CliqueTitles(rawValue: "Friends")!),"friendsClique" )
         XCTAssertEqual(CliqueUtility.GetDatabaseString(clique: CliqueUtility.CliqueTitles(rawValue: "Public")!),"publicClique" )
-    
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
