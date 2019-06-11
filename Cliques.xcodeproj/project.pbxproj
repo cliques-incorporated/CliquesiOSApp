@@ -49,6 +49,7 @@
 		F5A008ED22B02EB700279EDF /* UserFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534AE4122AEECE40061886B /* UserFeedCollectionViewCell.swift */; };
 		F5A008EF22B04FE200279EDF /* ConnectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A008EE22B04FE200279EDF /* ConnectionTableViewCell.swift */; };
 		F5A008F122B0592200279EDF /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A008F022B0592100279EDF /* ConnectionsViewController.swift */; };
+		F5A008F522B05D3800279EDF /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A008F422B05D3700279EDF /* ConnectionViewController.swift */; };
 		F5B861E8228A6039006C6FD5 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B861E7228A6039006C6FD5 /* PlaceholderTextView.swift */; };
 		F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B980D3228245960076BA1B /* LoginViewController.swift */; };
 		F5BEC2BB2284E2E600A02532 /* FirebaseLoginControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BA2284E2E600A02532 /* FirebaseLoginControllerSingleton.swift */; };
@@ -103,6 +104,7 @@
 		F599524F2284DEDF008CC05D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F5A008EE22B04FE200279EDF /* ConnectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTableViewCell.swift; sourceTree = "<group>"; };
 		F5A008F022B0592100279EDF /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
+		F5A008F422B05D3700279EDF /* ConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
 		F5B861E7228A6039006C6FD5 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		F5B980D3228245960076BA1B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F5BEC2B92284E04000A02532 /* Cliques.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cliques.entitlements; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 		F5730FCC228E4FE800F74FCF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F5A008F422B05D3700279EDF /* ConnectionViewController.swift */,
 				F5A008F022B0592100279EDF /* ConnectionsViewController.swift */,
 				F501E0EA22878F730078E3E9 /* OverviewTabBarController.swift */,
 				F5970EED225D53B90063D9FA /* FeedViewController.swift */,
@@ -463,6 +466,7 @@
 				F585726522AAD0EA00783ED0 /* SelectFeedButtonView.swift in Sources */,
 				F5BEC2C12286639D00A02532 /* NewUserViewController.swift in Sources */,
 				F501E0EB22878F730078E3E9 /* OverviewTabBarController.swift in Sources */,
+				F5A008F522B05D3800279EDF /* ConnectionViewController.swift in Sources */,
 				F501E0E7228758B90078E3E9 /* FirebaseStorageControllerSingleton.swift in Sources */,
 				F5A008EF22B04FE200279EDF /* ConnectionTableViewCell.swift in Sources */,
 				F5588342228C7AE9006B99B3 /* CircularProfileImageView.swift in Sources */,

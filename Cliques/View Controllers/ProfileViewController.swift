@@ -87,8 +87,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
         if let editProfileVC = segue.destination.children.first as? NewUserViewController {
             editProfileVC.newProfile = false
             editProfileVC.firstName = userModel.getFirstName()
@@ -142,6 +140,4 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width / 3 - 5, height: UIScreen.main.bounds.width / 3 - 5)
     }
-    
-    
 }
