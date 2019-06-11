@@ -150,8 +150,6 @@ class FirestoreControllerSingleton {
                     
                     for item in documents {
                         let data = item.data()
-                        debugPrint(data.debugDescription)
-                        
                         let post = try FirestoreDecoder().decode(Post.self, from: data)
                         
                         feed.append(FeedItem(post: post, postImage: self.storageController.getPostImageRef(postID: item.documentID), profileImage: self.storageController.getProfileImageRef(userID: post.authorID)))
@@ -165,4 +163,30 @@ class FirestoreControllerSingleton {
             }
         }
     }
+    
+    func getConnections(completion: @escaping ([Connection]?)-> ()) {
+        let usersRef = firestoreDatabase.collection(FirestoreUsersCollection)
+        usersRef.getDocuments() { (usersSnapshot, error) in
+            guard let usersSnapshot = usersSnapshot, error == nil else {
+                completion(nil)
+                return
+            }
+            
+            do {
+                var connections = [Connection]()
+                
+                for item in usersSnapshot.documents {
+                    let user = try FirestoreDecoder().decode(UserProfile.self, from: item.data())
+                    connections.append(Connection(profile: user, profileImage: self.storageController.getProfileImageRef(userID: user.uniqueID ?? ""), clique: nil))
+                }
+                
+                completion(connections)
+            } catch let error {
+                debugPrint(error.localizedDescription)
+                completion(nil)
+            }
+        }
+        
+    }
+    
 }

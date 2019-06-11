@@ -10,6 +10,12 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
+struct Connection {
+    let profile: UserProfile
+    let profileImage: StorageReference
+    var clique: CliqueUtility.CliqueTitles?
+}
+
 struct UserProfile : Codable {
     var first: String?
     var last: String?
@@ -37,6 +43,8 @@ class UserModelSingleton {
     private let firebaseStorageController: FirebaseStorageControllerSingleton
     private var notifyList = [((Bool)->())]()
     private var posts = [UserPostItem]()
+    private var existingConnections = [Connection]()
+    private var possibleConnections = [Connection]()
     
     private init() {
         loginController = FirebaseLoginControllerSingleton.GetInstance()
@@ -132,6 +140,44 @@ class UserModelSingleton {
     
     public func getPublicClique() -> [String] {
         return userProfile.publicClique ?? []
+    }
+    
+    public func getConnections() -> [Connection] {
+        return existingConnections
+    }
+    
+    public func getPossibleConnections() -> [Connection] {
+        return possibleConnections
+    }
+    
+    public func updateConnections(completion: @escaping (_ success: Bool) -> ()) {
+        firestoreController.getConnections() { connections in
+            guard let connections = connections else {
+                completion(false)
+                return
+            }
+            
+            self.possibleConnections = connections.filter{$0.profile.uniqueID != nil && $0.profile.uniqueID != self.userProfile.uniqueID}
+            self.possibleConnections.sort(by: {$0.profile.first ?? "" > $1.profile.first ?? ""})
+
+            for (index, connection) in self.possibleConnections.enumerated() {
+                let id = connection.profile.uniqueID!
+                
+                if self.getCloseFriendsClique().contains(id) {
+                    self.possibleConnections[index].clique = .CloseFriends
+                } else if self.getFriendsClique().contains(id) {
+                    self.possibleConnections[index].clique = .Friends
+                } else if self.getFamilyClique().contains(id) {
+                    self.possibleConnections[index].clique = .Family
+                } else if self.getPublicClique().contains(id) {
+                    self.possibleConnections[index].clique = .Public
+                }
+            }
+
+            
+            self.existingConnections = self.possibleConnections.filter{$0.clique != nil}
+        }
+        
     }
     
     public func notifyWhenInitialized(handler: @escaping (_ success: Bool) -> ()) {
