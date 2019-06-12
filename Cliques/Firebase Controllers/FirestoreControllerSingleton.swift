@@ -105,7 +105,6 @@ class FirestoreControllerSingleton {
                 
                 for item in postsSnapshot.documents {
                     let data = item.data()
-                    debugPrint(data.debugDescription)
                     
                     let post = try FirestoreDecoder().decode(Post.self, from: data)
                     feed.append(UserPostItem(post: post, postImage: self.storageController.getPostImageRef(postID: item.documentID)))

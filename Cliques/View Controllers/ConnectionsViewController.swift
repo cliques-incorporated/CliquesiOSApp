@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
 import FirebaseUI
 
 class ConnectionsViewController: UITableViewController, UISearchResultsUpdating{
@@ -16,6 +14,7 @@ class ConnectionsViewController: UITableViewController, UISearchResultsUpdating{
     var searchController = UISearchController()
     private var userModel: UserModelSingleton!
     private var filteredConnections = [Connection]()
+    private var selectedConnection: Connection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,19 +26,27 @@ class ConnectionsViewController: UITableViewController, UISearchResultsUpdating{
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.sizeToFit()
             tableView.tableHeaderView = controller.searchBar
+            controller.definesPresentationContext = false
             
             return controller
             
         })()
         
+        self.definesPresentationContext = true
         
-        userModel.updateConnections(completion: connectionsUpdated)
+        userModel.notifyOnConnectionChange(handler: connectionsUpdated)
+        userModel.updateConnections()
     }
     
-    private func connectionsUpdated(success: Bool) {
-        guard success else { return }
-        
+    override func viewWillAppear(_ animated: Bool) {
+        userModel.updateConnections()
+        super.viewWillAppear(animated)
+    }
+    
+    
+    private func connectionsUpdated() {
         UserConnectionTableView.reloadData()
+        updateSearchResults(for: searchController)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,5 +93,23 @@ class ConnectionsViewController: UITableViewController, UISearchResultsUpdating{
         }
         
         tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(searchController.isActive){
+            selectedConnection = filteredConnections[indexPath.row]
+        } else {
+            selectedConnection = userModel.getConnections()[indexPath.row]
+        }
+        
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "GoToConnection", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let connectionViewController = segue.destination.children.first as? ConnectionViewController, let connection = selectedConnection {
+            connectionViewController.setCurrentConnection(connection: connection)
+        }
     }
 }

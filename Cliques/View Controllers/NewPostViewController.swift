@@ -18,6 +18,7 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var FamilyCliqueToggle: ToggleButtonView!
     @IBOutlet weak var CloseFriendsCliqueToggle: ToggleButtonView!
     private var selectedImage = false
+    @IBOutlet weak var PostButton: UIBarButtonItem!
     
     private let imageAndCliqueRequired = UIAlertController(title: "We're missing something...", message: "Please select an image and at least one Clique.", preferredStyle: .alert)
     
@@ -85,6 +86,8 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
             return
         }
         
+        PostButton.isEnabled = false
+        
         let post = PostModel(image: image, caption: CaptionTextView.text, publicClique: PublicCliqueToggle.toggleState, friendsClique: FriendsCliqueToggle.toggleState,
                              closeFriendsClique: CloseFriendsCliqueToggle.toggleState, familyClique: FamilyCliqueToggle.toggleState)
         
@@ -94,14 +97,4 @@ class NewPostViewController: UIViewController, UITextViewDelegate {
     private func uploadComplete(success: Bool) {
         dismiss(animated: true, completion: nil)
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

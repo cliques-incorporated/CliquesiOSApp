@@ -33,6 +33,11 @@ class ToggleButtonView: UIButton {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        toggle()
+        super.touchesBegan(touches, with: event)
+    }
+    
+    public func toggle() {
         if(toggleState) {
             self.setTitleColor(offColor, for: self.state)
             self.border.borderColor = offColor.cgColor
@@ -42,7 +47,12 @@ class ToggleButtonView: UIButton {
         }
         
         toggleState.toggle()
-        super.touchesBegan(touches, with: event)
+    }
+    
+    public func setToggleState(state: Bool) {
+        if state != toggleState {
+            toggle()
+        }
     }
     
     /*
