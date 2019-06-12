@@ -45,6 +45,7 @@ class UserModelSingleton {
     private var posts = [UserPostItem]()
     private var existingConnections = [Connection]()
     private var possibleConnections = [Connection]()
+    private var notifyChangeList = [(()->())]()
     
     private init() {
         loginController = FirebaseLoginControllerSingleton.GetInstance()
@@ -150,10 +151,13 @@ class UserModelSingleton {
         return possibleConnections
     }
     
-    public func updateConnections(completion: @escaping (_ success: Bool) -> ()) {
+    public func notifyOnConnectionChange(handler: @escaping (()->())) {
+        notifyChangeList.append(handler)
+    }
+    
+    public func updateConnections() {
         firestoreController.getConnections() { connections in
             guard let connections = connections else {
-                completion(false)
                 return
             }
             
@@ -176,8 +180,15 @@ class UserModelSingleton {
 
             
             self.existingConnections = self.possibleConnections.filter{$0.clique != nil}
+            self.notifyConnectionChange()
         }
         
+    }
+    
+    private func notifyConnectionChange() {
+        for handler in notifyChangeList {
+            handler()
+        }
     }
     
     public func editConnection(connection: Connection) {
@@ -213,7 +224,10 @@ class UserModelSingleton {
             if !connectionExists {
                 self.firestoreController.addUserData(profile: connection.profile) { success in
                     guard success else { return }
+                    self.notifyConnectionChange()
                 }
+            } else {
+                self.notifyConnectionChange()
             }
         }
         

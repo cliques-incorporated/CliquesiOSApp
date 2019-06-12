@@ -26,23 +26,27 @@ class ConnectionsViewController: UITableViewController, UISearchResultsUpdating{
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.sizeToFit()
             tableView.tableHeaderView = controller.searchBar
+            controller.definesPresentationContext = false
             
             return controller
             
         })()
         
+        self.definesPresentationContext = true
         
-        userModel.updateConnections(completion: connectionsUpdated)
+        userModel.notifyOnConnectionChange(handler: connectionsUpdated)
+        userModel.updateConnections()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        userModel.updateConnections(completion: connectionsUpdated)
+        userModel.updateConnections()
         super.viewWillAppear(animated)
     }
     
-    private func connectionsUpdated(success: Bool) {
-        guard success else { return }
+    
+    private func connectionsUpdated() {
         UserConnectionTableView.reloadData()
+        updateSearchResults(for: searchController)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
