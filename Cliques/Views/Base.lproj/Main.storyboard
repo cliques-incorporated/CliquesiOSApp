@@ -469,6 +469,7 @@
                         <outlet property="FamilyCliqueToggle" destination="1zs-VH-lKa" id="xPg-YU-t5f"/>
                         <outlet property="FriendsCliqueToggle" destination="i09-W0-hEb" id="HPc-RN-hNX"/>
                         <outlet property="PhotoView" destination="ADc-nj-jEs" id="oIz-Bo-1hI"/>
+                        <outlet property="PostButton" destination="VcO-4R-Zwp" id="TaF-MQ-TZS"/>
                         <outlet property="PublicCliqueToggle" destination="2lR-gd-9Dp" id="vNW-6Q-8W4"/>
                     </connections>
                 </viewController>
