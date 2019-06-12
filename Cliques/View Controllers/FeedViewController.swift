@@ -75,11 +75,12 @@ class FeedViewController: UITableViewController {
             fatalError("The dequeued cell is not an instance of FeedViewCell.")
         }
 
-        
-        cell.postImage.sd_setImage(with: getCurrentFeed()[indexPath.row].postImage)
-        cell.postLabel.text = getCurrentFeed()[indexPath.row].post.caption
-        cell.profileImage.sd_setImage(with: getCurrentFeed()[indexPath.row].profileImage)
-        cell.authorLabel.text = getCurrentFeed()[indexPath.row].post.authorName
+        if indexPath.row < getCurrentFeed().count {
+            cell.postImage.sd_setImage(with: getCurrentFeed()[indexPath.row].postImage)
+            cell.postLabel.text = getCurrentFeed()[indexPath.row].post.caption
+            cell.profileImage.sd_setImage(with: getCurrentFeed()[indexPath.row].profileImage)
+            cell.authorLabel.text = getCurrentFeed()[indexPath.row].post.authorName
+        }
         return cell
     }
     

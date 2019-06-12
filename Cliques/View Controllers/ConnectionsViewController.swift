@@ -65,11 +65,14 @@ class ConnectionsViewController: UITableViewController, UISearchResultsUpdating{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserConnectionCell", for: indexPath) as? ConnectionTableViewCell else {
             fatalError("The dequeued cell is not an instance of UserConnectionCell.")
         }
+        
 
         var currentConnection: Connection
         if(searchController.isActive){
+            guard indexPath.row < filteredConnections.count else { return cell }
             currentConnection = filteredConnections[indexPath.row]
         } else {
+            guard indexPath.row < userModel.getConnections().count else { return cell }
             currentConnection = userModel.getConnections()[indexPath.row]
         }
         
@@ -97,8 +100,10 @@ class ConnectionsViewController: UITableViewController, UISearchResultsUpdating{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(searchController.isActive){
+            guard indexPath.row < filteredConnections.count else { return cell }
             selectedConnection = filteredConnections[indexPath.row]
         } else {
+            guard indexPath.row < userModel.getConnections().count else { return cell }
             selectedConnection = userModel.getConnections()[indexPath.row]
         }
         

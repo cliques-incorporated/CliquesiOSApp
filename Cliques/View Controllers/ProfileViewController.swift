@@ -133,6 +133,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             fatalError("Invalid section index.")
         }
         
+        guard indexPath.row < userModel.getPosts(clique: clique).count else { return cell }
         cell.image.sd_setImage(with: userModel.getPosts(clique: clique)[indexPath.row].postImage)
         return cell
     }
