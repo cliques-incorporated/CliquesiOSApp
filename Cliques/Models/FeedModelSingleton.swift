@@ -18,19 +18,19 @@ struct FeedItem {
 class FeedModelSingleton {
     private static var uniqueInstance: FeedModelSingleton?
     private let user: UserModelSingleton
-    private let firestoreController: FirestoreControllerSingleton
+    private let firestoreController: FirestoreControllerProtocol
     private var feed = [FeedItem]()
     
-    private init() {
+    private init(firestoreController: FirestoreControllerProtocol) {
         user = UserModelSingleton.GetInstance()
-        firestoreController = FirestoreControllerSingleton.GetInstance()
+        self.firestoreController = firestoreController
     }
     
-    public static func GetInstance() -> FeedModelSingleton {
+    public static func GetInstance(firestoreController: FirestoreControllerProtocol = FirestoreControllerSingleton.GetInstance()) -> FeedModelSingleton {
         if let initializedUniqueInstance = uniqueInstance {
             return initializedUniqueInstance
         } else {
-            uniqueInstance = FeedModelSingleton()
+            uniqueInstance = FeedModelSingleton(firestoreController: firestoreController)
             return uniqueInstance!
         }
     }

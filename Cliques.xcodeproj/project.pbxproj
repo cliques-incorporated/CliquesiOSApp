@@ -52,6 +52,9 @@
 		F5A008F522B05D3800279EDF /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A008F422B05D3700279EDF /* ConnectionViewController.swift */; };
 		F5B861E8228A6039006C6FD5 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B861E7228A6039006C6FD5 /* PlaceholderTextView.swift */; };
 		F5B980D4228245960076BA1B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B980D3228245960076BA1B /* LoginViewController.swift */; };
+		F5BEAD9E22B18AD3008E1FF1 /* FirestoreControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEAD9D22B18AD3008E1FF1 /* FirestoreControllerProtocol.swift */; };
+		F5BEADA122B18E60008E1FF1 /* MockFirestoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEADA022B18E60008E1FF1 /* MockFirestoreController.swift */; };
+		F5BEADA222B18EB0008E1FF1 /* FirestoreControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEAD9D22B18AD3008E1FF1 /* FirestoreControllerProtocol.swift */; };
 		F5BEC2BB2284E2E600A02532 /* FirebaseLoginControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BA2284E2E600A02532 /* FirebaseLoginControllerSingleton.swift */; };
 		F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2BE2286215100A02532 /* ProfileViewController.swift */; };
 		F5BEC2C12286639D00A02532 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C02286639D00A02532 /* NewUserViewController.swift */; };
@@ -107,6 +110,8 @@
 		F5A008F422B05D3700279EDF /* ConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewController.swift; sourceTree = "<group>"; };
 		F5B861E7228A6039006C6FD5 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		F5B980D3228245960076BA1B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F5BEAD9D22B18AD3008E1FF1 /* FirestoreControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreControllerProtocol.swift; sourceTree = "<group>"; };
+		F5BEADA022B18E60008E1FF1 /* MockFirestoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFirestoreController.swift; sourceTree = "<group>"; };
 		F5BEC2B92284E04000A02532 /* Cliques.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cliques.entitlements; sourceTree = "<group>"; };
 		F5BEC2BA2284E2E600A02532 /* FirebaseLoginControllerSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLoginControllerSingleton.swift; sourceTree = "<group>"; };
 		F5BEC2BE2286215100A02532 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -259,6 +264,7 @@
 				F5730FCC228E4FE800F74FCF /* View Controllers */,
 				F5730FCF228E513100F74FCF /* Firebase Controllers */,
 				F5730FD1228E519C00F74FCF /* Utilities */,
+				F5BEAD9C22B18A81008E1FF1 /* Protocols */,
 				F5970EF9225D53BB0063D9FA /* Info.plist */,
 				F599524F2284DEDF008CC05D /* GoogleService-Info.plist */,
 			);
@@ -268,11 +274,28 @@
 		F5970F01225D53BB0063D9FA /* CliquesTests */ = {
 			isa = PBXGroup;
 			children = (
+				F5BEAD9F22B18E51008E1FF1 /* Mocks */,
 				53979BB722AC6DEF004C1B08 /* CliqueUtilitiesTest.swift */,
 				F5970F02225D53BB0063D9FA /* CliquesTests.swift */,
 				F5970F04225D53BC0063D9FA /* Info.plist */,
 			);
 			path = CliquesTests;
+			sourceTree = "<group>";
+		};
+		F5BEAD9C22B18A81008E1FF1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				F5BEAD9D22B18AD3008E1FF1 /* FirestoreControllerProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		F5BEAD9F22B18E51008E1FF1 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F5BEADA022B18E60008E1FF1 /* MockFirestoreController.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -453,6 +476,7 @@
 				F535509122A99E1C00F413A3 /* PostModel.swift in Sources */,
 				F5FD1BDA2288E18B00419653 /* NewPostViewController.swift in Sources */,
 				F5BEC2BF2286215100A02532 /* ProfileViewController.swift in Sources */,
+				F5BEAD9E22B18AD3008E1FF1 /* FirestoreControllerProtocol.swift in Sources */,
 				F585745E22AB180900783ED0 /* FeedModelSingleton.swift in Sources */,
 				F5BEC2BB2284E2E600A02532 /* FirebaseLoginControllerSingleton.swift in Sources */,
 				F585726722AAD23500783ED0 /* CliqueUtility.swift in Sources */,
@@ -497,7 +521,9 @@
 				F5A008ED22B02EB700279EDF /* UserFeedCollectionViewCell.swift in Sources */,
 				53979BEE22AC848D004C1B08 /* SelectFeedButtonView.swift in Sources */,
 				53979BE222AC8425004C1B08 /* UserModelSingleton.swift in Sources */,
+				F5BEADA222B18EB0008E1FF1 /* FirestoreControllerProtocol.swift in Sources */,
 				53979BE422AC8468004C1B08 /* FirebaseStorageControllerSingleton.swift in Sources */,
+				F5BEADA122B18E60008E1FF1 /* MockFirestoreController.swift in Sources */,
 				53979BE522AC846B004C1B08 /* FirebaseLoginControllerSingleton.swift in Sources */,
 				53979BDC22AC7D71004C1B08 /* CliqueUtility.swift in Sources */,
 				53979BF322AC84B0004C1B08 /* ImageRequestUtility.swift in Sources */,

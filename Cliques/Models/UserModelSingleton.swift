@@ -39,7 +39,7 @@ class UserModelSingleton {
     private var profileInitialized = false
     private var profileLoading = false
     private let loginController: FirebaseLoginControllerSingleton
-    private let firestoreController: FirestoreControllerSingleton
+    private let firestoreController: FirestoreControllerProtocol
     private let firebaseStorageController: FirebaseStorageControllerSingleton
     private var notifyList = [((Bool)->())]()
     private var posts = [UserPostItem]()
@@ -47,9 +47,9 @@ class UserModelSingleton {
     private var possibleConnections = [Connection]()
     private var notifyChangeList = [(()->())]()
     
-    private init() {
+    private init(firestoreController: FirestoreControllerProtocol) {
         loginController = FirebaseLoginControllerSingleton.GetInstance()
-        firestoreController = FirestoreControllerSingleton.GetInstance()
+        self.firestoreController = firestoreController
         firebaseStorageController = FirebaseStorageControllerSingleton.GetInstance()
         
         if loggedIn() {
@@ -57,11 +57,11 @@ class UserModelSingleton {
         }
     }
     
-    public static func GetInstance() -> UserModelSingleton {
+    public static func GetInstance(firestoreController: FirestoreControllerProtocol = FirestoreControllerSingleton.GetInstance()) -> UserModelSingleton {
         if let initializedUniqueInstance = uniqueInstance {
             return initializedUniqueInstance
         } else {
-            uniqueInstance = UserModelSingleton()
+            uniqueInstance = UserModelSingleton(firestoreController: firestoreController)
             return uniqueInstance!
         }
     }
