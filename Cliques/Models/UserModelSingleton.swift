@@ -10,6 +10,12 @@ import Foundation
 import Firebase
 import FirebaseAuth
 
+struct Connection {
+    let profile: UserProfile
+    let profileImage: StorageReference
+    var clique: CliqueUtility.CliqueTitles?
+}
+
 struct UserProfile : Codable {
     var first: String?
     var last: String?
@@ -37,6 +43,9 @@ class UserModelSingleton {
     private let firebaseStorageController: FirebaseStorageControllerSingleton
     private var notifyList = [((Bool)->())]()
     private var posts = [UserPostItem]()
+    private var existingConnections = [Connection]()
+    private var possibleConnections = [Connection]()
+    private var notifyChangeList = [(()->())]()
     
     private init() {
         loginController = FirebaseLoginControllerSingleton.GetInstance()
@@ -132,6 +141,98 @@ class UserModelSingleton {
     
     public func getPublicClique() -> [String] {
         return userProfile.publicClique ?? []
+    }
+    
+    public func getConnections() -> [Connection] {
+        return existingConnections
+    }
+    
+    public func getPossibleConnections() -> [Connection] {
+        return possibleConnections
+    }
+    
+    public func notifyOnConnectionChange(handler: @escaping (()->())) {
+        notifyChangeList.append(handler)
+    }
+    
+    public func updateConnections() {
+        firestoreController.getConnections() { connections in
+            guard let connections = connections else {
+                return
+            }
+            
+            self.possibleConnections = connections.filter{$0.profile.uniqueID != nil && $0.profile.uniqueID != self.userProfile.uniqueID}
+            self.possibleConnections.sort(by: {$0.profile.first ?? "" < $1.profile.first ?? ""})
+
+            for (index, connection) in self.possibleConnections.enumerated() {
+                let id = connection.profile.uniqueID!
+                
+                if self.getCloseFriendsClique().contains(id) {
+                    self.possibleConnections[index].clique = .CloseFriends
+                } else if self.getFriendsClique().contains(id) {
+                    self.possibleConnections[index].clique = .Friends
+                } else if self.getFamilyClique().contains(id) {
+                    self.possibleConnections[index].clique = .Family
+                } else if self.getPublicClique().contains(id) {
+                    self.possibleConnections[index].clique = .Public
+                }
+            }
+
+            
+            self.existingConnections = self.possibleConnections.filter{$0.clique != nil}
+            self.notifyConnectionChange()
+        }
+        
+    }
+    
+    private func notifyConnectionChange() {
+        for handler in notifyChangeList {
+            handler()
+        }
+    }
+    
+    public func editConnection(connection: Connection) {
+        guard let id = connection.profile.uniqueID else { return }
+        
+        if let index = userProfile.closeFriendsClique?.firstIndex(where: {$0 == id}) {
+            userProfile.closeFriendsClique?.remove(at: index)
+        } else if let index = userProfile.friendsClique?.firstIndex(where: {$0 == id}) {
+            userProfile.friendsClique?.remove(at: index)
+        } else if let index = userProfile.familyClique?.firstIndex(where: {$0 == id}) {
+            userProfile.familyClique?.remove(at: index)
+        } else if let index = userProfile.publicClique?.firstIndex(where: {$0 == id}) {
+            userProfile.publicClique?.remove(at: index)
+        }
+        
+        if let clique = connection.clique {
+            switch clique {
+            case .CloseFriends:
+                userProfile.closeFriendsClique?.append(id)
+            case .Public:
+                userProfile.publicClique?.append(id)
+            case .Family:
+                userProfile.familyClique?.append(id)
+            case .Friends:
+                userProfile.friendsClique?.append(id)
+            }
+        }
+        
+        firestoreController.addUserData(profile: userProfile) { success in
+            guard success else { return }
+            let connectionExists = connection.profile.closeFriendsClique?.contains(self.userProfile.uniqueID!) ?? false || connection.profile.publicClique?.contains(self.userProfile.uniqueID!) ?? false || connection.profile.familyClique?.contains(self.userProfile.uniqueID!) ?? false || connection.profile.friendsClique?.contains(self.userProfile.uniqueID!) ?? false
+            
+            if !connectionExists {
+                self.firestoreController.addUserData(profile: connection.profile) { success in
+                    guard success else { return }
+                    self.notifyConnectionChange()
+                }
+            } else {
+                self.notifyConnectionChange()
+            }
+        }
+        
+        
+        
     }
     
     public func notifyWhenInitialized(handler: @escaping (_ success: Bool) -> ()) {
