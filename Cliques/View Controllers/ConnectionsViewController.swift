@@ -100,10 +100,10 @@ class ConnectionsViewController: UITableViewController, UISearchResultsUpdating{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(searchController.isActive){
-            guard indexPath.row < filteredConnections.count else { return cell }
+            guard indexPath.row < filteredConnections.count else { return }
             selectedConnection = filteredConnections[indexPath.row]
         } else {
-            guard indexPath.row < userModel.getConnections().count else { return cell }
+            guard indexPath.row < userModel.getConnections().count else { return }
             selectedConnection = userModel.getConnections()[indexPath.row]
         }
         
