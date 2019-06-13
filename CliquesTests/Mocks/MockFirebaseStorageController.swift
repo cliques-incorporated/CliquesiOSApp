@@ -10,11 +10,6 @@ import Foundation
 import FirebaseUI
 
 class MockFirebaseStorageController: FirebaseStorageControllerProtocol {
-    static var MockInstance: MockFirebaseStorageController!
-    static func GetInstance() -> FirebaseStorageControllerProtocol {
-        return MockInstance
-    }
-    
     var mockProfileImageURL: URL? = nil
     func uploadProfileImage(userID: String, profileImage: UIImage, uploadCompletionHandler: @escaping (URL?) -> ()) {
         uploadCompletionHandler(mockProfileImageURL)

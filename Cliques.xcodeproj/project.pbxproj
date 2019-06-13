@@ -69,6 +69,9 @@
 		F5BEC2C72287416600A02532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5BEC2C62287416500A02532 /* Assets.xcassets */; };
 		F5BEC2C922874F4A00A02532 /* FirestoreControllerSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BEC2C822874F4A00A02532 /* FirestoreControllerSingleton.swift */; };
 		F5C1A66022ADF9D200470CC7 /* FeedItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F667C22AC6F0500B8D69B /* FeedItemTableViewCell.swift */; };
+		F5D09E0322B2D2990072C42F /* ConnectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A008EE22B04FE200279EDF /* ConnectionTableViewCell.swift */; };
+		F5D09E0422B2D2B10072C42F /* ConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A008F422B05D3700279EDF /* ConnectionViewController.swift */; };
+		F5D09E0522B2D2B40072C42F /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A008F022B0592100279EDF /* ConnectionsViewController.swift */; };
 		F5E3B8C6228A0E9700CD2883 /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3B8C5228A0E9700CD2883 /* ToggleButtonView.swift */; };
 		F5F2379422B2CFE300D995E3 /* FirebaseLoginControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FF19922B2CCA400814B49 /* FirebaseLoginControllerProtocol.swift */; };
 		F5F2379622B2D09F00D995E3 /* MockFirebaseLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2379522B2D09F00D995E3 /* MockFirebaseLoginController.swift */; };
@@ -540,17 +543,20 @@
 				F5C1A66022ADF9D200470CC7 /* FeedItemTableViewCell.swift in Sources */,
 				F5A008EC22B02EB400279EDF /* UserFeedHeaderViewCell.swift in Sources */,
 				53979BF022AC8493004C1B08 /* CircularProfileImageView.swift in Sources */,
+				F5D09E0322B2D2990072C42F /* ConnectionTableViewCell.swift in Sources */,
 				53979BF122AC8496004C1B08 /* PlaceholderTextView.swift in Sources */,
 				53979BE922AC8477004C1B08 /* NewUserViewController.swift in Sources */,
 				53979BED22AC8484004C1B08 /* OverviewTabBarController.swift in Sources */,
 				53979BE322AC8465004C1B08 /* FirestoreControllerSingleton.swift in Sources */,
 				F56FF19222B2C1F200814B49 /* MockFirebaseStorageController.swift in Sources */,
 				F5F2379422B2CFE300D995E3 /* FirebaseLoginControllerProtocol.swift in Sources */,
+				F5D09E0522B2D2B40072C42F /* ConnectionsViewController.swift in Sources */,
 				53979BEC22AC8481004C1B08 /* FeedViewController.swift in Sources */,
 				F5A008ED22B02EB700279EDF /* UserFeedCollectionViewCell.swift in Sources */,
 				53979BEE22AC848D004C1B08 /* SelectFeedButtonView.swift in Sources */,
 				F5F2379622B2D09F00D995E3 /* MockFirebaseLoginController.swift in Sources */,
 				53979BE222AC8425004C1B08 /* UserModelSingleton.swift in Sources */,
+				F5D09E0422B2D2B10072C42F /* ConnectionViewController.swift in Sources */,
 				F5BEADA222B18EB0008E1FF1 /* FirestoreControllerProtocol.swift in Sources */,
 				53979BE422AC8468004C1B08 /* FirebaseStorageControllerSingleton.swift in Sources */,
 				F5BEADA122B18E60008E1FF1 /* MockFirestoreController.swift in Sources */,
