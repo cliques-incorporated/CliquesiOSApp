@@ -314,4 +314,8 @@ class UserModelSingleton: UserModelProtocol {
         
         return cliquePosts
     }
+    
+    func tearDown() {
+        UserModelSingleton.uniqueInstance = nil
+    }
 }

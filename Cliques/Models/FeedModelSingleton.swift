@@ -73,4 +73,9 @@ class FeedModelSingleton {
         }
     }
     
+    func tearDown() {
+        user.tearDown()
+        FeedModelSingleton.uniqueInstance = nil
+    }
+    
 }
