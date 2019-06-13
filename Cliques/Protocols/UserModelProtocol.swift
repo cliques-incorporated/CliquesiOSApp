@@ -14,4 +14,5 @@ protocol UserModelProtocol {
     func getFriendsClique() -> [String]
     func getFamilyClique() -> [String]
     func getPublicClique() -> [String]
+    func tearDown()
 }

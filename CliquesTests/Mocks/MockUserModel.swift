@@ -34,5 +34,5 @@ class MockUserModel: UserModelProtocol {
         return mockPublicClique
     }
     
-    
+    func tearDown() {}
 }

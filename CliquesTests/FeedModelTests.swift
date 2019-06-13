@@ -17,7 +17,7 @@ class FeedModelTests: XCTestCase {
     }
     
     override func tearDown() {
-
+        FeedModelSingleton.GetInstance().tearDown()
     }
     /*
     func testUpdateFalse(){
@@ -67,9 +67,6 @@ class FeedModelTests: XCTestCase {
         let sixthItem = FeedItem.init(post: Post(authorID: "6", authorName: "", timestamp: 1, caption: "", publicClique: true, friendsClique: true, closeFriendsClique: true, familyClique: true, sharedWith: [""]), postImage: StorageReference(), profileImage: StorageReference())
         
         mockFirestore.mockUserFeed = [firstItem, secondItem]
-        
-        MockFirestoreController.MockInstance = mockFirestore
-        
         
         let fms = FeedModelSingleton.GetInstance(firestoreController: mockFirestore, userModel: mockUserModel)
         let fms2 = FeedModelSingleton.GetInstance(firestoreController: mockFirestore, userModel: mockUserModel)
@@ -132,8 +129,6 @@ class FeedModelTests: XCTestCase {
         let sixthItem = FeedItem.init(post: Post(authorID: "6", authorName: "", timestamp: 1, caption: "", publicClique: true, friendsClique: true, closeFriendsClique: true, familyClique: true, sharedWith: [""]), postImage: StorageReference(), profileImage: StorageReference())
         
         mockFirestore.mockUserFeed = [firstItem, secondItem]
-        
-        MockFirestoreController.MockInstance = mockFirestore
         
         
         let fms = FeedModelSingleton.GetInstance(firestoreController: mockFirestore, userModel: mockUserModel)
@@ -198,8 +193,6 @@ class FeedModelTests: XCTestCase {
         
         mockFirestore.mockUserFeed = [firstItem, secondItem]
         
-        MockFirestoreController.MockInstance = mockFirestore
-        
         
         let fms = FeedModelSingleton.GetInstance(firestoreController: mockFirestore, userModel: mockUserModel)
         let fms2 = FeedModelSingleton.GetInstance(firestoreController: mockFirestore, userModel: mockUserModel)
@@ -263,8 +256,6 @@ class FeedModelTests: XCTestCase {
         let sixthItem = FeedItem.init(post: Post(authorID: "6", authorName: "", timestamp: 1, caption: "", publicClique: true, friendsClique: true, closeFriendsClique: true, familyClique: true, sharedWith: [""]), postImage: StorageReference(), profileImage: StorageReference())
         
         mockFirestore.mockUserFeed = [firstItem, secondItem]
-        
-        MockFirestoreController.MockInstance = mockFirestore
     
         
         let fms = FeedModelSingleton.GetInstance(firestoreController: mockFirestore, userModel: mockUserModel)
@@ -327,8 +318,6 @@ class FeedModelTests: XCTestCase {
         let sixthItem = FeedItem.init(post: Post(authorID: "6", authorName: "", timestamp: 1, caption: "", publicClique: true, friendsClique: true, closeFriendsClique: true, familyClique: true, sharedWith: [""]), postImage: StorageReference(), profileImage: StorageReference())
         
         mockFirestore.mockUserFeed = [firstItem, secondItem]
-        
-        MockFirestoreController.MockInstance = mockFirestore
         
         
         let fms = FeedModelSingleton.GetInstance(firestoreController: mockFirestore, userModel: mockUserModel)
