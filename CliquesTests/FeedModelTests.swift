@@ -11,42 +11,10 @@ import XCTest
 import FirebaseUI
 
 class FeedModelTests: XCTestCase {
-    
-    override func setUp() {
-    
-    }
-    
     override func tearDown() {
         FeedModelSingleton.GetInstance().tearDown()
     }
-    /*
-    func testUpdateFalse(){
-        let mockFirestore = MockFirestoreController()
-        mockFirestore.mockUserFeed = nil
-        let fms = FeedModelSingleton.GetInstance(firestoreController: MockFirestoreController.GetInstance(storageController: mockFirestore as! FirebaseStorageControllerProtocol))
-        fms.update() { success in
-            XCTAssertFalse(success)
-        }
-        
     
-    }
- */
-    /*
-
-    func testUpdateTrue(){
-        let mockFirestore = MockFirestoreController()
-        
-        let firstItem = FeedItem.init(post: Post(authorID: "", authorName: "", timestamp: 0, caption: "", publicClique: true, friendsClique: true, closeFriendsClique: true, familyClique: true, sharedWith: [""]), postImage: StorageReference(), profileImage: StorageReference())
-        
-        let secondItem = FeedItem.init(post: Post(authorID: "", authorName: "", timestamp: 1, caption: "", publicClique: true, friendsClique: true, closeFriendsClique: true, familyClique: true, sharedWith: [""]), postImage: StorageReference(), profileImage: StorageReference())
-        
-        mockFirestore.mockUserFeed = [firstItem, secondItem]
-        let fms = FeedModelSingleton.GetInstance(firestoreController: MockFirestoreController.GetInstance(storageController: mockFirestore as! FirebaseStorageControllerProtocol))
-        fms.update() { success in
-            XCTAssertFalse(success)
-        }
-    }
- */
     // Tests the family clique
     func testFamilyClique() {
         let mockFirestore = MockFirestoreController()
