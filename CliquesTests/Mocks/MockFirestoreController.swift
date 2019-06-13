@@ -9,12 +9,6 @@
 import Foundation
 
 class MockFirestoreController: FirestoreControllerProtocol {
-    static var MockInstance: MockFirestoreController!
-    
-    static func GetInstance(storageController: FirebaseStorageControllerProtocol) -> FirestoreControllerProtocol {
-        return MockInstance
-    }
-    
     var userDataResponse = false
     func addUserData(profile: UserProfile, completionHandler: @escaping (Bool) -> ()) {
         completionHandler(userDataResponse)

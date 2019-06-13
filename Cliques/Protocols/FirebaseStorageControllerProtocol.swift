@@ -10,7 +10,6 @@ import Foundation
 import FirebaseUI
 
 protocol FirebaseStorageControllerProtocol {
-    static func GetInstance() -> FirebaseStorageControllerProtocol
     func uploadProfileImage(userID: String, profileImage: UIImage, uploadCompletionHandler: @escaping (URL?)->())
     func getProfileImageRef(userID: String) -> StorageReference
     func uploadPostImage(userID: String, postID: String, image: UIImage, uploadCompletionHandler: @escaping(Bool)->())
