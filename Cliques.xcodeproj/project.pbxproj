@@ -66,6 +66,7 @@
 		F5C1A66022ADF9D200470CC7 /* FeedItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51F667C22AC6F0500B8D69B /* FeedItemTableViewCell.swift */; };
 		F5D09E0322B2D2990072C42F /* ConnectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A008EE22B04FE200279EDF /* ConnectionTableViewCell.swift */; };
 		F5D09E0922B2F2140072C42F /* UserModelFeedModelIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D09E0822B2F2140072C42F /* UserModelFeedModelIntegrationTests.swift */; };
+		F5D09E0B22B300B80072C42F /* PostModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D09E0A22B300B80072C42F /* PostModelTests.swift */; };
 		F5E3B8C6228A0E9700CD2883 /* ToggleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3B8C5228A0E9700CD2883 /* ToggleButtonView.swift */; };
 		F5F2379422B2CFE300D995E3 /* FirebaseLoginControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FF19922B2CCA400814B49 /* FirebaseLoginControllerProtocol.swift */; };
 		F5F2379622B2D09F00D995E3 /* MockFirebaseLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F2379522B2D09F00D995E3 /* MockFirebaseLoginController.swift */; };
@@ -132,6 +133,7 @@
 		F5BEC2C62287416500A02532 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5BEC2C822874F4A00A02532 /* FirestoreControllerSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreControllerSingleton.swift; sourceTree = "<group>"; };
 		F5D09E0822B2F2140072C42F /* UserModelFeedModelIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelFeedModelIntegrationTests.swift; sourceTree = "<group>"; };
+		F5D09E0A22B300B80072C42F /* PostModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostModelTests.swift; sourceTree = "<group>"; };
 		F5E3B8C5228A0E9700CD2883 /* ToggleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonView.swift; sourceTree = "<group>"; };
 		F5F2379522B2D09F00D995E3 /* MockFirebaseLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFirebaseLoginController.swift; sourceTree = "<group>"; };
 		F5FD1BD92288E18B00419653 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				F5970F02225D53BB0063D9FA /* CliquesTests.swift */,
 				F5970F04225D53BC0063D9FA /* Info.plist */,
 				5366D4F222B2BA1500E0042E /* FeedModelTests.swift */,
+				F5D09E0A22B300B80072C42F /* PostModelTests.swift */,
 				F5D09E0822B2F2140072C42F /* UserModelFeedModelIntegrationTests.swift */,
 			);
 			path = CliquesTests;
@@ -548,6 +551,7 @@
 				F5A008ED22B02EB700279EDF /* UserFeedCollectionViewCell.swift in Sources */,
 				53979BEE22AC848D004C1B08 /* SelectFeedButtonView.swift in Sources */,
 				F5D09E0922B2F2140072C42F /* UserModelFeedModelIntegrationTests.swift in Sources */,
+				F5D09E0B22B300B80072C42F /* PostModelTests.swift in Sources */,
 				F5F2379622B2D09F00D995E3 /* MockFirebaseLoginController.swift in Sources */,
 				53979BE222AC8425004C1B08 /* UserModelSingleton.swift in Sources */,
 				F5BEADA222B18EB0008E1FF1 /* FirestoreControllerProtocol.swift in Sources */,
