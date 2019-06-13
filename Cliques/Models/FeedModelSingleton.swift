@@ -77,5 +77,4 @@ class FeedModelSingleton {
         user.tearDown()
         FeedModelSingleton.uniqueInstance = nil
     }
-    
 }
