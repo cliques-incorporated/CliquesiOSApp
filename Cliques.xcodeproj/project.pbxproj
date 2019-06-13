@@ -46,7 +46,6 @@
 		F5970EEE225D53B90063D9FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970EED225D53B90063D9FA /* FeedViewController.swift */; };
 		F5970EF3225D53B90063D9FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5970EF1225D53B90063D9FA /* Main.storyboard */; };
 		F5970EF8225D53BB0063D9FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5970EF6225D53BB0063D9FA /* LaunchScreen.storyboard */; };
-		F5970F03225D53BB0063D9FA /* CliquesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5970F02225D53BB0063D9FA /* CliquesTests.swift */; };
 		F59952502284DEDF008CC05D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F599524F2284DEDF008CC05D /* GoogleService-Info.plist */; };
 		F5A008EC22B02EB400279EDF /* UserFeedHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534AE4322AEED460061886B /* UserFeedHeaderViewCell.swift */; };
 		F5A008ED22B02EB700279EDF /* UserFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534AE4122AEECE40061886B /* UserFeedCollectionViewCell.swift */; };
@@ -117,7 +116,6 @@
 		F5970EF7225D53BB0063D9FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5970EF9225D53BB0063D9FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5970EFE225D53BB0063D9FA /* CliquesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CliquesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5970F02225D53BB0063D9FA /* CliquesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliquesTests.swift; sourceTree = "<group>"; };
 		F5970F04225D53BC0063D9FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F599524F2284DEDF008CC05D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F5A008EE22B04FE200279EDF /* ConnectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -294,7 +292,6 @@
 			children = (
 				F5BEAD9F22B18E51008E1FF1 /* Mocks */,
 				53979BB722AC6DEF004C1B08 /* CliqueUtilitiesTest.swift */,
-				F5970F02225D53BB0063D9FA /* CliquesTests.swift */,
 				F5970F04225D53BC0063D9FA /* Info.plist */,
 				5366D4F222B2BA1500E0042E /* FeedModelTests.swift */,
 				5366D4F422B2E1D700E0042E /* UserModelTests.swift */,
@@ -537,7 +534,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F56FF19722B2C5FB00814B49 /* MockUserModel.swift in Sources */,
-				F5970F03225D53BB0063D9FA /* CliquesTests.swift in Sources */,
 				53979BF222AC849D004C1B08 /* PostModel.swift in Sources */,
 				5366D4F322B2BA1500E0042E /* FeedModelTests.swift in Sources */,
 				F56FF19822B2C60700814B49 /* UserModelProtocol.swift in Sources */,
