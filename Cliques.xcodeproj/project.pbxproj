@@ -39,6 +39,9 @@
 		F56FF19022B2BA2A00814B49 /* FirebaseStorageControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FF18F22B2BA2A00814B49 /* FirebaseStorageControllerProtocol.swift */; };
 		F56FF19222B2C1F200814B49 /* MockFirebaseStorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FF19122B2C1F200814B49 /* MockFirebaseStorageController.swift */; };
 		F56FF19322B2C20700814B49 /* FirebaseStorageControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FF18F22B2BA2A00814B49 /* FirebaseStorageControllerProtocol.swift */; };
+		F56FF19522B2C40500814B49 /* UserModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FF19422B2C40500814B49 /* UserModelProtocol.swift */; };
+		F56FF19722B2C5FB00814B49 /* MockUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FF19622B2C5FB00814B49 /* MockUserModel.swift */; };
+		F56FF19822B2C60700814B49 /* UserModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56FF19422B2C40500814B49 /* UserModelProtocol.swift */; };
 		F585726522AAD0EA00783ED0 /* SelectFeedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585726422AAD0EA00783ED0 /* SelectFeedButtonView.swift */; };
 		F585726722AAD23500783ED0 /* CliqueUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585726622AAD23500783ED0 /* CliqueUtility.swift */; };
 		F585745E22AB180900783ED0 /* FeedModelSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F585745D22AB180900783ED0 /* FeedModelSingleton.swift */; };
@@ -97,6 +100,8 @@
 		F5588341228C7AE9006B99B3 /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
 		F56FF18F22B2BA2A00814B49 /* FirebaseStorageControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageControllerProtocol.swift; sourceTree = "<group>"; };
 		F56FF19122B2C1F200814B49 /* MockFirebaseStorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFirebaseStorageController.swift; sourceTree = "<group>"; };
+		F56FF19422B2C40500814B49 /* UserModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelProtocol.swift; sourceTree = "<group>"; };
+		F56FF19622B2C5FB00814B49 /* MockUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserModel.swift; sourceTree = "<group>"; };
 		F585726422AAD0EA00783ED0 /* SelectFeedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFeedButtonView.swift; sourceTree = "<group>"; };
 		F585726622AAD23500783ED0 /* CliqueUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliqueUtility.swift; sourceTree = "<group>"; };
 		F585745D22AB180900783ED0 /* FeedModelSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModelSingleton.swift; sourceTree = "<group>"; };
@@ -292,6 +297,7 @@
 			children = (
 				F5BEAD9D22B18AD3008E1FF1 /* FirestoreControllerProtocol.swift */,
 				F56FF18F22B2BA2A00814B49 /* FirebaseStorageControllerProtocol.swift */,
+				F56FF19422B2C40500814B49 /* UserModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 			children = (
 				F5BEADA022B18E60008E1FF1 /* MockFirestoreController.swift */,
 				F56FF19122B2C1F200814B49 /* MockFirebaseStorageController.swift */,
+				F56FF19622B2C5FB00814B49 /* MockUserModel.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -479,6 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F56FF19522B2C40500814B49 /* UserModelProtocol.swift in Sources */,
 				F5BEC2C922874F4A00A02532 /* FirestoreControllerSingleton.swift in Sources */,
 				F535509122A99E1C00F413A3 /* PostModel.swift in Sources */,
 				F5FD1BDA2288E18B00419653 /* NewPostViewController.swift in Sources */,
@@ -513,10 +521,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F56FF19722B2C5FB00814B49 /* MockUserModel.swift in Sources */,
 				53979BE722AC8471004C1B08 /* LoginViewController.swift in Sources */,
 				F5970F03225D53BB0063D9FA /* CliquesTests.swift in Sources */,
 				53979BF222AC849D004C1B08 /* PostModel.swift in Sources */,
 				53979BEB22AC847D004C1B08 /* NewPostViewController.swift in Sources */,
+				F56FF19822B2C60700814B49 /* UserModelProtocol.swift in Sources */,
 				F56FF19322B2C20700814B49 /* FirebaseStorageControllerProtocol.swift in Sources */,
 				53979BEF22AC8490004C1B08 /* ToggleButtonView.swift in Sources */,
 				F5C1A66022ADF9D200470CC7 /* FeedItemTableViewCell.swift in Sources */,

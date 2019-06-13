@@ -32,7 +32,7 @@ struct UserPostItem {
     let postImage: StorageReference
 }
 
-class UserModelSingleton {
+class UserModelSingleton: UserModelProtocol {
     private static var uniqueInstance: UserModelSingleton?
     private var userProfile = UserProfile()
     private var profileImageRef: StorageReference?
