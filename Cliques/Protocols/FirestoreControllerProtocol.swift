@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 protocol FirestoreControllerProtocol {
-    static func GetInstance() -> FirestoreControllerProtocol
+    static func GetInstance(storageController: FirebaseStorageControllerProtocol) -> FirestoreControllerProtocol
     func addUserData(profile: UserProfile, completionHandler: @escaping (_ success: Bool)->())
     func doesUserProfileExist(uniqueID: String, completionHandler: @escaping (Bool?) -> ())
     func getUserProfileData(uniqueID: String, completionHandler: @escaping (UserProfile?) -> ())

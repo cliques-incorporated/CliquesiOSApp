@@ -28,5 +28,7 @@ class CliqueUtilitiesTest: XCTestCase {
         XCTAssertEqual(CliqueUtility.GetDatabaseString(clique: CliqueUtility.CliqueTitles(rawValue: "Close Friends")!),"closeFriendsClique" )
         XCTAssertEqual(CliqueUtility.GetDatabaseString(clique: CliqueUtility.CliqueTitles(rawValue: "Friends")!),"friendsClique" )
         XCTAssertEqual(CliqueUtility.GetDatabaseString(clique: CliqueUtility.CliqueTitles(rawValue: "Public")!),"publicClique" )
+        
     }
+    
 }

@@ -15,21 +15,20 @@ class FirestoreControllerSingleton: FirestoreControllerProtocol {
     private let firestoreDatabase: Firestore
     private let FirestoreUsersCollection = "users"
     private let FirestorePostsCollection = "posts"
-    private let storageController: FirebaseStorageControllerSingleton
+    private let storageController: FirebaseStorageControllerProtocol
     
-    private init() {
+    private init(storageController: FirebaseStorageControllerProtocol) {
         firestoreDatabase = Firestore.firestore()
         let settings = firestoreDatabase.settings
         settings.isPersistenceEnabled = true
         firestoreDatabase.settings = settings
-        storageController = FirebaseStorageControllerSingleton.GetInstance()
-    }
+        self.storageController = storageController    }
     
-    public static func GetInstance() -> FirestoreControllerProtocol {
+    public static func GetInstance(storageController: FirebaseStorageControllerProtocol = FirebaseStorageControllerSingleton.GetInstance()) -> FirestoreControllerProtocol {
         if let initializedUniqueInstance = uniqueInstance {
             return initializedUniqueInstance
         } else {
-            uniqueInstance = FirestoreControllerSingleton()
+            uniqueInstance = FirestoreControllerSingleton(storageController: storageController)
             return uniqueInstance!
         }
     }

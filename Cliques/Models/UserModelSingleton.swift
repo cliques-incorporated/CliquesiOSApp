@@ -40,28 +40,29 @@ class UserModelSingleton {
     private var profileLoading = false
     private let loginController: FirebaseLoginControllerSingleton
     private let firestoreController: FirestoreControllerProtocol
-    private let firebaseStorageController: FirebaseStorageControllerSingleton
+    private let firebaseStorageController: FirebaseStorageControllerProtocol
     private var notifyList = [((Bool)->())]()
     private var posts = [UserPostItem]()
     private var existingConnections = [Connection]()
     private var possibleConnections = [Connection]()
     private var notifyChangeList = [(()->())]()
     
-    private init(firestoreController: FirestoreControllerProtocol) {
+    private init(firestoreController: FirestoreControllerProtocol, firebaseStorageController: FirebaseStorageControllerProtocol) {
         loginController = FirebaseLoginControllerSingleton.GetInstance()
+        self.firebaseStorageController = firebaseStorageController
         self.firestoreController = firestoreController
-        firebaseStorageController = FirebaseStorageControllerSingleton.GetInstance()
         
         if loggedIn() {
             initializeProfile()
         }
     }
     
-    public static func GetInstance(firestoreController: FirestoreControllerProtocol = FirestoreControllerSingleton.GetInstance()) -> UserModelSingleton {
+    public static func GetInstance(firestoreController: FirestoreControllerProtocol = FirestoreControllerSingleton.GetInstance(), firebaseStorageController: FirebaseStorageControllerProtocol = FirebaseStorageControllerSingleton.GetInstance()) -> UserModelSingleton {
         if let initializedUniqueInstance = uniqueInstance {
             return initializedUniqueInstance
         } else {
-            uniqueInstance = UserModelSingleton(firestoreController: firestoreController)
+            uniqueInstance = UserModelSingleton(firestoreController: firestoreController,
+                                                firebaseStorageController: firebaseStorageController)
             return uniqueInstance!
         }
     }

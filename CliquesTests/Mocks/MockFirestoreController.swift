@@ -10,7 +10,8 @@ import Foundation
 
 class MockFirestoreController: FirestoreControllerProtocol {
     static var MockInstance = MockFirestoreController()
-    static func GetInstance() -> FirestoreControllerProtocol {
+    
+    static func GetInstance(storageController: FirebaseStorageControllerProtocol) -> FirestoreControllerProtocol {
         return MockInstance
     }
     
