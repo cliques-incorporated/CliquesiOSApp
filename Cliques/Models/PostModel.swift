@@ -73,7 +73,6 @@ class PostModel {
             completionHandler?(false);
             return
         }
-        
         firebaseStorageController.uploadPostImage(userID: authorID, postID: uniqueID, image: image) { success in
             self.completionHandler?(success)
         }
