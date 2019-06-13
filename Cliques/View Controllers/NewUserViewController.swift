@@ -27,7 +27,7 @@ class NewUserViewController: UIViewController {
     private let errorAlert = UIAlertController(title: "Uh oh!", message: "Something went wrong. Please try again.", preferredStyle: .alert)
     
     private var firestoreController: FirestoreControllerProtocol?
-    private var firebaseStorageController: FirebaseStorageControllerSingleton?
+    private var firebaseStorageController: FirebaseStorageControllerProtocol?
     
     public var firstName = ""
     public var lastName = ""
