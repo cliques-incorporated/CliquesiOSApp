@@ -26,8 +26,8 @@ class NewUserViewController: UIViewController {
     private let allFieldsRequiredAlert = UIAlertController(title: "We're missing something...", message: "All fields are required!", preferredStyle: .alert)
     private let errorAlert = UIAlertController(title: "Uh oh!", message: "Something went wrong. Please try again.", preferredStyle: .alert)
     
-    private var firestoreController: FirestoreControllerSingleton?
-    private var firebaseStorageController: FirebaseStorageControllerSingleton?
+    private var firestoreController: FirestoreControllerProtocol?
+    private var firebaseStorageController: FirebaseStorageControllerProtocol?
     
     public var firstName = ""
     public var lastName = ""

@@ -10,26 +10,25 @@ import Firebase
 import FirebaseFirestore
 import CodableFirebase
 
-class FirestoreControllerSingleton {
+class FirestoreControllerSingleton: FirestoreControllerProtocol {
     private static var uniqueInstance: FirestoreControllerSingleton?
     private let firestoreDatabase: Firestore
     private let FirestoreUsersCollection = "users"
     private let FirestorePostsCollection = "posts"
-    private let storageController: FirebaseStorageControllerSingleton
+    private let storageController: FirebaseStorageControllerProtocol
     
-    private init() {
+    private init(storageController: FirebaseStorageControllerProtocol) {
         firestoreDatabase = Firestore.firestore()
         let settings = firestoreDatabase.settings
         settings.isPersistenceEnabled = true
         firestoreDatabase.settings = settings
-        storageController = FirebaseStorageControllerSingleton.GetInstance()
-    }
+        self.storageController = storageController    }
     
-    public static func GetInstance() -> FirestoreControllerSingleton {
+    public static func GetInstance(storageController: FirebaseStorageControllerProtocol = FirebaseStorageControllerSingleton.GetInstance()) -> FirestoreControllerProtocol {
         if let initializedUniqueInstance = uniqueInstance {
             return initializedUniqueInstance
         } else {
-            uniqueInstance = FirestoreControllerSingleton()
+            uniqueInstance = FirestoreControllerSingleton(storageController: storageController)
             return uniqueInstance!
         }
     }

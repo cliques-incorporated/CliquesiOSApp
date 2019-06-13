@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import Firebase
-import FirebaseAuth
+import FirebaseUI
 
 struct Connection {
     let profile: UserProfile
@@ -32,36 +31,42 @@ struct UserPostItem {
     let postImage: StorageReference
 }
 
-class UserModelSingleton {
+class UserModelSingleton: UserModelProtocol {
     private static var uniqueInstance: UserModelSingleton?
     private var userProfile = UserProfile()
     private var profileImageRef: StorageReference?
     private var profileInitialized = false
     private var profileLoading = false
-    private let loginController: FirebaseLoginControllerSingleton
-    private let firestoreController: FirestoreControllerSingleton
-    private let firebaseStorageController: FirebaseStorageControllerSingleton
+    private let loginController: FirebaseLoginControllerProtocol
+    private let firestoreController: FirestoreControllerProtocol
+    private let firebaseStorageController: FirebaseStorageControllerProtocol
     private var notifyList = [((Bool)->())]()
     private var posts = [UserPostItem]()
     private var existingConnections = [Connection]()
     private var possibleConnections = [Connection]()
     private var notifyChangeList = [(()->())]()
     
-    private init() {
-        loginController = FirebaseLoginControllerSingleton.GetInstance()
-        firestoreController = FirestoreControllerSingleton.GetInstance()
-        firebaseStorageController = FirebaseStorageControllerSingleton.GetInstance()
+    private init(firestoreController: FirestoreControllerProtocol,
+                 firebaseStorageController: FirebaseStorageControllerProtocol,
+                 firebaseLoginController: FirebaseLoginControllerProtocol) {
+        self.loginController = firebaseLoginController
+        self.firebaseStorageController = firebaseStorageController
+        self.firestoreController = firestoreController
         
         if loggedIn() {
             initializeProfile()
         }
     }
     
-    public static func GetInstance() -> UserModelSingleton {
+    public static func GetInstance(firestoreController: FirestoreControllerProtocol = FirestoreControllerSingleton.GetInstance(),
+                                   firebaseStorageController: FirebaseStorageControllerProtocol = FirebaseStorageControllerSingleton.GetInstance(),
+                                   firebaseLoginController: FirebaseLoginControllerProtocol = FirebaseLoginControllerSingleton.GetInstance()) -> UserModelSingleton {
         if let initializedUniqueInstance = uniqueInstance {
             return initializedUniqueInstance
         } else {
-            uniqueInstance = UserModelSingleton()
+            uniqueInstance = UserModelSingleton(firestoreController: firestoreController,
+                                                firebaseStorageController: firebaseStorageController,
+                                                firebaseLoginController: firebaseLoginController)
             return uniqueInstance!
         }
     }
@@ -253,7 +258,7 @@ class UserModelSingleton {
     }
     
     public func loggedIn() -> Bool {
-        userProfile.uniqueID = Auth.auth().currentUser?.phoneNumber
+        userProfile.uniqueID = loginController.getUniqueIDIfLoggedIn()
         return !(userProfile.uniqueID?.isEmpty ?? true)
     }
     
@@ -310,5 +315,7 @@ class UserModelSingleton {
         return cliquePosts
     }
     
-    
+    func tearDown() {
+        UserModelSingleton.uniqueInstance = nil
+    }
 }

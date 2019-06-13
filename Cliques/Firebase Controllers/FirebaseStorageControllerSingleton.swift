@@ -8,14 +8,14 @@
 
 import Firebase
 
-class FirebaseStorageControllerSingleton {
+class FirebaseStorageControllerSingleton: FirebaseStorageControllerProtocol {
     private static var uniqueInstance: FirebaseStorageControllerSingleton?
     static let ProfileImageDir = "profile_images"
     static let PostImageDir = "post_images"
     let storage = Storage.storage()
     
     private init() {}
-    public static func GetInstance() -> FirebaseStorageControllerSingleton {
+    public static func GetInstance() -> FirebaseStorageControllerProtocol {
         if let initializedUniqueInstance = uniqueInstance {
             return initializedUniqueInstance
         } else {
