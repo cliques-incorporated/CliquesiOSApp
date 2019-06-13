@@ -25,13 +25,17 @@ class PostModel {
     private let post: Post
     private let image: UIImage
     private let authorID: String
-    private let firestoreController: FirestoreControllerSingleton
-    private let firebaseStorageController: FirebaseStorageControllerSingleton
+    private let firestoreController: FirestoreControllerProtocol
+    private let firebaseStorageController: FirebaseStorageControllerProtocol
     private var completionHandler: ((_ success: Bool) -> ())?
     
-    init(image: UIImage, caption: String, publicClique: Bool = false, friendsClique: Bool = false, closeFriendsClique: Bool = false, familyClique: Bool = false) {
-        firestoreController = FirestoreControllerSingleton.GetInstance()
-        firebaseStorageController = FirebaseStorageControllerSingleton.GetInstance()
+    init(image: UIImage, caption: String, publicClique: Bool = false,
+         friendsClique: Bool = false, closeFriendsClique: Bool = false,
+         familyClique: Bool = false,
+         firestoreController: FirestoreControllerProtocol = FirestoreControllerSingleton.GetInstance(),
+         firebaseStorageController: FirebaseStorageControllerProtocol = FirebaseStorageControllerSingleton.GetInstance()) {
+        self.firestoreController = firestoreController
+        self.firebaseStorageController = firebaseStorageController
         let userModel = UserModelSingleton.GetInstance()
         
         

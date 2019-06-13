@@ -9,7 +9,7 @@
 import FirebaseAuth
 import Firebase
 
-class FirebaseLoginControllerSingleton {
+class FirebaseLoginControllerSingleton: FirebaseLoginControllerProtocol {
     private static var uniqueInstance: FirebaseLoginControllerSingleton?
     
     private init() {}
@@ -51,6 +51,10 @@ class FirebaseLoginControllerSingleton {
             
             signInSuccess(error, authResult)
         }
+    }
+    
+    func getUniqueIDIfLoggedIn() -> String? {
+        return Auth.auth().currentUser?.phoneNumber
     }
     
     static func signOut() {
